@@ -39,7 +39,7 @@ public class TeacherController {
             TeacherRelationPK pk=new TeacherRelationPK();
             pk.setTchNumber(tchNumber);
             pk.setTchSemester(tchSemester);
-            pk.setTchNumber(tchYear);
+            pk.setTchYear(tchYear);
             RegisterTeacherModel product = service.findByTeacherRelationPK(pk);
             return new ResponseEntity<RegisterTeacherModel>(product, HttpStatus.OK);
         } catch (NoSuchElementException e) {
