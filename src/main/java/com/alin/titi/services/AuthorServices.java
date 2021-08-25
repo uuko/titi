@@ -19,5 +19,10 @@ public class AuthorServices {
     public List<AuthorModel> listAll() {
         return repo.findAll();
     }
+
+
+    public void registerTeacher(AuthorModel teacherModel) {
+        repo.save(teacherModel);
+    }
 }
 

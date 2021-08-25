@@ -1,33 +1,45 @@
 package com.alin.titi.model;
 
-import org.springframework.context.annotation.Primary;
-
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-@Entity(name = "main_teacherbasedata")
+public class ListTeacherResponse {
 
-public class RegisterTeacherModel  {
-
-    @EmbeddedId
-    private TeacherRelationPK teacherRelationPK;
-
-    @ManyToOne
-    @JoinColumn(name="id", nullable=false)
-    private LoginModel loginModel ;
-
-    public LoginModel getLoginModel() {
-        return loginModel;
+    private Integer tchNumber;
+    private Integer tchYear;
+    private Integer tchSemester;
+    /** getters and setters **/
+    public Integer getTchNumber() {
+        return tchNumber;
     }
 
-    public void setLoginModel(LoginModel loginModel) {
-        this.loginModel = loginModel;
+    public void setTchNumber(Integer tchNumber) {
+        this.tchNumber = tchNumber;
     }
 
+    public Integer getTchYear() {
+        return tchYear;
+    }
 
+    public void setTchYear(Integer tchYear) {
+        this.tchYear = tchYear;
+    }
+
+    public Integer getTchSemester() {
+        return tchSemester;
+    }
+
+    public void setTchSemester(Integer tchSemester) {
+        this.tchSemester = tchSemester;
+    }
+    public String getTchPicUrl() {
+        return tchPicUrl;
+    }
+
+    public void setTchPicUrl(String tchPicUrl) {
+        this.tchPicUrl = tchPicUrl;
+    }
+
+    private String tchPicUrl;
     private String tchMainDepartment;
     private String tchIdType;
     private String tchIdNumberI;
@@ -83,25 +95,6 @@ public class RegisterTeacherModel  {
     private String tchIdNumberR;
     private String tchIdNumberP;
     private String tchValidationStatus;
-
-    // picurl
-
-    public String getTchPicUrl() {
-        return tchPicUrl;
-    }
-
-    public void setTchPicUrl(String tchPicUrl) {
-        this.tchPicUrl = tchPicUrl;
-    }
-
-    private String tchPicUrl;
-    public TeacherRelationPK getTeacherRelationPK() {
-        return teacherRelationPK;
-    }
-
-    public void setTeacherRelationPK(TeacherRelationPK teacherRelationPK) {
-        this.teacherRelationPK = teacherRelationPK;
-    }
 
     public String getTchMainDepartment() {
         return tchMainDepartment;
