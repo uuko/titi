@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.handler.LogicalHandler;
 import java.io.IOException;
 import java.util.*;
 
@@ -156,73 +157,173 @@ public class TeacherController {
             ,@PathVariable Integer tchNumber
             ,@PathVariable Integer tchYear, @PathVariable Integer tchSemester) {
         try {
-            TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-            teacherRelationPK.setTchNumber(tchNumber);
-            teacherRelationPK.setTchSemester(tchSemester);
-            teacherRelationPK.setTchYear(tchYear);
-            RegisterTeacherModel teacherModel = service.findByTeacherRelationPK(teacherRelationPK);
-            teacherModel.setTchDepartment(putuser.getTchDepartment());
-            teacherModel.setTchPicUrl(putuser.getTchPicUrl());
-            teacherModel.setTchIdType(putuser.getTchIdType());
-            teacherModel.setTchIdNumberI(putuser.getTchIdNumberI());
-            teacherModel.setTchIdNumberR(putuser.getTchIdNumberR());
-            teacherModel.setTchIdNumberP(putuser.getTchIdNumberP());
-            teacherModel.setTchCountry(putuser.getTchCountry());
-            teacherModel.setTchName(putuser.getTchName());
-            teacherModel.setTchNameEN(putuser.getTchNameEN());
-            teacherModel.setSex(putuser.getSex());
-            teacherModel.setTchIsAboriginal(putuser.getTchIsAboriginal());
-            teacherModel.setTchAboriginal(putuser.getTchAboriginal());
-            teacherModel.setTchBirthday(putuser.getTchBirthday());
-            teacherModel.setTchCoeDepartment(putuser.getTchCoeDepartment());
-            teacherModel.seteMail(putuser.geteMail());
-            teacherModel.setTchState(putuser.getTchState());
-            teacherModel.setTchHureDate(putuser.getTchHureDate());
-            teacherModel.setTchSchDate(putuser.getTchSchDate());
-            teacherModel.setTchOriginalUnit(putuser.getTchOriginalUnit());
-            teacherModel.setTchReinstateDate(putuser.getTchReinstateDate());
-            teacherModel.setTchAppointDate(putuser.getTchAppointDate());
-            teacherModel.setTchStopDate(putuser.getTchStopDate());
-            teacherModel.setTchEstablishment(putuser.getTchEstablishment());
-            teacherModel.setTchKind(putuser.getTchKind());
-            teacherModel.setTchKindIndustry(putuser.getTchKindIndustry());
-            teacherModel.setTchKindDepartment(putuser.getTchKindDepartment());
-            teacherModel.setTchSceWhemain_ther(putuser.getTchSceWhemain_ther());
-            //
-            teacherModel.setTchScePurpose(putuser.getTchScePurpose());
-            teacherModel.setTchSecUnit(putuser.getTchSecUnit());
-            teacherModel.setTchPartAdmini(putuser.getTchPartAdmini());
-            teacherModel.setTchAdminiJob(putuser.getTchAdminiJob());
-            teacherModel.setTchSchoolType(putuser.getTchSchoolType());
-            teacherModel.setTchSchool(putuser.getTchSchool());
-            //
-            teacherModel.setTchDepartment(putuser.getTchDepartment());
-            teacherModel.setTchDiploma(putuser.getTchDiploma());
-            teacherModel.setTchExpertise(putuser.getTchExpertise());
-            teacherModel.setTchType(putuser.getTchType());
-            teacherModel.setTchRireRank(putuser.getTchRireRank());
-            //
-            teacherModel.setTchRireYear(putuser.getTchRireYear());
-            teacherModel.setTchCertificateRank(putuser.getTchCertificateRank());
-            teacherModel.setTchCertificateNumber(putuser.getTchCertificateNumber());
-            teacherModel.setTchHireNumber(putuser.getTchHireNumber());
-            teacherModel.setTchCertificateNumber(putuser.getTchCertificateNumber());
-            teacherModel.setTchmain_licenseNumber(putuser.getTchmain_licenseNumber());
-    ;       //
-            teacherModel.setTchEvaNumber(putuser.getTchEvaNumber());
-            teacherModel.setTch106PaySalary(putuser.getTch106PaySalary());
-            teacherModel.setTch107PaySalary(putuser.getTch107PaySalary());
-            teacherModel.setTchFiestAssistant(putuser.getTchFiestAssistant());
-            teacherModel.setTchFullTime(putuser.getTchFullTime());
-            teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
-           //
-            teacherModel.setTchTwoFour(putuser.getTchTwoFour());
-            teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
-            teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
-            teacherModel.setTchTow(putuser.getTchTow());
-            teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
 
-            service.updateTeacher(teacherModel);
+            TeacherRelationPK nowYearpk=new TeacherRelationPK();
+            int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
+            int month = Calendar.getInstance().get(Calendar.MONTH);
+            int semester=0;
+            if (month<8 && month>1){
+                semester=1;
+            }
+            else {
+                semester=2;
+            }
+            //
+            if (year==tchYear && semester==tchSemester){
+                TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
+                teacherRelationPK.setTchNumber(tchNumber);
+                teacherRelationPK.setTchSemester(tchSemester);
+                teacherRelationPK.setTchYear(tchYear);
+                RegisterTeacherModel teacherModel = service.findByTeacherRelationPK(teacherRelationPK);
+                teacherModel.setTchDepartment(putuser.getTchDepartment());
+                teacherModel.setTchPicUrl(putuser.getTchPicUrl());
+                teacherModel.setTchIdType(putuser.getTchIdType());
+                teacherModel.setTchIdNumberI(putuser.getTchIdNumberI());
+                teacherModel.setTchIdNumberR(putuser.getTchIdNumberR());
+                teacherModel.setTchIdNumberP(putuser.getTchIdNumberP());
+                teacherModel.setTchCountry(putuser.getTchCountry());
+                teacherModel.setTchName(putuser.getTchName());
+                teacherModel.setTchNameEN(putuser.getTchNameEN());
+                teacherModel.setSex(putuser.getSex());
+                teacherModel.setTchIsAboriginal(putuser.getTchIsAboriginal());
+                teacherModel.setTchAboriginal(putuser.getTchAboriginal());
+                teacherModel.setTchBirthday(putuser.getTchBirthday());
+                teacherModel.setTchCoeDepartment(putuser.getTchCoeDepartment());
+                teacherModel.seteMail(putuser.geteMail());
+                teacherModel.setTchState(putuser.getTchState());
+                teacherModel.setTchHureDate(putuser.getTchHureDate());
+                teacherModel.setTchSchDate(putuser.getTchSchDate());
+                teacherModel.setTchOriginalUnit(putuser.getTchOriginalUnit());
+                teacherModel.setTchReinstateDate(putuser.getTchReinstateDate());
+                teacherModel.setTchAppointDate(putuser.getTchAppointDate());
+                teacherModel.setTchStopDate(putuser.getTchStopDate());
+                teacherModel.setTchEstablishment(putuser.getTchEstablishment());
+                teacherModel.setTchKind(putuser.getTchKind());
+                teacherModel.setTchKindIndustry(putuser.getTchKindIndustry());
+                teacherModel.setTchKindDepartment(putuser.getTchKindDepartment());
+                teacherModel.setTchSceWhemain_ther(putuser.getTchSceWhemain_ther());
+                //
+                teacherModel.setTchScePurpose(putuser.getTchScePurpose());
+                teacherModel.setTchSecUnit(putuser.getTchSecUnit());
+                teacherModel.setTchPartAdmini(putuser.getTchPartAdmini());
+                teacherModel.setTchAdminiJob(putuser.getTchAdminiJob());
+                teacherModel.setTchSchoolType(putuser.getTchSchoolType());
+                teacherModel.setTchSchool(putuser.getTchSchool());
+                //
+                teacherModel.setTchDepartment(putuser.getTchDepartment());
+                teacherModel.setTchDiploma(putuser.getTchDiploma());
+                teacherModel.setTchExpertise(putuser.getTchExpertise());
+                teacherModel.setTchType(putuser.getTchType());
+                teacherModel.setTchRireRank(putuser.getTchRireRank());
+                //
+                teacherModel.setTchRireYear(putuser.getTchRireYear());
+                teacherModel.setTchCertificateRank(putuser.getTchCertificateRank());
+                teacherModel.setTchCertificateNumber(putuser.getTchCertificateNumber());
+                teacherModel.setTchHireNumber(putuser.getTchHireNumber());
+                teacherModel.setTchCertificateNumber(putuser.getTchCertificateNumber());
+                teacherModel.setTchmain_licenseNumber(putuser.getTchmain_licenseNumber());
+                ;       //
+                teacherModel.setTchEvaNumber(putuser.getTchEvaNumber());
+                teacherModel.setTch106PaySalary(putuser.getTch106PaySalary());
+                teacherModel.setTch107PaySalary(putuser.getTch107PaySalary());
+                teacherModel.setTchFiestAssistant(putuser.getTchFiestAssistant());
+                teacherModel.setTchFullTime(putuser.getTchFullTime());
+                teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
+                //
+                teacherModel.setTchTwoFour(putuser.getTchTwoFour());
+                teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
+                teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
+                teacherModel.setTchTow(putuser.getTchTow());
+                teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
+                service.updateTeacher(teacherModel);
+            }
+            else {
+
+                int nowYear = Calendar.getInstance().get(Calendar.YEAR)-1911;
+                int  nowMonth = Calendar.getInstance().get(Calendar.MONTH);
+                int  nowSemester=0;
+                if (month<8 && month>1){
+                    nowSemester=1;
+                }
+                else {
+                    nowSemester=2;
+                }
+                TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
+                teacherRelationPK.setTchNumber(tchNumber);
+                teacherRelationPK.setTchSemester(nowSemester);
+                teacherRelationPK.setTchYear(nowYear);
+
+                RegisterTeacherModel teacherModel=new RegisterTeacherModel();
+                teacherModel.setTchDepartment(putuser.getTchDepartment());
+                teacherModel.setTchPicUrl(putuser.getTchPicUrl());
+                teacherModel.setTchIdType(putuser.getTchIdType());
+                teacherModel.setTchIdNumberI(putuser.getTchIdNumberI());
+                teacherModel.setTchIdNumberR(putuser.getTchIdNumberR());
+                teacherModel.setTchIdNumberP(putuser.getTchIdNumberP());
+                teacherModel.setTchCountry(putuser.getTchCountry());
+                teacherModel.setTchName(putuser.getTchName());
+                teacherModel.setTchNameEN(putuser.getTchNameEN());
+                teacherModel.setSex(putuser.getSex());
+                teacherModel.setTchIsAboriginal(putuser.getTchIsAboriginal());
+                teacherModel.setTchAboriginal(putuser.getTchAboriginal());
+                teacherModel.setTchBirthday(putuser.getTchBirthday());
+                teacherModel.setTchCoeDepartment(putuser.getTchCoeDepartment());
+                teacherModel.seteMail(putuser.geteMail());
+                teacherModel.setTchState(putuser.getTchState());
+                teacherModel.setTchHureDate(putuser.getTchHureDate());
+                teacherModel.setTchSchDate(putuser.getTchSchDate());
+                teacherModel.setTchOriginalUnit(putuser.getTchOriginalUnit());
+                teacherModel.setTchReinstateDate(putuser.getTchReinstateDate());
+                teacherModel.setTchAppointDate(putuser.getTchAppointDate());
+                teacherModel.setTchStopDate(putuser.getTchStopDate());
+                teacherModel.setTchEstablishment(putuser.getTchEstablishment());
+                teacherModel.setTchKind(putuser.getTchKind());
+                teacherModel.setTchKindIndustry(putuser.getTchKindIndustry());
+                teacherModel.setTchKindDepartment(putuser.getTchKindDepartment());
+                teacherModel.setTchSceWhemain_ther(putuser.getTchSceWhemain_ther());
+                //
+                teacherModel.setTchScePurpose(putuser.getTchScePurpose());
+                teacherModel.setTchSecUnit(putuser.getTchSecUnit());
+                teacherModel.setTchPartAdmini(putuser.getTchPartAdmini());
+                teacherModel.setTchAdminiJob(putuser.getTchAdminiJob());
+                teacherModel.setTchSchoolType(putuser.getTchSchoolType());
+                teacherModel.setTchSchool(putuser.getTchSchool());
+                //
+                teacherModel.setTchDepartment(putuser.getTchDepartment());
+                teacherModel.setTchDiploma(putuser.getTchDiploma());
+                teacherModel.setTchExpertise(putuser.getTchExpertise());
+                teacherModel.setTchType(putuser.getTchType());
+                teacherModel.setTchRireRank(putuser.getTchRireRank());
+                //
+                teacherModel.setTchRireYear(putuser.getTchRireYear());
+                teacherModel.setTchCertificateRank(putuser.getTchCertificateRank());
+                teacherModel.setTchCertificateNumber(putuser.getTchCertificateNumber());
+                teacherModel.setTchHireNumber(putuser.getTchHireNumber());
+                teacherModel.setTchCertificateNumber(putuser.getTchCertificateNumber());
+                teacherModel.setTchmain_licenseNumber(putuser.getTchmain_licenseNumber());
+                ;       //
+                teacherModel.setTchEvaNumber(putuser.getTchEvaNumber());
+                teacherModel.setTch106PaySalary(putuser.getTch106PaySalary());
+                teacherModel.setTch107PaySalary(putuser.getTch107PaySalary());
+                teacherModel.setTchFiestAssistant(putuser.getTchFiestAssistant());
+                teacherModel.setTchFullTime(putuser.getTchFullTime());
+                teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
+                //
+                teacherModel.setTchTwoFour(putuser.getTchTwoFour());
+                teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
+                teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
+                teacherModel.setTchTow(putuser.getTchTow());
+                teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
+                LoginModel loginModel=new LoginModel();
+                loginModel.setId(tchNumber);
+                teacherModel.setLoginModel(loginModel);
+                service.updateTeacher(teacherModel);
+            }
+
+
+
+
+
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
