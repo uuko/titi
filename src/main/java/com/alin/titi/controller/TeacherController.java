@@ -22,13 +22,15 @@ import java.util.*;
 
 //teacher register and update and get
 @RestController
+
 public class TeacherController {
 
     @Autowired
     private TeacherService service;
 
     // get all
-    @GetMapping("/list/teacher")
+    @CrossOrigin(origins = "https://localhost:8080/", maxAge = 3600)
+    @GetMapping("/teacher/list")
     public ResponseEntity<?> list() {
 
         List<RegisterTeacherModel> putuserList=service.listAll();
@@ -105,7 +107,7 @@ public class TeacherController {
 
         return ResponseEntity.ok(listTeacherResponseList);
     }
-    @PostMapping("/uploadFile")
+    @PostMapping("/teacher/uploadFile")
     public ResponseEntity<?> uploadFile(@RequestParam("file")MultipartFile file
 
             ,@RequestParam("tchNumber")  Integer tchNumber
@@ -334,7 +336,7 @@ public class TeacherController {
     }
 
     //post
-    @PostMapping("/register/teacher")
+    @PostMapping("/teacher/register")
     public void registerTeacher(@RequestBody RegisterBaseModel baseModel) {
         RegisterTeacherModel teacherModel=new RegisterTeacherModel();
         teacherModel.seteMail(baseModel.getEmail());

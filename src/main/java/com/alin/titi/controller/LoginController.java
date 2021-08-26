@@ -16,7 +16,7 @@ public class LoginController {
     private LoginServices loginServices;
 
     // post account pwd -> search -> return response foreign key
-    @PostMapping("/login")
+    @PostMapping("/teacher/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest putuser) {
         try {
             LoginResponse response= loginServices.findAccountLoginStatus(putuser.getAccount(),putuser.getPassword());
