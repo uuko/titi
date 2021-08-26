@@ -1,4 +1,4 @@
-package com.alin.titi.model;
+package com.alin.titi.model.api.response;
 
 public class LoginResponse {
     public Integer getTchNumber() {

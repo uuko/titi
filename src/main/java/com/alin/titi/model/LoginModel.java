@@ -7,6 +7,12 @@ import java.util.Set;
 
 @Entity(name = "main_login")
 public class LoginModel {
+    public LoginModel() {
+    }
+
+    public LoginModel(Integer id) {
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +46,17 @@ public class LoginModel {
 
     public void setTeacherModels(Set<RegisterTeacherModel> teacherModels) {
         this.teacherModels = teacherModels;
+    }
+
+    @OneToMany()
+    private Set<LicenseModel> licenseModels = new HashSet<>();
+
+    public Set<LicenseModel> getLicenseModels() {
+        return licenseModels;
+    }
+
+    public void setLicenseModels(Set<LicenseModel> licenseModels) {
+        this.licenseModels = licenseModels;
     }
 
     public String getAccount() {

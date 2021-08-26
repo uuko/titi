@@ -1,18 +1,13 @@
 package com.alin.titi.services;
 
-import com.alin.titi.model.AuthorModel;
 import com.alin.titi.model.LoginModel;
-import com.alin.titi.model.LoginResponse;
-import com.alin.titi.repository.AuthorRepository;
+import com.alin.titi.model.api.response.LoginResponse;
 import com.alin.titi.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 
 @Service

@@ -1,8 +1,8 @@
 package com.alin.titi.controller;
 
-import com.alin.titi.model.*;
+import com.alin.titi.model.api.request.LoginRequest;
+import com.alin.titi.model.api.response.LoginResponse;
 import com.alin.titi.services.LoginServices;
-import com.alin.titi.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

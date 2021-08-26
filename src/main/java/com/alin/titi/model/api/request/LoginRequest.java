@@ -1,4 +1,4 @@
-package com.alin.titi.model;
+package com.alin.titi.model.api.request;
 
 public class LoginRequest {
     private String  account="";

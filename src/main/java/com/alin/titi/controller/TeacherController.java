@@ -1,8 +1,7 @@
 package com.alin.titi.controller;
 
 import com.alin.titi.model.*;
-import com.alin.titi.services.AuthorServices;
-import com.alin.titi.services.LoginServices;
+import com.alin.titi.model.api.response.ListTeacherResponse;
 import com.alin.titi.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -14,9 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.handler.LogicalHandler;
 import java.io.IOException;
 import java.util.*;
 
@@ -28,8 +25,7 @@ public class TeacherController {
     @Autowired
     private TeacherService service;
 
-    // get all
-    @CrossOrigin(origins = "https://localhost:8080/", maxAge = 3600)
+
     @GetMapping("/teacher/list")
     public ResponseEntity<?> list() {
 
