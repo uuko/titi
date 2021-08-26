@@ -59,6 +59,18 @@ public class LoginModel {
         this.licenseModels = licenseModels;
     }
 
+    //
+    @OneToMany()
+    private Set<PaperModel> paperModels = new HashSet<>();
+
+    public Set<PaperModel> getPaperModels() {
+        return paperModels;
+    }
+
+    public void setPaperModels(Set<PaperModel> paperModels) {
+        this.paperModels = paperModels;
+    }
+
     public String getAccount() {
         return account;
     }

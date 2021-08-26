@@ -4,11 +4,13 @@ import com.alin.titi.model.LicenseModel;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.api.request.LicenseRequest;
 import com.alin.titi.model.api.request.LicenseUpdateRequest;
+import com.alin.titi.model.api.response.LicenseUpdateResponse;
 import com.alin.titi.repository.LicenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
@@ -47,11 +49,42 @@ public class LicenseServices {
         repo.deleteById(licenseRequest.getLicId());
     }
     public LicenseModel findLicenseData(Integer id){
-        return repo.findByLicId(id);
+        LicenseModel licenseRequest= repo.findByLicId(id);
+
+
+        LicenseUpdateResponse licenseModel=new LicenseUpdateResponse();
+        licenseModel.setLicId(licenseRequest.getLicId());
+        licenseModel.setLoginId(licenseRequest.getLoginModel().getId());
+        //
+        licenseModel.setLicName(licenseRequest.getLicName());
+        licenseModel.setLicService(licenseRequest.getLicService());
+        licenseModel.setLicType(licenseRequest.getLicType());
+        licenseModel.setLicNumber(licenseRequest.getLicNumber());
+        licenseModel.setTchSemester(licenseRequest.getTchSemester());
+        licenseModel.setTchYear(licenseRequest.getTchYear());
+
+        return licenseRequest;
     }
 
-    public List<LicenseModel> findAllLicenseData(Integer id){
-        return repo.findByLoginModel(new LoginModel(id));
+    public List<LicenseUpdateResponse> findAllLicenseData(Integer id){
+        List<LicenseModel> licenseModelList= repo.findByLoginModel(new LoginModel(id));
+        List<LicenseUpdateResponse> licenseUpdateResponseList=new ArrayList<>();
+        for (LicenseModel licenseRequest:licenseModelList){
+            LicenseUpdateResponse licenseModel=new LicenseUpdateResponse();
+            licenseModel.setLicId(licenseRequest.getLicId());
+            licenseModel.setLoginId(licenseRequest.getLoginModel().getId());
+            //
+            licenseModel.setLicName(licenseRequest.getLicName());
+            licenseModel.setLicService(licenseRequest.getLicService());
+            licenseModel.setLicType(licenseRequest.getLicType());
+            licenseModel.setLicNumber(licenseRequest.getLicNumber());
+            licenseModel.setTchSemester(licenseRequest.getTchSemester());
+            licenseModel.setTchYear(licenseRequest.getTchYear());
+
+            licenseUpdateResponseList.add(licenseModel);
+        }
+
+        return licenseUpdateResponseList;
     }
     public void updateLicenseData(LicenseUpdateRequest licenseRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR);
