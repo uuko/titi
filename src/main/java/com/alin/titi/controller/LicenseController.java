@@ -6,6 +6,7 @@ import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.TeacherRelationPK;
 import com.alin.titi.model.api.request.LicenseRequest;
 import com.alin.titi.model.api.request.LicenseUpdateRequest;
+import com.alin.titi.model.api.response.LicenseUpdateResponse;
 import com.alin.titi.services.LicenseServices;
 import com.alin.titi.services.LoginServices;
 import jdk.nashorn.internal.runtime.options.Option;
@@ -56,7 +57,7 @@ public class LicenseController {
     //get
     @GetMapping("/teacher/license/loginId/{loginId}")
     public ResponseEntity<?> getAllTeacherLicense(@PathVariable Integer loginId) {
-        List<LicenseModel> licenseData=licenseServices.findAllLicenseData(loginId);
+        List<LicenseUpdateResponse> licenseData=licenseServices.findAllLicenseData(loginId);
         if (licenseData.size()==0){
             return new ResponseEntity<RegisterTeacherModel>(HttpStatus.NOT_FOUND);
         }
