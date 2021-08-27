@@ -82,7 +82,7 @@ public class TeacherService {
                 throw new Exception("Sorry! Filename contains invalid path sequence " + orgFileName);
             }
             // String command = "powershell -c \"$(ipconfig | where {$_ -match 'IPv4.+\\s(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})' } | out-null; $Matches[1]) > C:\\Users\\uuko\\Desktop\\web\\web-socket-project\\src\\main\\resources\\ip.txt";
-            String command="163.17.136.180";
+            String command="localhost";
 //            Process process = Runtime.getRuntime().exec(command);
 //            process.getOutputStream();
 //            String line0 = Files.readAllLines(Paths.get("C:\\Users\\uuko\\Desktop\\web\\web-socket-project\\src\\main\\resources\\ip.txt"), StandardCharsets.UTF_16LE).get(0);
