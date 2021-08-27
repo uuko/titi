@@ -25,7 +25,7 @@ public class PaperModel {
     private String theProject;
     private Integer tchYear;
     private Integer tchSemester;
-
+    private boolean isPublic=false;
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
@@ -33,7 +33,13 @@ public class PaperModel {
     public Integer getTheId() {
         return theId;
     }
+    public boolean isPublic() {
+        return isPublic;
+    }
 
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
     public void setTheId(Integer theId) {
         this.theId = theId;
     }

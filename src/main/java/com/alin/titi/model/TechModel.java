@@ -23,6 +23,7 @@ public class TechModel {
 
     private Integer tchYear;
     private Integer tchSemester;
+    private boolean isPublic=false;
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
@@ -30,7 +31,13 @@ public class TechModel {
     public Integer getTecSkillNumber() {
         return tecSkillNumber;
     }
+    public boolean isPublic() {
+        return isPublic;
+    }
 
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
     public void setTecSkillNumber(Integer tecSkillNumber) {
         this.tecSkillNumber = tecSkillNumber;
     }

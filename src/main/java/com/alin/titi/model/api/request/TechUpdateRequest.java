@@ -17,6 +17,15 @@ public class TechUpdateRequest {
     private Integer  tecTransferNumber;
     private String  tecContentPatent;
     private Integer  tecPatentNumber;
+    private boolean isPublic=false;
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
 
     public Integer getLoginId() {
         return loginId;

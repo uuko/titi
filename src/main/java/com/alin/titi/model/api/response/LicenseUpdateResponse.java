@@ -11,6 +11,16 @@ public class LicenseUpdateResponse {
 
     private Integer tchYear;
     private Integer tchSemester;
+
+
+    private boolean isPublic;
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
     public Integer getTchYear() {
         return tchYear;
     }

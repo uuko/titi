@@ -53,7 +53,7 @@ public class PaperServices {
         paperModel.setTheReviewer(postRequest.getTheReviewer());
         paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
         paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
-
+        paperModel.setPublic(postRequest.isPublic());
 
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
@@ -86,6 +86,7 @@ public class PaperServices {
         paperModel.setTheReviewer(postRequest.getTheReviewer());
         paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
         paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
+        paperModel.setPublic(postRequest.isPublic());
         return paperModel;
     }
 
@@ -115,6 +116,7 @@ public class PaperServices {
             paperModel.setTheReviewer(postRequest.getTheReviewer());
             paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
             paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
+            paperModel.setPublic(postRequest.isPublic());
             responseList.add(paperModel);
         }
 
@@ -155,7 +157,7 @@ public class PaperServices {
             paperModel.setTheReviewer(postRequest.getTheReviewer());
             paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
             paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
-
+            paperModel.setPublic(postRequest.isPublic());
 
             paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
             repo.save(paperModel);

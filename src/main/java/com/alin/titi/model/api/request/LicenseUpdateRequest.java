@@ -9,6 +9,14 @@ public class LicenseUpdateRequest {
     private String licName;
     private String licService;
     private Integer licNumber;
+    private boolean isPublic=false;
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
     public Integer getLicId() {
         return licId;
     }

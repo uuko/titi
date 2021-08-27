@@ -20,7 +20,14 @@ public class PaperUpdateRequest {
 
     private String thePublishType;
     private String theProject;
+    private boolean isPublic=false;
+    public boolean isPublic() {
+        return isPublic;
+    }
 
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
 
     public Integer getTheId() {
         return theId;
