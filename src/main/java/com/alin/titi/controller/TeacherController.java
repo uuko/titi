@@ -96,7 +96,7 @@ public class TeacherController {
             listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());
             listTeacherResponse.setTchTow(putuser.getTchTow());
             listTeacherResponse.setTchValidationStatus(putuser.getTchValidationStatus());
-
+            listTeacherResponse.setIntroduce(putuser.getIntroduce());
             listTeacherResponseList.add(listTeacherResponse);
         }
 
@@ -233,6 +233,7 @@ public class TeacherController {
                 teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
                 teacherModel.setTchTow(putuser.getTchTow());
                 teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
+                teacherModel.setIntroduce(putuser.getIntroduce());
                 service.updateTeacher(teacherModel);
             }
             else {
@@ -312,6 +313,7 @@ public class TeacherController {
                 teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
                 teacherModel.setTchTow(putuser.getTchTow());
                 teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
+                teacherModel.setIntroduce(putuser.getIntroduce());
                 LoginModel loginModel=new LoginModel();
                 loginModel.setId(tchNumber);
                 teacherModel.setLoginModel(loginModel);
@@ -435,7 +437,7 @@ public class TeacherController {
             listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());
             listTeacherResponse.setTchTow(putuser.getTchTow());
             listTeacherResponse.setTchValidationStatus(putuser.getTchValidationStatus());
-
+            listTeacherResponse.setIntroduce(putuser.getIntroduce());
             return ResponseEntity.ok(listTeacherResponse);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<RegisterTeacherModel>(HttpStatus.NOT_FOUND);

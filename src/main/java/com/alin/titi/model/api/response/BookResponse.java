@@ -20,7 +20,14 @@ public class BookResponse {
     private String infPlan;
 
     private Integer tchYear;
+    private boolean isPublic;
+    public boolean isPublic() {
+        return isPublic;
+    }
 
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
     public Integer getTchSemester() {
         return tchSemester;
     }

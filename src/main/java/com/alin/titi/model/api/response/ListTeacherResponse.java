@@ -38,7 +38,15 @@ public class ListTeacherResponse {
     public void setTchPicUrl(String tchPicUrl) {
         this.tchPicUrl = tchPicUrl;
     }
+    private String introduce;
 
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
     private String tchPicUrl;
     private String tchMainDepartment;
     private String tchIdType;

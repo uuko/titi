@@ -85,6 +85,17 @@ public class RegisterTeacherModel  {
     private String tchValidationStatus;
 
     // picurl
+    private String tchPicUrl;
+    // introduce
+    private String introduce;
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
 
     public String getTchPicUrl() {
         return tchPicUrl;
@@ -94,7 +105,7 @@ public class RegisterTeacherModel  {
         this.tchPicUrl = tchPicUrl;
     }
 
-    private String tchPicUrl;
+
     public TeacherRelationPK getTeacherRelationPK() {
         return teacherRelationPK;
     }

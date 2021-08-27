@@ -18,7 +18,14 @@ public class BookUpdateRequest {
     private String infPublishHouse;
     private String infISBN;
     private String infPlan;
+    private boolean isPublic=false;
+    public boolean isPublic() {
+        return isPublic;
+    }
 
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
 
     public Integer getInfNumber() {
         return infNumber;

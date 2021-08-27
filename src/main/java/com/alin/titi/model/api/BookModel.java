@@ -34,6 +34,16 @@ public class BookModel {
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
+
+    private boolean isPublic=false;
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
+
     public Integer getInfNumber() {
         return infNumber;
     }
