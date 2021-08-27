@@ -54,7 +54,7 @@ public class TeacherService {
 
 
         LoginModel loginModel=new LoginModel();
-        loginModel.setAccount(baseModel.getEmail());
+        loginModel.setAccount(baseModel.getAccount());
         loginModel.setPassword(baseModel.getPassword());
         loginModel.setGrade("B");
         loginRepository.save(loginModel);
