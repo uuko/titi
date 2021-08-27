@@ -65,7 +65,7 @@ public class TeacherService {
         repo.save(teacherModel);
     }
     public String storeNewFile(MultipartFile multipartFile, TeacherRelationPK teacherRelationPK) throws Exception {
-        Path fileStoreLocation= Paths.get("C:\\Users\\uuko\\Desktop\\mssweb\\titi\\src\\main\\resources\\static\\").toAbsolutePath().normalize();
+        Path fileStoreLocation= Paths.get("/home/csie/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
         try {
             Files.createDirectories(fileStoreLocation);
         } catch (IOException e) {
@@ -82,7 +82,7 @@ public class TeacherService {
                 throw new Exception("Sorry! Filename contains invalid path sequence " + orgFileName);
             }
             // String command = "powershell -c \"$(ipconfig | where {$_ -match 'IPv4.+\\s(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})' } | out-null; $Matches[1]) > C:\\Users\\uuko\\Desktop\\web\\web-socket-project\\src\\main\\resources\\ip.txt";
-            String command="localhost";
+            String command="163.17.136.180";
 //            Process process = Runtime.getRuntime().exec(command);
 //            process.getOutputStream();
 //            String line0 = Files.readAllLines(Paths.get("C:\\Users\\uuko\\Desktop\\web\\web-socket-project\\src\\main\\resources\\ip.txt"), StandardCharsets.UTF_16LE).get(0);
@@ -127,7 +127,7 @@ public class TeacherService {
 
 
     public Resource loadFileAsResource(String fileName) throws Exception {
-        Path fileStoreLocation= Paths.get("C:/Users/uuko/Desktop/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
+        Path fileStoreLocation= Paths.get("/home/csie/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
         Path filePath =fileStoreLocation.resolve(fileName).normalize();
         Resource resource = new UrlResource(filePath.toUri());
         if(resource.exists()) {
