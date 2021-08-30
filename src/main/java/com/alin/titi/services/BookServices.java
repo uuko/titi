@@ -1,16 +1,11 @@
 package com.alin.titi.services;
 
 import com.alin.titi.model.LoginModel;
-import com.alin.titi.model.PaperModel;
-import com.alin.titi.model.api.BookModel;
+import com.alin.titi.model.BookModel;
 import com.alin.titi.model.api.request.BookRequest;
 import com.alin.titi.model.api.request.BookUpdateRequest;
-import com.alin.titi.model.api.request.PaperPostRequest;
-import com.alin.titi.model.api.request.PaperUpdateRequest;
 import com.alin.titi.model.api.response.BookResponse;
-import com.alin.titi.model.api.response.PaperUpdateResponse;
 import com.alin.titi.repository.BookRepository;
-import com.alin.titi.repository.PaperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
