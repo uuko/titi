@@ -1,4 +1,4 @@
-package com.alin.titi.model.api;
+package com.alin.titi.model;
 
 import com.alin.titi.model.LoginModel;
 
