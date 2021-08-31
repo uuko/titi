@@ -73,6 +73,7 @@ public class MailController {
         LoginModel loginModel=loginServices.findByLoginId(id);
         if(loginModel !=null) {
             loginServices.changeUserPassword(passwordDto.getNewPassword(),loginModel);
+            loginServices.deleteToken(passwordDto.getToken());
             return "success";
         } else {
             return "can't not find user";

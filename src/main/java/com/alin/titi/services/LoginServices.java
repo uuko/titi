@@ -39,6 +39,7 @@ public class LoginServices {
     public void changeUserPassword(String password,LoginModel loginModel){
         loginModel.setPassword(password);
         loginRepository.save(loginModel);
+
     }
     public void createPasswordResetTokenForUser(LoginModel user, String token) {
         PasswordResetToken myToken = new PasswordResetToken(token, user);
@@ -78,7 +79,10 @@ public class LoginServices {
         return null;
     }
 
-
+    public void deleteToken(String token) {
+         PasswordResetToken passToken = passwordTokenRepository.findByToken(token);
+         passwordTokenRepository.delete(passToken);
+    }
     public Integer findLoginId(String token){
         final PasswordResetToken passToken = passwordTokenRepository.findByToken(token);
 
