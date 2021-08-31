@@ -59,6 +59,42 @@ public class LoginModel {
         this.licenseModels = licenseModels;
     }
 
+
+    @OneToMany()
+    private Set<AwardsModel> awardsModel = new HashSet<>();
+
+    public Set<AwardsModel> getAwardsModel() {
+        return awardsModel;
+    }
+
+    public void setAwardsModel(Set<AwardsModel> awardsModel) {
+        this.awardsModel = awardsModel;
+    }
+
+    //
+    @OneToMany()
+    private Set<PatModel> patModel = new HashSet<>();
+
+    public Set<PatModel> getPatModel() {
+        return patModel;
+    }
+
+    public void setPatModel(Set<PatModel> patModel) {
+        this.patModel = patModel;
+    }
+
+    //
+    @OneToMany()
+    private Set<ProModel> proModel = new HashSet<>();
+
+    public Set<ProModel> getProModel() {
+        return proModel;
+    }
+
+    public void setProModel(Set<ProModel> proModel) {
+        this.proModel = proModel;
+    }
+
     //
     @OneToMany()
     private Set<PaperModel> paperModels = new HashSet<>();
