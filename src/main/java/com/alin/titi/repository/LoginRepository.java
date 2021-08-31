@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface LoginRepository extends CrudRepository<LoginModel, String> {
 
     LoginModel findByAccountAndPassword(String account,String password);
-
+    LoginModel findByAccount(String account);
+    LoginModel findById(Integer id);
 }
