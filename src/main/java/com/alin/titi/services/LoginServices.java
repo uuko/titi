@@ -55,8 +55,8 @@ public class LoginServices {
 
         return loginModel;
     }
-    public LoginModel findByLoginId(Integer account,String passWord) {
-        LoginModel loginModel=loginRepository.findByIdAndPassword(account,passWord);
+    public LoginModel findByLoginId(Integer account) {
+        LoginModel loginModel=loginRepository.findById(account);
 
         return loginModel;
     }
@@ -81,7 +81,8 @@ public class LoginServices {
 
     private boolean isTokenExpired(PasswordResetToken passToken) {
         final Calendar cal = Calendar.getInstance();
-        return passToken.getExpiryDate().before(cal.getTime());
+        System.out.println("bool    :   "+passToken.getExpiryDate().before(cal.getTime()));
+        return passToken.getExpiryDate().after(cal.getTime());
     }
 
 }

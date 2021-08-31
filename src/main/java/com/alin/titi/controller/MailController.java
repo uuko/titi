@@ -70,7 +70,7 @@ public class MailController {
         }
 
         Integer id  = loginServices.findLoginId(passwordDto.getToken());
-        LoginModel loginModel=loginServices.findByLoginId(id,passwordDto.getOldPassword());
+        LoginModel loginModel=loginServices.findByLoginId(id);
         if(loginModel !=null) {
             loginServices.changeUserPassword(passwordDto.getNewPassword(),loginModel);
             return "success";

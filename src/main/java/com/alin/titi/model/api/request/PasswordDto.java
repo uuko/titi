@@ -2,19 +2,11 @@ package com.alin.titi.model.api.request;
 
 public class PasswordDto {
 
-    private String oldPassword;
 
     private  String token;
 
     private String newPassword;
 
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
 
     public String getToken() {
         return token;

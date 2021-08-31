@@ -11,5 +11,5 @@ public interface LoginRepository extends CrudRepository<LoginModel, String> {
 
     LoginModel findByAccountAndPassword(String account,String password);
     LoginModel findByAccount(String account);
-    LoginModel findByIdAndPassword(Integer id,String password);
+    LoginModel findById(Integer id);
 }
