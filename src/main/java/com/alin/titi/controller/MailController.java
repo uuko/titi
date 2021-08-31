@@ -52,11 +52,11 @@ public class MailController {
     @GetMapping("/teacher/changePassword")
     public String showChangePasswordPage(@RequestParam("token") String token) {
         String result = loginServices.validatePasswordResetToken(token);
-        if(result != null) {
+        if(result.equals("ok")) {
 
             return "ok";
         } else { ;
-            return "error";
+            return result+" :error";
         }
     }
 
@@ -65,8 +65,8 @@ public class MailController {
 
         String result = loginServices.validatePasswordResetToken(passwordDto.getToken());
 
-        if(result != null) {
-            return result;
+        if(!result.equals("ok")) {
+            return "error:  "+result;
         }
 
         Integer id  = loginServices.findLoginId(passwordDto.getToken());

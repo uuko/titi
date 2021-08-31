@@ -64,9 +64,18 @@ public class LoginServices {
     public String validatePasswordResetToken(String token) {
         final PasswordResetToken passToken = passwordTokenRepository.findByToken(token);
 
-        return !isTokenFound(passToken) ? "invalidToken"
-                : isTokenExpired(passToken) ? "expired"
-                : null;
+        if (isTokenFound(passToken) && !isTokenExpired(passToken)){
+            return "ok";
+        }
+        else {
+            if (!isTokenFound(passToken)){
+                return "invalidToken";
+            }
+            if ( isTokenExpired(passToken)){
+                return "expired";
+            }
+        }
+        return null;
     }
 
 
@@ -82,7 +91,7 @@ public class LoginServices {
     private boolean isTokenExpired(PasswordResetToken passToken) {
         final Calendar cal = Calendar.getInstance();
         System.out.println("bool    :   "+passToken.getExpiryDate().before(cal.getTime()));
-        return passToken.getExpiryDate().after(cal.getTime());
+        return passToken.getExpiryDate().before(cal.getTime());
     }
 
 }
