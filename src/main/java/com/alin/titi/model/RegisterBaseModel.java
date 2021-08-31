@@ -6,20 +6,12 @@ public class RegisterBaseModel {
 
 
 
-    private String email="";
+
     private String tchName="";
     private String account="";
     private String password="";
 
 
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getTchName() {
         return tchName;

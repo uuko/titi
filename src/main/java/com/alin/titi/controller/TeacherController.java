@@ -337,7 +337,7 @@ public class TeacherController {
     @PostMapping("/teacher/register")
     public void registerTeacher(@RequestBody RegisterBaseModel baseModel) {
         RegisterTeacherModel teacherModel=new RegisterTeacherModel();
-        teacherModel.seteMail(baseModel.getEmail());
+        teacherModel.seteMail(baseModel.getAccount());
         teacherModel.setTchName(baseModel.getTchName());
         TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
         int year = Calendar.getInstance().get(Calendar.YEAR);
