@@ -29,8 +29,15 @@ public class PatModel {
     private String patIsGet;
     private String patChang;
     private String patYear ;
-    private boolean isPublic=false;
 
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 
 
 
@@ -221,13 +228,7 @@ public class PatModel {
         this.tchSemester = tchSemester;
     }
 
-    public boolean isPublic() {
-        return isPublic;
-    }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
 
 
 

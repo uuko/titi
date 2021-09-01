@@ -62,12 +62,11 @@ public class GovServices {
         paperModel.setGovTeamworkUnit(postRequest.getGovTeamworkUnit());
         paperModel.setGovOthIn(postRequest.getGovOthIn());
         paperModel.setGovUnitName(postRequest.getGovUnitName());
-        paperModel.setPublic(postRequest.isPublic());
         paperModel.setGovToOth(postRequest.isGovToOth());
 
         //
 
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -104,12 +103,12 @@ public class GovServices {
         paperModel.setGovTeamworkUnit(postRequest.getGovTeamworkUnit());
         paperModel.setGovOthIn(postRequest.getGovOthIn());
         paperModel.setGovUnitName(postRequest.getGovUnitName());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         paperModel.setGovToOth(postRequest.isGovToOth());
 
         //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         paperModel.setGovId(postRequest.getGovId());
         return paperModel;
     }
@@ -144,12 +143,11 @@ public class GovServices {
             paperModel.setGovTeamworkUnit(postRequest.getGovTeamworkUnit());
             paperModel.setGovOthIn(postRequest.getGovOthIn());
             paperModel.setGovUnitName(postRequest.getGovUnitName());
-            paperModel.setPublic(postRequest.isPublic());
             paperModel.setGovToOth(postRequest.isGovToOth());
 
             //
             paperModel.setLoginId(postRequest.getLoginModel().getId());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             paperModel.setGovId(postRequest.getGovId());
             responseList.add(paperModel);
         }
@@ -199,11 +197,11 @@ public class GovServices {
             paperModel.setGovTeamworkUnit(postRequest.getGovTeamworkUnit());
             paperModel.setGovOthIn(postRequest.getGovOthIn());
             paperModel.setGovUnitName(postRequest.getGovUnitName());
-            paperModel.setPublic(postRequest.isPublic());
+
             paperModel.setGovToOth(postRequest.isGovToOth());
 
             //
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
             paperModel.setGovId(postRequest.getGovId());
             repo.save(paperModel);
         }

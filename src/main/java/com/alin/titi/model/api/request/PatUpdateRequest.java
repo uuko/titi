@@ -30,7 +30,7 @@ public class PatUpdateRequest {
     private String patIsGet;
     private String patChang;
     private String patYear ;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
 
     public Integer getLoginId() {
@@ -217,11 +217,11 @@ public class PatUpdateRequest {
         this.patYear = patYear;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

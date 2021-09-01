@@ -91,6 +91,7 @@ public class TeacherController {
             listTeacherResponse.setTchFullTime(putuser.getTchFullTime());
             listTeacherResponse.setTchSixtyFive(putuser.getTchSixtyFive());
             //
+            listTeacherResponse.setTchMainDepartment(putuser.getTchMainDepartment());
             listTeacherResponse.setTchTwoFour(putuser.getTchTwoFour());
             listTeacherResponse.setTchComplyLaw(putuser.getTchComplyLaw());
             listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());
@@ -228,6 +229,7 @@ public class TeacherController {
                 teacherModel.setTchFullTime(putuser.getTchFullTime());
                 teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
                 //
+                teacherModel.setTchMainDepartment(putuser.getTchMainDepartment());
                 teacherModel.setTchTwoFour(putuser.getTchTwoFour());
                 teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
                 teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
@@ -308,6 +310,7 @@ public class TeacherController {
                 teacherModel.setTchFullTime(putuser.getTchFullTime());
                 teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
                 //
+                teacherModel.setTchMainDepartment(putuser.getTchMainDepartment());
                 teacherModel.setTchTwoFour(putuser.getTchTwoFour());
                 teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
                 teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
@@ -432,6 +435,7 @@ public class TeacherController {
             listTeacherResponse.setTchFullTime(putuser.getTchFullTime());
             listTeacherResponse.setTchSixtyFive(putuser.getTchSixtyFive());
             //
+            listTeacherResponse.setTchMainDepartment(putuser.getTchMainDepartment());
             listTeacherResponse.setTchTwoFour(putuser.getTchTwoFour());
             listTeacherResponse.setTchComplyLaw(putuser.getTchComplyLaw());
             listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());

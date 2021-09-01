@@ -21,7 +21,7 @@ public class OneDashTwoResponse {
 
     private Integer tchYear;
     private Integer tchSemester;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
     public Integer getLoginId() {
         return loginId;
     }
@@ -118,10 +118,10 @@ public class OneDashTwoResponse {
     }
 
     public boolean isPublic() {
-        return isPublic;
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

@@ -50,7 +50,7 @@ public class BookServices {
         paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
         paperModel.setInfISBN(postRequest.getInfISBN());
         paperModel.setInfPlan(postRequest.getInfPlan());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -81,7 +81,7 @@ public class BookServices {
         paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
         paperModel.setInfISBN(postRequest.getInfISBN());
         paperModel.setInfPlan(postRequest.getInfPlan());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         return paperModel;
     }
 
@@ -109,7 +109,7 @@ public class BookServices {
             paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
             paperModel.setInfISBN(postRequest.getInfISBN());
             paperModel.setInfPlan(postRequest.getInfPlan());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             responseList.add(paperModel);
         }
 
@@ -151,7 +151,7 @@ public class BookServices {
             paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
             paperModel.setInfISBN(postRequest.getInfISBN());
             paperModel.setInfPlan(postRequest.getInfPlan());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
 
             paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
             repo.save(paperModel);

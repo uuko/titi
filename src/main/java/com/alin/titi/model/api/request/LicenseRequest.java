@@ -12,14 +12,17 @@ public class LicenseRequest {
     private String licName;
     private String licService;
     private Integer licNumber;
-    private boolean isPublic=false;
-    public boolean isPublic() {
-        return isPublic;
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setOpen(boolean open) {
+        this.open = open;
     }
+
+
+
     public Integer getLoginId() {
         return loginId;
     }

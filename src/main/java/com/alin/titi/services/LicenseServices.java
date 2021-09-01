@@ -40,7 +40,8 @@ public class LicenseServices {
         licenseModel.setTchSemester(semester);
         licenseModel.setTchYear(year);
         licenseModel.setLoginModel(new LoginModel(licenseRequest.getLoginId()));
-        licenseModel.setPublic(licenseRequest.isPublic());
+        System.out.println("    "+licenseRequest.isOpen());
+        licenseModel.setOpen(licenseRequest.isOpen());
         repo.save(licenseModel);
 
     }
@@ -62,7 +63,7 @@ public class LicenseServices {
         licenseModel.setLicNumber(licenseRequest.getLicNumber());
         licenseModel.setTchSemester(licenseRequest.getTchSemester());
         licenseModel.setTchYear(licenseRequest.getTchYear());
-        licenseModel.setPublic(licenseRequest.isPublic());
+        licenseModel.setpublic(licenseRequest.isOpen());
 
         return licenseRequest;
     }
@@ -81,7 +82,7 @@ public class LicenseServices {
             licenseModel.setLicNumber(licenseRequest.getLicNumber());
             licenseModel.setTchSemester(licenseRequest.getTchSemester());
             licenseModel.setTchYear(licenseRequest.getTchYear());
-            licenseModel.setPublic(licenseRequest.isPublic());
+            licenseModel.setpublic(licenseRequest.isOpen());
             licenseUpdateResponseList.add(licenseModel);
         }
 
@@ -110,7 +111,7 @@ public class LicenseServices {
             licenseModel.setTchSemester(semester);
             licenseModel.setTchYear(year);
             licenseModel.setLoginModel(new LoginModel(licenseRequest.getLoginId()));
-            licenseModel.setPublic(licenseRequest.isPublic());
+            licenseModel.setOpen(licenseRequest.ispublic());
             repo.save(licenseModel);
         }
 

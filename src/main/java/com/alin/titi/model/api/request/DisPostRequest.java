@@ -19,7 +19,7 @@ public class DisPostRequest {
     private boolean disIsCountry;
     private Date disED;
     private String main_disYear;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
     public Integer getDisId() {
         return disId;
@@ -149,11 +149,11 @@ public class DisPostRequest {
         this.main_disYear = main_disYear;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

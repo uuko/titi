@@ -41,7 +41,7 @@ public class TechServices {
         techModel.setTchSemester(semester);
         techModel.setTchYear(year);
         techModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
-        techModel.setPublic(postRequest.isPublic());
+        techModel.setOpen(postRequest.ispublic());
         techModel.setTecContentPatent(postRequest.getTecContentPatent());
         techModel.setTecYear(postRequest.getTecYear());
         techModel.setTecTransfer(postRequest.getTecTransfer());
@@ -68,7 +68,7 @@ public class TechServices {
         techModel.setTchYear(postRequest.getTchYear());
         techModel.setTecSkillNumber(postRequest.getTecSkillNumber());
         techModel.setLoginId(postRequest.getLoginModel().getId());
-        techModel.setPublic(postRequest.isPublic());
+        techModel.setpublic(postRequest.isOpen());
 //
         techModel.setTecContentPatent(postRequest.getTecContentPatent());
         techModel.setTecYear(postRequest.getTecYear());
@@ -105,7 +105,7 @@ public class TechServices {
             techModel.setTecStratDate(postRequest.getTecStratDate());
             techModel.setTecTransferNumber(postRequest.getTecTransferNumber());
             techModel.setTecPatentNumber(postRequest.getTecPatentNumber());
-            techModel.setPublic(postRequest.isPublic());
+            techModel.setpublic(postRequest.isOpen());
             responseList.add(techModel);
         }
 
@@ -145,7 +145,7 @@ public class TechServices {
             techModel.setTecStratDate(postRequest.getTecStratDate());
             techModel.setTecTransferNumber(postRequest.getTecTransferNumber());
             techModel.setTecPatentNumber(postRequest.getTecPatentNumber());
-            techModel.setPublic(postRequest.isPublic());
+            techModel.setOpen(postRequest.ispublic());
             repo.save(techModel);
         }
 

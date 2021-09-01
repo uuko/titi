@@ -53,7 +53,7 @@ public class PaperServices {
         paperModel.setTheReviewer(postRequest.getTheReviewer());
         paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
         paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
 
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
@@ -77,7 +77,7 @@ public class PaperServices {
         paperModel.setTheCoupons(postRequest.getTheCoupons());
         paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
         paperModel.setThemain_thesisName(postRequest.getThemain_thesisName());
-        paperModel.setThePubmain_licatinNumber(postRequest.isThePubmain_licatinNumber());
+        paperModel.setThePubmain_licatinNumber(postRequest.getThePubmain_licatinNumber());
         paperModel.setThePubmain_licationName(postRequest.getThePubmain_licationName());
         paperModel.setTheProject(postRequest.getTheProject());
         paperModel.setThePublishType(postRequest.getThePublishType());
@@ -86,7 +86,7 @@ public class PaperServices {
         paperModel.setTheReviewer(postRequest.getTheReviewer());
         paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
         paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         return paperModel;
     }
 
@@ -107,7 +107,7 @@ public class PaperServices {
             paperModel.setTheCoupons(postRequest.getTheCoupons());
             paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
             paperModel.setThemain_thesisName(postRequest.getThemain_thesisName());
-            paperModel.setThePubmain_licatinNumber(postRequest.isThePubmain_licatinNumber());
+            paperModel.setThePubmain_licatinNumber(postRequest.getThePubmain_licatinNumber());
             paperModel.setThePubmain_licationName(postRequest.getThePubmain_licationName());
             paperModel.setTheProject(postRequest.getTheProject());
             paperModel.setThePublishType(postRequest.getThePublishType());
@@ -116,7 +116,7 @@ public class PaperServices {
             paperModel.setTheReviewer(postRequest.getTheReviewer());
             paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
             paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             responseList.add(paperModel);
         }
 
@@ -157,7 +157,7 @@ public class PaperServices {
             paperModel.setTheReviewer(postRequest.getTheReviewer());
             paperModel.setTheTransCooperation(postRequest.getTheTransCooperation());
             paperModel.setThePublishingcountry(postRequest.getThePublishingcountry());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
 
             paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
             repo.save(paperModel);

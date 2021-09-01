@@ -15,7 +15,7 @@ public class AwardsPostRequest {
     private String awaDate;
     private  String awaPlan;
     private String awaRemarks;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
     public String getAwaYear() {
         return awaYear;
@@ -97,12 +97,12 @@ public class AwardsPostRequest {
         this.awaRemarks = awaRemarks;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 
     public Integer getLoginId() {

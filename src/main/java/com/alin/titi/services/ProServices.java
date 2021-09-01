@@ -51,7 +51,7 @@ public class ProServices {
         proModel.setProRemarks(postRequest.getProRemarks());
         proModel.setProVendor(postRequest.getProVendor());
         proModel.setProCaseNumber(postRequest.getProCaseNumber());
-        proModel.setPublic(postRequest.isPublic());
+        proModel.setOpen(postRequest.ispublic());
 
         proModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(proModel);
@@ -88,7 +88,7 @@ public class ProServices {
         proModel.setProRemarks(postRequest.getProRemarks());
         proModel.setProVendor(postRequest.getProVendor());
         proModel.setProCaseNumber(postRequest.getProCaseNumber());
-        proModel.setPublic(postRequest.isPublic());
+        proModel.setpublic(postRequest.isOpen());
         return proModel;
     }
 
@@ -118,7 +118,7 @@ public class ProServices {
             proModel.setProRemarks(postRequest.getProRemarks());
             proModel.setProVendor(postRequest.getProVendor());
             proModel.setProCaseNumber(postRequest.getProCaseNumber());
-            proModel.setPublic(postRequest.isPublic());
+            proModel.setpublic(postRequest.isOpen());
             responseList.add(proModel);
         }
 
@@ -159,7 +159,7 @@ public class ProServices {
             proModel.setProRemarks(postRequest.getProRemarks());
             proModel.setProVendor(postRequest.getProVendor());
             proModel.setProCaseNumber(postRequest.getProCaseNumber());
-            proModel.setPublic(postRequest.isPublic());
+            proModel.setOpen(postRequest.ispublic());
             repo.save(proModel);
         }
 

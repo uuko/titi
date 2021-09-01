@@ -53,7 +53,7 @@ public class AwardsServices {
         awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
         awardsModel.setAwaSort(postRequest.getAwaSort());
         awardsModel.setAwaYear(postRequest.getAwaYear());
-        awardsModel.setPublic(postRequest.isPublic());
+        awardsModel.setOpen(postRequest.ispublic());
         awardsModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(awardsModel);
 
@@ -87,7 +87,7 @@ public class AwardsServices {
         awardsModel.setAwaMechanismName(postRequest.getAwaMechanismName());
         awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
         awardsModel.setAwaYear(postRequest.getAwaYear());
-        awardsModel.setPublic(postRequest.isPublic());
+        awardsModel.setpublic(postRequest.isOpen());
         return awardsModel;
     }
 
@@ -116,7 +116,7 @@ public class AwardsServices {
             awardsModel.setAwaMechanismName(postRequest.getAwaMechanismName());
             awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
             awardsModel.setAwaYear(postRequest.getAwaYear());
-            awardsModel.setPublic(postRequest.isPublic());
+            awardsModel.setpublic(postRequest.isOpen());
             responseList.add(awardsModel);
         }
 
@@ -156,7 +156,7 @@ public class AwardsServices {
             awardsModel.setAwaMechanismName(postRequest.getAwaMechanismName());
             awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
             awardsModel.setAwaYear(postRequest.getAwaYear());
-            awardsModel.setPublic(postRequest.isPublic());
+            awardsModel.setOpen(postRequest.ispublic());
             repo.save(awardsModel);
         }
 

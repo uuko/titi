@@ -21,8 +21,15 @@ public class ProModel {
     private Date proStopDate ;
     private String proRebate;
     private String proRemarks;
-    private boolean isPublic=false;
 
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
     //自動 2
     private Integer tchYear;
     private Integer tchSemester;
@@ -144,13 +151,7 @@ public class ProModel {
         this.tchSemester = tchSemester;
     }
 
-    public boolean isPublic() {
-        return isPublic;
-    }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
 
 
 

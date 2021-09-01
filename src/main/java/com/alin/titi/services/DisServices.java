@@ -57,7 +57,7 @@ public class DisServices {
 
         //
 
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -92,7 +92,7 @@ public class DisServices {
         paperModel.setMain_disYear(postRequest.getMain_disYear());
         //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         paperModel.setDisId(postRequest.getDisId());
         return paperModel;
     }
@@ -125,7 +125,7 @@ public class DisServices {
 
             //
             paperModel.setLoginId(postRequest.getLoginModel().getId());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             paperModel.setDisId(postRequest.getDisId());
             responseList.add(paperModel);
         }
@@ -170,7 +170,7 @@ public class DisServices {
             paperModel.setDisED(postRequest.getDisED());
             paperModel.setMain_disYear(postRequest.getMain_disYear());
             //
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
 
             repo.save(paperModel);
         }

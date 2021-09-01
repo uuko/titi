@@ -51,7 +51,7 @@ public class PatServices {
         patModel.setPatCountry(postRequest.getPatCountry());
         patModel.setPatEndDate(postRequest.getPatEndDate());
         patModel.setPatChang(postRequest.getPatChang());
-        patModel.setPublic(postRequest.isPublic());
+        patModel.setOpen(postRequest.ispublic());
         patModel.setPatYear(postRequest.getPatYear());
         patModel.setPatReportEdata(postRequest.getPatReportEdata());
         patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -95,7 +95,7 @@ public class PatServices {
         patModel.setPatCountry(postRequest.getPatCountry());
         patModel.setPatEndDate(postRequest.getPatEndDate());
         patModel.setPatChang(postRequest.getPatChang());
-        patModel.setPublic(postRequest.isPublic());
+        patModel.setpublic(postRequest.isOpen());
         patModel.setPatYear(postRequest.getPatYear());
         patModel.setPatReportEdata(postRequest.getPatReportEdata());
         patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -134,7 +134,7 @@ public class PatServices {
             patModel.setPatCountry(postRequest.getPatCountry());
             patModel.setPatEndDate(postRequest.getPatEndDate());
             patModel.setPatChang(postRequest.getPatChang());
-            patModel.setPublic(postRequest.isPublic());
+            patModel.setpublic(postRequest.isOpen());
             patModel.setPatYear(postRequest.getPatYear());
             patModel.setPatReportEdata(postRequest.getPatReportEdata());
             patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -183,7 +183,7 @@ public class PatServices {
             patModel.setPatCountry(postRequest.getPatCountry());
             patModel.setPatEndDate(postRequest.getPatEndDate());
             patModel.setPatChang(postRequest.getPatChang());
-            patModel.setPublic(postRequest.isPublic());
+            patModel.setOpen(postRequest.ispublic());
             patModel.setPatYear(postRequest.getPatYear());
             patModel.setPatReportEdata(postRequest.getPatReportEdata());
             patModel.setPatReportCode(postRequest.getPatReportCode());

@@ -51,7 +51,7 @@ public class OneDashTwoServices {
 
         //
 
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -76,7 +76,7 @@ public class OneDashTwoServices {
         paperModel.setExpStopDate(postRequest.getExpStopDate());
         //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         paperModel.setExpNumber(postRequest.getExpNumber());
         return paperModel;
     }
@@ -101,7 +101,7 @@ public class OneDashTwoServices {
 
             //
             paperModel.setLoginId(postRequest.getLoginModel().getId());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             paperModel.setExpNumber(postRequest.getExpNumber());
             responseList.add(paperModel);
         }
@@ -140,7 +140,7 @@ public class OneDashTwoServices {
 
 
             //
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
             paperModel.setExpNumber(postRequest.getExpNumber());
             repo.save(paperModel);
         }

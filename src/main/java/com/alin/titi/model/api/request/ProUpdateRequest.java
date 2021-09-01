@@ -23,7 +23,7 @@ public class ProUpdateRequest {
     private String proRebate;
     private String proRemarks;
 
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
     public Integer getLoginId() {
         return loginId;
@@ -145,11 +145,11 @@ public class ProUpdateRequest {
         this.proRemarks = proRemarks;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

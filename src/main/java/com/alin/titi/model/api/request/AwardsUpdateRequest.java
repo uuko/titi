@@ -18,7 +18,7 @@ public class AwardsUpdateRequest {
     private String awaDate;
     private  String awaPlan;
     private String awaRemarks;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
     public Integer getTchYear() {
         return tchYear;
@@ -132,11 +132,11 @@ public class AwardsUpdateRequest {
         this.awaRemarks = awaRemarks;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

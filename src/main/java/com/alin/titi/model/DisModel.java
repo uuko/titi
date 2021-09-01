@@ -26,19 +26,19 @@ public class DisModel {
 
     private Integer tchYear;
     private Integer tchSemester;
-    private boolean isPublic=false;
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
 
-    public boolean isPublic() {
-        return isPublic;
-    }
-
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
 
     public Integer getDisId() {
         return disId;

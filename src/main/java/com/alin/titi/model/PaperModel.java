@@ -15,31 +15,40 @@ public class PaperModel {
     private String theReviewer;
     private String themain_thesisName;
     private String theTransCooperation;
-    private boolean thePubmain_licatinNumber;
+    private String thePubmain_licatinNumber;
 
     private String thePublishingcountry;
-    private Integer thePublishMonth;
-    private Integer thePublishYear;
+    private String thePublishMonth;
+    private String thePublishYear;
 
     private String thePublishType;
     private String theProject;
     private Integer tchYear;
     private Integer tchSemester;
-    private boolean isPublic=false;
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
+    public String getThePubmain_licatinNumber() {
+        return thePubmain_licatinNumber;
+    }
+
+    public void setThePubmain_licatinNumber(String thePubmain_licatinNumber) {
+        this.thePubmain_licatinNumber = thePubmain_licatinNumber;
+    }
+
     public Integer getTheId() {
         return theId;
     }
-    public boolean isPublic() {
-        return isPublic;
-    }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
     public void setTheId(Integer theId) {
         this.theId = theId;
     }
@@ -108,13 +117,9 @@ public class PaperModel {
         this.theTransCooperation = theTransCooperation;
     }
 
-    public boolean isThePubmain_licatinNumber() {
-        return thePubmain_licatinNumber;
-    }
 
-    public void setThePubmain_licatinNumber(boolean thePubmain_licatinNumber) {
-        this.thePubmain_licatinNumber = thePubmain_licatinNumber;
-    }
+
+
 
     public String getThePublishingcountry() {
         return thePublishingcountry;
@@ -124,19 +129,19 @@ public class PaperModel {
         this.thePublishingcountry = thePublishingcountry;
     }
 
-    public Integer getThePublishMonth() {
+    public String getThePublishMonth() {
         return thePublishMonth;
     }
 
-    public void setThePublishMonth(Integer thePublishMonth) {
+    public void setThePublishMonth(String thePublishMonth) {
         this.thePublishMonth = thePublishMonth;
     }
 
-    public Integer getThePublishYear() {
+    public String getThePublishYear() {
         return thePublishYear;
     }
 
-    public void setThePublishYear(Integer thePublishYear) {
+    public void setThePublishYear(String thePublishYear) {
         this.thePublishYear = thePublishYear;
     }
 

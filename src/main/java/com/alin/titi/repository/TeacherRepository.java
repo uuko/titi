@@ -16,4 +16,8 @@ public interface  TeacherRepository extends JpaRepository<RegisterTeacherModel, 
     RegisterTeacherModel findByTeacherRelationPK(TeacherRelationPK tPk);
     RegisterTeacherModel findByTchPicUrl(String tchPicUrl);
     RegisterTeacherModel findByLoginModel(LoginModel loginModel);
+    //    findByOrderBySeatNumberAsc
+    List<RegisterTeacherModel> findAllByTeacherRelationPKTchNumber(Integer tchNumber);
+//    RegisterTeacherModel findByTeacherNumber(int id);
 }
+
