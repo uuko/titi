@@ -33,6 +33,7 @@ public class AdminServices {
            AdminResponse response=new AdminResponse();
            response.setAccount(loginModel.getAccount());
            response.setLoginId(loginModel.getId());
+           response.setGrade(loginModel.getGrade());
            List<RegisterTeacherModel> teacherModel=teacherRepository.findByLoginModel(new LoginModel(loginModel.getId()));
            if (teacherModel.size()>0){
                response.setPicUrl(teacherModel.get(0).getTchPicUrl());

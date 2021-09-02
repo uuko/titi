@@ -6,6 +6,17 @@ public class AdminResponse {
     private String teacherName; // teacherbasedata
     private String account;
     private String picUrl="";
+    private String grade="";
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+
 
     public Integer getLoginId() {
         return loginId;
