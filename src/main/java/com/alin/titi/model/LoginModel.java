@@ -25,7 +25,7 @@ public class LoginModel {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    @Column(name = "account", unique = true, nullable = false, length = 50)
     private String account="";
 
     private String password="";
