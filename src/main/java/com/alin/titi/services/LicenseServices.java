@@ -49,7 +49,7 @@ public class LicenseServices {
     public void deleteLicenseData(LicenseUpdateRequest licenseRequest){
         repo.deleteById(licenseRequest.getLicId());
     }
-    public LicenseModel findLicenseData(Integer id){
+    public LicenseUpdateResponse findLicenseData(Integer id){
         LicenseModel licenseRequest= repo.findByLicId(id);
 
 
@@ -65,7 +65,7 @@ public class LicenseServices {
         licenseModel.setTchYear(licenseRequest.getTchYear());
         licenseModel.setpublic(licenseRequest.isOpen());
 
-        return licenseRequest;
+        return licenseModel;
     }
 
     public List<LicenseUpdateResponse> findAllLicenseData(Integer id){
