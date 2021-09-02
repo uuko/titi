@@ -382,7 +382,7 @@ public class TeacherController {
         else {
             semester=2;
         }
-        teacherRelationPK.setTchYear(year-1911);
+        teacherRelationPK.setTchYear(year);
         teacherRelationPK.setTchSemester(semester);
         teacherRelationPK.setTchNumber(0);
         teacherModel.setTchName(baseModel.getTchName());
