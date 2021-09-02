@@ -51,6 +51,8 @@ public class AcademicServices {
         paperModel.setEveHours(postRequest.getEveHours());
         paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
         paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
+        //
+        paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
 
         //
 
@@ -82,6 +84,8 @@ public class AcademicServices {
         paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
         paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
         //
+        paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
+        //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
         paperModel.setpublic(postRequest.isOpen());
         paperModel.setEveNumber(postRequest.getEveNumber());
@@ -110,6 +114,8 @@ public class AcademicServices {
             paperModel.setEveHours(postRequest.getEveHours());
             paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
             paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
+            //
+            paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
 
             //
             paperModel.setLoginId(postRequest.getLoginModel().getId());
@@ -154,6 +160,8 @@ public class AcademicServices {
             paperModel.setEveHours(postRequest.getEveHours());
             paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
             paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
+            //
+            paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
 
             //
             paperModel.setOpen(postRequest.ispublic());
