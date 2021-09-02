@@ -25,7 +25,7 @@ public class PaperServices {
     private PaperRepository repo;
 
     public void addPaperData(PaperPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -124,7 +124,7 @@ public class PaperServices {
         return responseList;
     }
     public void updatePaperData(PaperUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){

@@ -27,7 +27,7 @@ public class GovServices {
     private GovRepository repo;
 
     public void addGovData(GovRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -159,7 +159,7 @@ public class GovServices {
         return responseList;
     }
     public void updateGovData(GovPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){

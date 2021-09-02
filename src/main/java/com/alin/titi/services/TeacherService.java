@@ -36,7 +36,7 @@ public class TeacherService {
     }
     public void registerAllTeacher(RegisterTeacherModel teacherModel) {
         TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){

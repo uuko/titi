@@ -113,7 +113,7 @@ public class TechServices {
         return responseList;
     }
     public void updatePaperData(TechUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){

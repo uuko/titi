@@ -27,7 +27,7 @@ public class AcademicServices {
     private AcademicRepository repo;
 
     public void addAcademicData(AcademicRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -123,7 +123,7 @@ public class AcademicServices {
     }
 
     public void updateAcademicData(AcademicPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){

@@ -27,7 +27,7 @@ public class OneDashTwoServices {
     private OneDashTwoRepository repo;
 
     public void addOneDashTwoData(OneDashTwoRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -110,7 +110,7 @@ public class OneDashTwoServices {
         return responseList;
     }
     public void updateOneDashTwoData(OneDashTwoPostRquest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){

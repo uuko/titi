@@ -28,7 +28,7 @@ public class AwardsServices {
 
     //純粹儲存
     public void addAwardsData(AwardsPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -125,7 +125,7 @@ public class AwardsServices {
 
     //更新一筆資料,對原本資料表做更新
     public void updatePaperData(AwardsUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
