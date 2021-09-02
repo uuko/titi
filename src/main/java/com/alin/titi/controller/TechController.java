@@ -7,6 +7,7 @@ import com.alin.titi.model.api.request.TechRequest;
 import com.alin.titi.model.api.request.TechUpdateRequest;
 import com.alin.titi.model.api.response.PaperUpdateResponse;
 import com.alin.titi.model.api.response.TechResponse;
+import com.alin.titi.model.base.BaseResponse;
 import com.alin.titi.services.PaperServices;
 import com.alin.titi.services.TechServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,14 @@ public class TechController {
 
     //update
     @PostMapping("/teacher/update/tech")
-    public void updateTeacherLicense(@RequestBody TechUpdateRequest paperUpdateRequest) {
-        techServices.updatePaperData(paperUpdateRequest);
+    public ResponseEntity<?> updateTeacherLicense(@RequestBody TechUpdateRequest paperUpdateRequest) {
+        String response=techServices.updatePaperData(paperUpdateRequest);
+        if (response.equals("ok")){
+            return ResponseEntity.ok(new BaseResponse(response));
+        }
+        else {
+            return ResponseEntity.badRequest().body(new BaseResponse(response));
+        }
     }
 
     //delete

@@ -112,7 +112,7 @@ public class TechServices {
 
         return responseList;
     }
-    public void updatePaperData(TechUpdateRequest postRequest){
+    public String updatePaperData(TechUpdateRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
@@ -127,6 +127,7 @@ public class TechServices {
         TechModel techModel=repo.findByTecSkillNumber(postRequest.getTecSkillNumber());
         if (techModel==null) {
             System.out.println("Name is null.");
+            return "Null";
         } else {
 
 
@@ -147,6 +148,7 @@ public class TechServices {
             techModel.setTecPatentNumber(postRequest.getTecPatentNumber());
             techModel.setOpen(postRequest.ispublic());
             repo.save(techModel);
+            return "ok";
         }
 
 
