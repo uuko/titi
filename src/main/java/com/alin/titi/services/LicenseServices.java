@@ -40,8 +40,8 @@ public class LicenseServices {
         licenseModel.setTchSemester(semester);
         licenseModel.setTchYear(year);
         licenseModel.setLoginModel(new LoginModel(licenseRequest.getLoginId()));
-        System.out.println("    "+licenseRequest.isOpen());
-        licenseModel.setOpen(licenseRequest.isOpen());
+        System.out.println("    "+licenseRequest.isPublic());
+        licenseModel.setOpen(licenseRequest.isPublic());
         repo.save(licenseModel);
 
     }
