@@ -42,7 +42,7 @@ public class AwardsController {
     }
 
     //get
-    @GetMapping("/teacher/awards/theId/{theId}")
+    @GetMapping("/teacher/awards/awaId/{theId}")
     public ResponseEntity<?> getTeacherPaper(@PathVariable Integer theId) {
         AwardsUpdateResponse licenseData=awardsServices.findAwardsData(theId);
         if (licenseData==null){

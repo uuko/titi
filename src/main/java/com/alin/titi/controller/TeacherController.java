@@ -255,6 +255,7 @@ public class TeacherController {
                 teacherRelationPK.setTchYear(nowYear);
 
                 RegisterTeacherModel teacherModel=new RegisterTeacherModel();
+                teacherModel.setTeacherRelationPK(teacherRelationPK);
                 teacherModel.setTchDepartment(putuser.getTchDepartment());
                 teacherModel.setTchPicUrl(putuser.getTchPicUrl());
                 teacherModel.setTchIdType(putuser.getTchIdType());
@@ -358,7 +359,7 @@ public class TeacherController {
         teacherModel.setTchName(baseModel.getTchName());
         teacherModel.setTeacherRelationPK(teacherRelationPK);
         service.registerTeacher(teacherModel,baseModel);
-     ;
+        ;
 
     }
 
@@ -366,8 +367,8 @@ public class TeacherController {
     // get by id
     @GetMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> getTeacherList(@PathVariable Integer tchNumber
-                                                                ,@PathVariable Integer tchYear,
-                                                               @PathVariable Integer tchSemester
+            ,@PathVariable Integer tchYear,
+                                            @PathVariable Integer tchSemester
     ) {
         try {
             TeacherRelationPK pk=new TeacherRelationPK();

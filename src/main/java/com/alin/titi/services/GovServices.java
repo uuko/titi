@@ -43,12 +43,10 @@ public class GovServices {
         paperModel.setGovFD(postRequest.getGovFD());
         paperModel.setGovYear(postRequest.getGovYear());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-        paperModel.setGovProbjectType(postRequest.getGovProbjectType());
         paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
         paperModel.setGovProjectNature(postRequest.getGovProjectNature());
         paperModel.setGovProjectName(postRequest.getGovProjectName());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-        paperModel.setGovProbjectType(postRequest.getGovProbjectType());
         paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
         paperModel.setGovJobType(postRequest.getGovJobType());
         paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
@@ -65,6 +63,8 @@ public class GovServices {
         paperModel.setGovToOth(postRequest.isGovToOth());
 
         //
+        paperModel.setGovProbjectType(postRequest.getGovProbjectType());
+        paperModel.setGovProjectType(postRequest.getGovProjectType());
 
         paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
@@ -84,12 +84,10 @@ public class GovServices {
         paperModel.setGovFD(postRequest.getGovFD());
         paperModel.setGovYear(postRequest.getGovYear());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-        paperModel.setGovProbjectType(postRequest.getGovProbjectType());
         paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
         paperModel.setGovProjectNature(postRequest.getGovProjectNature());
         paperModel.setGovProjectName(postRequest.getGovProjectName());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-        paperModel.setGovProbjectType(postRequest.getGovProbjectType());
         paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
         paperModel.setGovJobType(postRequest.getGovJobType());
         paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
@@ -105,6 +103,9 @@ public class GovServices {
         paperModel.setGovUnitName(postRequest.getGovUnitName());
         paperModel.setpublic(postRequest.isOpen());
         paperModel.setGovToOth(postRequest.isGovToOth());
+        //
+        paperModel.setGovProbjectType(postRequest.getGovProbjectType());
+        paperModel.setGovProjectType(postRequest.getGovProjectType());
 
         //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
@@ -124,12 +125,10 @@ public class GovServices {
             paperModel.setGovFD(postRequest.getGovFD());
             paperModel.setGovYear(postRequest.getGovYear());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-            paperModel.setGovProbjectType(postRequest.getGovProbjectType());
             paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
             paperModel.setGovProjectNature(postRequest.getGovProjectNature());
             paperModel.setGovProjectName(postRequest.getGovProjectName());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-            paperModel.setGovProbjectType(postRequest.getGovProbjectType());
             paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
             paperModel.setGovJobType(postRequest.getGovJobType());
             paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
@@ -149,6 +148,10 @@ public class GovServices {
             paperModel.setLoginId(postRequest.getLoginModel().getId());
             paperModel.setpublic(postRequest.isOpen());
             paperModel.setGovId(postRequest.getGovId());
+            //
+            paperModel.setGovProbjectType(postRequest.getGovProbjectType());
+            paperModel.setGovProjectType(postRequest.getGovProjectType());
+
             responseList.add(paperModel);
         }
 
@@ -203,6 +206,10 @@ public class GovServices {
             //
             paperModel.setOpen(postRequest.ispublic());
             paperModel.setGovId(postRequest.getGovId());
+            //
+            paperModel.setGovProbjectType(postRequest.getGovProbjectType());
+            paperModel.setGovProjectType(postRequest.getGovProjectType());
+
             repo.save(paperModel);
         }
 

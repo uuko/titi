@@ -5,8 +5,8 @@ import java.util.Date;
 public class TeacherLineAllResponse {
 
     private Integer tchNumber;
-    private Integer tchYear;
-    private Integer tchSemester;
+//    private Integer tchYear;
+//    private Integer tchSemester;
 
     private String tchPicUrl;
     private String tchMainDepartment;
@@ -28,21 +28,21 @@ public class TeacherLineAllResponse {
         this.tchNumber = tchNumber;
     }
 
-    public Integer getTchYear() {
-        return tchYear;
-    }
-
-    public void setTchYear(Integer tchYear) {
-        this.tchYear = tchYear;
-    }
-
-    public Integer getTchSemester() {
-        return tchSemester;
-    }
-
-    public void setTchSemester(Integer tchSemester) {
-        this.tchSemester = tchSemester;
-    }
+//    public Integer getTchYear() {
+//        return tchYear;
+//    }
+//
+//    public void setTchYear(Integer tchYear) {
+//        this.tchYear = tchYear;
+//    }
+//
+//    public Integer getTchSemester() {
+//        return tchSemester;
+//    }
+//
+//    public void setTchSemester(Integer tchSemester) {
+//        this.tchSemester = tchSemester;
+//    }
 
     public String getTchPicUrl() {
         return tchPicUrl;

@@ -59,6 +59,9 @@ public class PatServices {
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
         patModel.setPatType(postRequest.getPatmainPatentName());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+        //
+        patModel.setPatProject(postRequest.getPatProject());
+        patModel.setPatIsGet(postRequest.getPatIsGet());
 
 
         patModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
@@ -103,6 +106,9 @@ public class PatServices {
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
         patModel.setPatType(postRequest.getPatmainPatentName());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+        //
+        patModel.setPatProject(postRequest.getPatProject());
+        patModel.setPatIsGet(postRequest.getPatIsGet());
 
 
         return patModel;
@@ -142,6 +148,9 @@ public class PatServices {
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
             patModel.setPatType(postRequest.getPatmainPatentName());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+            //
+            patModel.setPatProject(postRequest.getPatProject());
+            patModel.setPatIsGet(postRequest.getPatIsGet());
 
             responseList.add(patModel);
         }
@@ -191,6 +200,9 @@ public class PatServices {
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
             patModel.setPatType(postRequest.getPatmainPatentName());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+            //
+            patModel.setPatProject(postRequest.getPatProject());
+            patModel.setPatIsGet(postRequest.getPatIsGet());
 
             repo.save(patModel);
         }
