@@ -64,6 +64,7 @@ public class TeacherService {
 
         repo.save(teacherModel);
     }
+
     public String storeNewFile(MultipartFile multipartFile, TeacherRelationPK teacherRelationPK) throws Exception {
         Path fileStoreLocation= Paths.get("C:\\Users\\uuko\\Desktop\\mssweb\\titi\\src\\main\\resources\\static\\").toAbsolutePath().normalize();
         try {
@@ -125,7 +126,6 @@ public class TeacherService {
         }
     }
 
-
     public Resource loadFileAsResource(String fileName) throws Exception {
         Path fileStoreLocation= Paths.get("C:/Users/uuko/Desktop/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
         Path filePath =fileStoreLocation.resolve(fileName).normalize();
@@ -143,4 +143,6 @@ public class TeacherService {
     public RegisterTeacherModel findByTeacherRelationPK(TeacherRelationPK teacherRelationPK) {
         return repo.findByTeacherRelationPK(teacherRelationPK);
     }
+
+
 }

@@ -33,10 +33,10 @@ public class AdminServices {
            AdminResponse response=new AdminResponse();
            response.setAccount(loginModel.getAccount());
            response.setLoginId(loginModel.getId());
-           RegisterTeacherModel teacherModel=teacherRepository.findByLoginModel(new LoginModel(loginModel.getId()));
-           if (teacherModel!=null){
-               response.setPicUrl(teacherModel.getTchPicUrl());
-               response.setTeacherName(teacherModel.getTchName());
+           List<RegisterTeacherModel> teacherModel=teacherRepository.findByLoginModel(new LoginModel(loginModel.getId()));
+           if (teacherModel.size()>0){
+               response.setPicUrl(teacherModel.get(0).getTchPicUrl());
+               response.setTeacherName(teacherModel.get(0).getTchName());
            }
            adminResponseList.add(response);
        }

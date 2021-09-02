@@ -15,7 +15,7 @@ import java.util.Optional;
 public interface  TeacherRepository extends JpaRepository<RegisterTeacherModel, Integer> {
     RegisterTeacherModel findByTeacherRelationPK(TeacherRelationPK tPk);
     RegisterTeacherModel findByTchPicUrl(String tchPicUrl);
-    RegisterTeacherModel findByLoginModel(LoginModel loginModel);
+   List<RegisterTeacherModel>  findByLoginModel(LoginModel loginModel);
     //    findByOrderBySeatNumberAsc
     List<RegisterTeacherModel> findAllByTeacherRelationPKTchNumber(Integer tchNumber);
 //    RegisterTeacherModel findByTeacherNumber(int id);
