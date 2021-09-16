@@ -3,6 +3,7 @@ package com.alin.titi.services;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.PasswordResetToken;
 import com.alin.titi.model.api.response.LoginResponse;
+import com.alin.titi.model.api.response.LoginWithGradeResponse;
 import com.alin.titi.repository.LoginRepository;
 import com.alin.titi.repository.PasswordTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class LoginServices {
     @Autowired
     private PasswordTokenRepository passwordTokenRepository;
 
-    public LoginResponse findAccountLoginStatus(String account,String password) {
+    public LoginWithGradeResponse findAccountLoginStatus(String account,String password) {
           LoginModel loginModel=loginRepository.findByAccountAndPassword(account,password);
-          LoginResponse response=new LoginResponse();
+          LoginWithGradeResponse response=new LoginWithGradeResponse();
           response.setTchNumber(loginModel.getId());
-
+          response.setGrade(loginModel.getGrade());
           loginModel.setNumberOfmain_logins(loginModel.getNumberOfmain_logins()+1);
 
 
