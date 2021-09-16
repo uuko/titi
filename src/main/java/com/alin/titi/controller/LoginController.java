@@ -2,6 +2,7 @@ package com.alin.titi.controller;
 
 import com.alin.titi.model.api.request.LoginRequest;
 import com.alin.titi.model.api.response.LoginResponse;
+import com.alin.titi.model.api.response.LoginWithGradeResponse;
 import com.alin.titi.services.LoginServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class LoginController {
     @PostMapping("/teacher/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest putuser) {
         try {
-            LoginResponse response= loginServices.findAccountLoginStatus(putuser.getAccount(),putuser.getPassword());
+            LoginWithGradeResponse response= loginServices.findAccountLoginStatus(putuser.getAccount(),putuser.getPassword());
 
             return ResponseEntity.ok(response);
 
