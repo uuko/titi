@@ -9,7 +9,7 @@ import com.alin.titi.model.api.request.LicenseUpdateRequest;
 import com.alin.titi.model.api.response.LicenseUpdateResponse;
 import com.alin.titi.services.LicenseServices;
 import com.alin.titi.services.LoginServices;
-import jdk.nashorn.internal.runtime.options.Option;
+//import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class LicenseController {
     //post
     @PostMapping("/teacher/license")
     public void saveTeacherLicense(@RequestBody LicenseRequest licenseRequest) {
-       licenseServices.addLicenseData(licenseRequest);
+        licenseServices.addLicenseData(licenseRequest);
     }
 
     //update
