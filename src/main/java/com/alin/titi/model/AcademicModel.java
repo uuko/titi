@@ -1,7 +1,5 @@
 package com.alin.titi.model;
 
-import com.alin.titi.model.LoginModel;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,12 +15,14 @@ public class AcademicModel {
     private String eveLocation;
     private Date eveStratDate;
     private Date eveStopDate;
-    private boolean eveSort;
+    private String eveSort;
     private Integer eveHours;
     private Integer eveStudyCertificate;
     private String eveCertificateNumber;
     private String eveSchSubsidy;
-    private boolean isPublic=false;
+
+
+    private boolean open =false;
     //
     private Integer tchYear;
     private Integer tchSemester;
@@ -30,13 +30,21 @@ public class AcademicModel {
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
-
-    public boolean isPublic() {
-        return isPublic;
+    public String getEveSort() {
+        return eveSort;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setEveSort(String eveSort) {
+        this.eveSort = eveSort;
+    }
+
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
     }
     public Integer getEveNumber() {
         return eveNumber;
@@ -102,13 +110,7 @@ public class AcademicModel {
         this.eveStopDate = eveStopDate;
     }
 
-    public boolean isEveSort() {
-        return eveSort;
-    }
 
-    public void setEveSort(boolean eveSort) {
-        this.eveSort = eveSort;
-    }
 
     public Integer getEveHours() {
         return eveHours;

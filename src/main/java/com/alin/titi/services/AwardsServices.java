@@ -28,7 +28,7 @@ public class AwardsServices {
 
     //純粹儲存
     public void addAwardsData(AwardsPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -53,7 +53,7 @@ public class AwardsServices {
         awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
         awardsModel.setAwaSort(postRequest.getAwaSort());
         awardsModel.setAwaYear(postRequest.getAwaYear());
-        awardsModel.setPublic(postRequest.isPublic());
+        awardsModel.setOpen(postRequest.ispublic());
         awardsModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(awardsModel);
 
@@ -87,7 +87,7 @@ public class AwardsServices {
         awardsModel.setAwaMechanismName(postRequest.getAwaMechanismName());
         awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
         awardsModel.setAwaYear(postRequest.getAwaYear());
-        awardsModel.setPublic(postRequest.isPublic());
+        awardsModel.setpublic(postRequest.isOpen());
         return awardsModel;
     }
 
@@ -116,7 +116,7 @@ public class AwardsServices {
             awardsModel.setAwaMechanismName(postRequest.getAwaMechanismName());
             awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
             awardsModel.setAwaYear(postRequest.getAwaYear());
-            awardsModel.setPublic(postRequest.isPublic());
+            awardsModel.setpublic(postRequest.isOpen());
             responseList.add(awardsModel);
         }
 
@@ -125,7 +125,7 @@ public class AwardsServices {
 
     //更新一筆資料,對原本資料表做更新
     public void updatePaperData(AwardsUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -156,7 +156,7 @@ public class AwardsServices {
             awardsModel.setAwaMechanismName(postRequest.getAwaMechanismName());
             awardsModel.setAwaRemarks(postRequest.getAwaRemarks());
             awardsModel.setAwaYear(postRequest.getAwaYear());
-            awardsModel.setPublic(postRequest.isPublic());
+            awardsModel.setOpen(postRequest.ispublic());
             repo.save(awardsModel);
         }
 

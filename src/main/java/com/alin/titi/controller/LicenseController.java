@@ -45,7 +45,7 @@ public class LicenseController {
     //get
     @GetMapping("/teacher/license/licId/{licId}")
     public ResponseEntity<?> getTeacherLicense(@PathVariable Integer licId) {
-        LicenseModel licenseData=licenseServices.findLicenseData(licId);
+        LicenseUpdateResponse licenseData=licenseServices.findLicenseData(licId);
         if (licenseData==null){
             return new ResponseEntity<RegisterTeacherModel>(HttpStatus.NOT_FOUND);
         }

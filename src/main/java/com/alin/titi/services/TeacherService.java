@@ -36,7 +36,7 @@ public class TeacherService {
     }
     public void registerAllTeacher(RegisterTeacherModel teacherModel) {
         TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -64,6 +64,7 @@ public class TeacherService {
 
         repo.save(teacherModel);
     }
+
     public String storeNewFile(MultipartFile multipartFile, TeacherRelationPK teacherRelationPK) throws Exception {
         Path fileStoreLocation= Paths.get("/home/csie/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
         try {
@@ -125,7 +126,6 @@ public class TeacherService {
         }
     }
 
-
     public Resource loadFileAsResource(String fileName) throws Exception {
         Path fileStoreLocation= Paths.get("/home/csie/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
         Path filePath =fileStoreLocation.resolve(fileName).normalize();
@@ -143,4 +143,6 @@ public class TeacherService {
     public RegisterTeacherModel findByTeacherRelationPK(TeacherRelationPK teacherRelationPK) {
         return repo.findByTeacherRelationPK(teacherRelationPK);
     }
+
+
 }

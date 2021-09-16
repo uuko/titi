@@ -31,74 +31,104 @@ public class TeacherController {
 
         List<RegisterTeacherModel> putuserList=service.listAll();
         List<ListTeacherResponse> listTeacherResponseList=new ArrayList<>();
-        for (RegisterTeacherModel putuser:putuserList){
-            ListTeacherResponse listTeacherResponse=new ListTeacherResponse();
-            listTeacherResponse.setTchNumber(putuser.getTeacherRelationPK().getTchNumber());
-            listTeacherResponse.setTchSemester(putuser.getTeacherRelationPK().getTchSemester());
-            listTeacherResponse.setTchYear(putuser.getTeacherRelationPK().getTchYear());
-            listTeacherResponse.setTchDepartment(putuser.getTchDepartment());
-            listTeacherResponse.setTchPicUrl(putuser.getTchPicUrl());
-            listTeacherResponse.setTchIdType(putuser.getTchIdType());
-            listTeacherResponse.setTchIdNumberI(putuser.getTchIdNumberI());
-            listTeacherResponse.setTchIdNumberR(putuser.getTchIdNumberR());
-            listTeacherResponse.setTchIdNumberP(putuser.getTchIdNumberP());
-            listTeacherResponse.setTchCountry(putuser.getTchCountry());
-            listTeacherResponse.setTchName(putuser.getTchName());
-            listTeacherResponse.setTchNameEN(putuser.getTchNameEN());
-            listTeacherResponse.setSex(putuser.getSex());
-            listTeacherResponse.setTchIsAboriginal(putuser.getTchIsAboriginal());
-            listTeacherResponse.setTchAboriginal(putuser.getTchAboriginal());
-            listTeacherResponse.setTchBirthday(putuser.getTchBirthday());
-            listTeacherResponse.setTchCoeDepartment(putuser.getTchCoeDepartment());
-            listTeacherResponse.seteMail(putuser.geteMail());
-            listTeacherResponse.setTchState(putuser.getTchState());
-            listTeacherResponse.setTchHureDate(putuser.getTchHureDate());
-            listTeacherResponse.setTchSchDate(putuser.getTchSchDate());
-            listTeacherResponse.setTchOriginalUnit(putuser.getTchOriginalUnit());
-            listTeacherResponse.setTchReinstateDate(putuser.getTchReinstateDate());
-            listTeacherResponse.setTchAppointDate(putuser.getTchAppointDate());
-            listTeacherResponse.setTchStopDate(putuser.getTchStopDate());
-            listTeacherResponse.setTchEstablishment(putuser.getTchEstablishment());
-            listTeacherResponse.setTchKind(putuser.getTchKind());
-            listTeacherResponse.setTchKindIndustry(putuser.getTchKindIndustry());
-            listTeacherResponse.setTchKindDepartment(putuser.getTchKindDepartment());
-            listTeacherResponse.setTchSceWhemain_ther(putuser.getTchSceWhemain_ther());
-            //
-            listTeacherResponse.setTchScePurpose(putuser.getTchScePurpose());
-            listTeacherResponse.setTchSecUnit(putuser.getTchSecUnit());
-            listTeacherResponse.setTchPartAdmini(putuser.getTchPartAdmini());
-            listTeacherResponse.setTchAdminiJob(putuser.getTchAdminiJob());
-            listTeacherResponse.setTchSchoolType(putuser.getTchSchoolType());
-            listTeacherResponse.setTchSchool(putuser.getTchSchool());
-            //
-            listTeacherResponse.setTchDepartment(putuser.getTchDepartment());
-            listTeacherResponse.setTchDiploma(putuser.getTchDiploma());
-            listTeacherResponse.setTchExpertise(putuser.getTchExpertise());
-            listTeacherResponse.setTchType(putuser.getTchType());
-            listTeacherResponse.setTchRireRank(putuser.getTchRireRank());
-            //
-            listTeacherResponse.setTchRireYear(putuser.getTchRireYear());
-            listTeacherResponse.setTchCertificateRank(putuser.getTchCertificateRank());
-            listTeacherResponse.setTchCertificateNumber(putuser.getTchCertificateNumber());
-            listTeacherResponse.setTchHireNumber(putuser.getTchHireNumber());
-            listTeacherResponse.setTchCertificateNumber(putuser.getTchCertificateNumber());
-            listTeacherResponse.setTchmain_licenseNumber(putuser.getTchmain_licenseNumber());
-            ;       //
-            listTeacherResponse.setTchEvaNumber(putuser.getTchEvaNumber());
-            listTeacherResponse.setTch106PaySalary(putuser.getTch106PaySalary());
-            listTeacherResponse.setTch107PaySalary(putuser.getTch107PaySalary());
-            listTeacherResponse.setTchFiestAssistant(putuser.getTchFiestAssistant());
-            listTeacherResponse.setTchFullTime(putuser.getTchFullTime());
-            listTeacherResponse.setTchSixtyFive(putuser.getTchSixtyFive());
-            //
-            listTeacherResponse.setTchTwoFour(putuser.getTchTwoFour());
-            listTeacherResponse.setTchComplyLaw(putuser.getTchComplyLaw());
-            listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());
-            listTeacherResponse.setTchTow(putuser.getTchTow());
-            listTeacherResponse.setTchValidationStatus(putuser.getTchValidationStatus());
-            listTeacherResponse.setIntroduce(putuser.getIntroduce());
-            listTeacherResponseList.add(listTeacherResponse);
+
+        List<Integer> loginIdList=new ArrayList<>();
+        for (RegisterTeacherModel lr:putuserList){
+            if (!loginIdList.contains(lr.getLoginModel().getId())){
+                loginIdList.add(lr.getLoginModel().getId());
+            }
         }
+        for (Integer id:loginIdList){
+            List<ListTeacherResponse> innerList=new ArrayList<>();
+            for (RegisterTeacherModel putuser:putuserList){
+                if (putuser.getLoginModel().getId().equals(id)){
+                    ListTeacherResponse listTeacherResponse=new ListTeacherResponse();
+                    listTeacherResponse.setTchNumber(putuser.getTeacherRelationPK().getTchNumber());
+                    listTeacherResponse.setTchSemester(putuser.getTeacherRelationPK().getTchSemester());
+                    listTeacherResponse.setTchYear(putuser.getTeacherRelationPK().getTchYear());
+                    listTeacherResponse.setTchDepartment(putuser.getTchDepartment());
+                    listTeacherResponse.setTchPicUrl(putuser.getTchPicUrl());
+                    listTeacherResponse.setTchIdType(putuser.getTchIdType());
+                    listTeacherResponse.setTchIdNumberI(putuser.getTchIdNumberI());
+                    listTeacherResponse.setTchIdNumberR(putuser.getTchIdNumberR());
+                    listTeacherResponse.setTchIdNumberP(putuser.getTchIdNumberP());
+                    listTeacherResponse.setTchCountry(putuser.getTchCountry());
+                    listTeacherResponse.setTchName(putuser.getTchName());
+                    listTeacherResponse.setTchNameEN(putuser.getTchNameEN());
+                    listTeacherResponse.setSex(putuser.getSex());
+                    listTeacherResponse.setTchIsAboriginal(putuser.getTchIsAboriginal());
+                    listTeacherResponse.setTchAboriginal(putuser.getTchAboriginal());
+                    listTeacherResponse.setTchBirthday(putuser.getTchBirthday());
+                    listTeacherResponse.setTchCoeDepartment(putuser.getTchCoeDepartment());
+                    listTeacherResponse.seteMail(putuser.geteMail());
+                    listTeacherResponse.setTchState(putuser.getTchState());
+                    listTeacherResponse.setTchHureDate(putuser.getTchHureDate());
+                    listTeacherResponse.setTchSchDate(putuser.getTchSchDate());
+                    listTeacherResponse.setTchOriginalUnit(putuser.getTchOriginalUnit());
+                    listTeacherResponse.setTchReinstateDate(putuser.getTchReinstateDate());
+                    listTeacherResponse.setTchAppointDate(putuser.getTchAppointDate());
+                    listTeacherResponse.setTchStopDate(putuser.getTchStopDate());
+                    listTeacherResponse.setTchEstablishment(putuser.getTchEstablishment());
+                    listTeacherResponse.setTchKind(putuser.getTchKind());
+                    listTeacherResponse.setTchKindIndustry(putuser.getTchKindIndustry());
+                    listTeacherResponse.setTchKindDepartment(putuser.getTchKindDepartment());
+                    listTeacherResponse.setTchSceWhemain_ther(putuser.getTchSceWhemain_ther());
+                    //
+                    listTeacherResponse.setTchScePurpose(putuser.getTchScePurpose());
+                    listTeacherResponse.setTchSecUnit(putuser.getTchSecUnit());
+                    listTeacherResponse.setTchPartAdmini(putuser.getTchPartAdmini());
+                    listTeacherResponse.setTchAdminiJob(putuser.getTchAdminiJob());
+                    listTeacherResponse.setTchSchoolType(putuser.getTchSchoolType());
+                    listTeacherResponse.setTchSchool(putuser.getTchSchool());
+                    //
+                    listTeacherResponse.setTchDepartment(putuser.getTchDepartment());
+                    listTeacherResponse.setTchDiploma(putuser.getTchDiploma());
+                    listTeacherResponse.setTchExpertise(putuser.getTchExpertise());
+                    listTeacherResponse.setTchType(putuser.getTchType());
+                    listTeacherResponse.setTchRireRank(putuser.getTchRireRank());
+                    //
+                    listTeacherResponse.setTchRireYear(putuser.getTchRireYear());
+                    listTeacherResponse.setTchCertificateRank(putuser.getTchCertificateRank());
+                    listTeacherResponse.setTchCertificateNumber(putuser.getTchCertificateNumber());
+                    listTeacherResponse.setTchHireNumber(putuser.getTchHireNumber());
+                    listTeacherResponse.setTchCertificateNumber(putuser.getTchCertificateNumber());
+                    listTeacherResponse.setTchmain_licenseNumber(putuser.getTchmain_licenseNumber());
+                    ;       //
+                    listTeacherResponse.setTchEvaNumber(putuser.getTchEvaNumber());
+                    listTeacherResponse.setTch106PaySalary(putuser.getTch106PaySalary());
+                    listTeacherResponse.setTch107PaySalary(putuser.getTch107PaySalary());
+                    listTeacherResponse.setTchFiestAssistant(putuser.getTchFiestAssistant());
+                    listTeacherResponse.setTchFullTime(putuser.getTchFullTime());
+                    listTeacherResponse.setTchSixtyFive(putuser.getTchSixtyFive());
+                    //
+                    listTeacherResponse.setTchMainDepartment(putuser.getTchMainDepartment());
+                    listTeacherResponse.setTchTwoFour(putuser.getTchTwoFour());
+                    listTeacherResponse.setTchComplyLaw(putuser.getTchComplyLaw());
+                    listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());
+                    listTeacherResponse.setTchTow(putuser.getTchTow());
+                    listTeacherResponse.setTchValidationStatus(putuser.getTchValidationStatus());
+                    listTeacherResponse.setIntroduce(putuser.getIntroduce());
+
+
+                    //
+
+                    innerList.add(listTeacherResponse);
+
+                }
+            }
+            Comparator<ListTeacherResponse> m_studentComparator = (lhs, rhs) -> {
+                return rhs.getTchYear().compareTo(lhs.getTchYear());  // Descending order
+            };
+            innerList.sort(m_studentComparator);
+            Comparator<ListTeacherResponse> monthComparator = (lhs, rhs) -> {
+                return rhs.getTchSemester().compareTo(lhs.getTchSemester());  // Descending order
+            };
+            innerList.sort(monthComparator);
+            if (innerList.size()>0){
+                listTeacherResponseList.add(innerList.get(0));
+            }
+        }
+
 
 
         return ResponseEntity.ok(listTeacherResponseList);
@@ -228,6 +258,7 @@ public class TeacherController {
                 teacherModel.setTchFullTime(putuser.getTchFullTime());
                 teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
                 //
+                teacherModel.setTchMainDepartment(putuser.getTchMainDepartment());
                 teacherModel.setTchTwoFour(putuser.getTchTwoFour());
                 teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
                 teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
@@ -253,6 +284,7 @@ public class TeacherController {
                 teacherRelationPK.setTchYear(nowYear);
 
                 RegisterTeacherModel teacherModel=new RegisterTeacherModel();
+                teacherModel.setTeacherRelationPK(teacherRelationPK);
                 teacherModel.setTchDepartment(putuser.getTchDepartment());
                 teacherModel.setTchPicUrl(putuser.getTchPicUrl());
                 teacherModel.setTchIdType(putuser.getTchIdType());
@@ -308,6 +340,7 @@ public class TeacherController {
                 teacherModel.setTchFullTime(putuser.getTchFullTime());
                 teacherModel.setTchSixtyFive(putuser.getTchSixtyFive());
                 //
+                teacherModel.setTchMainDepartment(putuser.getTchMainDepartment());
                 teacherModel.setTchTwoFour(putuser.getTchTwoFour());
                 teacherModel.setTchComplyLaw(putuser.getTchComplyLaw());
                 teacherModel.setTchFullPartPosition(putuser.getTchFullPartPosition());
@@ -340,7 +373,7 @@ public class TeacherController {
         teacherModel.seteMail(baseModel.getAccount());
         teacherModel.setTchName(baseModel.getTchName());
         TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -349,13 +382,13 @@ public class TeacherController {
         else {
             semester=2;
         }
-        teacherRelationPK.setTchYear(year-1911);
+        teacherRelationPK.setTchYear(year);
         teacherRelationPK.setTchSemester(semester);
         teacherRelationPK.setTchNumber(0);
         teacherModel.setTchName(baseModel.getTchName());
         teacherModel.setTeacherRelationPK(teacherRelationPK);
         service.registerTeacher(teacherModel,baseModel);
-     ;
+        ;
 
     }
 
@@ -363,8 +396,8 @@ public class TeacherController {
     // get by id
     @GetMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> getTeacherList(@PathVariable Integer tchNumber
-                                                                ,@PathVariable Integer tchYear,
-                                                               @PathVariable Integer tchSemester
+            ,@PathVariable Integer tchYear,
+                                            @PathVariable Integer tchSemester
     ) {
         try {
             TeacherRelationPK pk=new TeacherRelationPK();
@@ -432,6 +465,7 @@ public class TeacherController {
             listTeacherResponse.setTchFullTime(putuser.getTchFullTime());
             listTeacherResponse.setTchSixtyFive(putuser.getTchSixtyFive());
             //
+            listTeacherResponse.setTchMainDepartment(putuser.getTchMainDepartment());
             listTeacherResponse.setTchTwoFour(putuser.getTchTwoFour());
             listTeacherResponse.setTchComplyLaw(putuser.getTchComplyLaw());
             listTeacherResponse.setTchFullPartPosition(putuser.getTchFullPartPosition());

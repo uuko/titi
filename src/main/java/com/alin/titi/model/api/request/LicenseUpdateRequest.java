@@ -9,13 +9,13 @@ public class LicenseUpdateRequest {
     private String licName;
     private String licService;
     private Integer licNumber;
-    private boolean isPublic=false;
-    public boolean isPublic() {
-        return isPublic;
+    private boolean ispublic=false;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
     public Integer getLicId() {
         return licId;

@@ -1,5 +1,6 @@
 package com.alin.titi.repository;
 
+import com.alin.titi.model.DisModel;
 import com.alin.titi.model.GovModel;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.PaperModel;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface GovRepository extends JpaRepository<GovModel, Integer> {
     GovModel findByGovId(Integer govId);
     List<GovModel> findByLoginModel(LoginModel loginModel);
+    List<GovModel> findByLoginModelAndOpen(LoginModel model, Boolean open);
 }

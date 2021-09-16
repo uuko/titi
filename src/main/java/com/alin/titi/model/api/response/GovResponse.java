@@ -33,7 +33,7 @@ public class GovResponse {
     private boolean govToOth;
 
     //
-    private boolean isPublic=false;
+    private boolean ispublic=false;
     private Integer tchYear;
     private Integer tchSemester;
     public Integer getLoginId() {
@@ -228,12 +228,12 @@ public class GovResponse {
         this.govToOth = govToOth;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 
     public Integer getTchYear() {

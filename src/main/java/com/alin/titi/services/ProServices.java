@@ -25,7 +25,7 @@ public class ProServices {
 
     //純粹儲存
     public void addAwardsData(ProPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -51,7 +51,7 @@ public class ProServices {
         proModel.setProRemarks(postRequest.getProRemarks());
         proModel.setProVendor(postRequest.getProVendor());
         proModel.setProCaseNumber(postRequest.getProCaseNumber());
-        proModel.setPublic(postRequest.isPublic());
+        proModel.setOpen(postRequest.ispublic());
 
         proModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(proModel);
@@ -88,7 +88,7 @@ public class ProServices {
         proModel.setProRemarks(postRequest.getProRemarks());
         proModel.setProVendor(postRequest.getProVendor());
         proModel.setProCaseNumber(postRequest.getProCaseNumber());
-        proModel.setPublic(postRequest.isPublic());
+        proModel.setpublic(postRequest.isOpen());
         return proModel;
     }
 
@@ -118,7 +118,7 @@ public class ProServices {
             proModel.setProRemarks(postRequest.getProRemarks());
             proModel.setProVendor(postRequest.getProVendor());
             proModel.setProCaseNumber(postRequest.getProCaseNumber());
-            proModel.setPublic(postRequest.isPublic());
+            proModel.setpublic(postRequest.isOpen());
             responseList.add(proModel);
         }
 
@@ -127,7 +127,7 @@ public class ProServices {
 
     //更新一筆資料,對原本資料表做更新
     public void updatePaperData(ProUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -159,7 +159,7 @@ public class ProServices {
             proModel.setProRemarks(postRequest.getProRemarks());
             proModel.setProVendor(postRequest.getProVendor());
             proModel.setProCaseNumber(postRequest.getProCaseNumber());
-            proModel.setPublic(postRequest.isPublic());
+            proModel.setOpen(postRequest.ispublic());
             repo.save(proModel);
         }
 

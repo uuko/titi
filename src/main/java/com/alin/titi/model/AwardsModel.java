@@ -18,7 +18,16 @@ public class AwardsModel {
     private String awaDate;
     private  String awaPlan;
     private String awaRemarks;
-    private boolean isPublic=false;
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    private boolean open =false;
 
     //自動 2
     private Integer tchYear;
@@ -133,13 +142,6 @@ public class AwardsModel {
         this.tchSemester = tchSemester;
     }
 
-    public boolean isPublic() {
-        return isPublic;
-    }
-
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
 
 
 

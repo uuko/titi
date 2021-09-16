@@ -25,7 +25,7 @@ public class PatServices {
 
     //純粹儲存
     public void addAwardsData(PatPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -51,7 +51,7 @@ public class PatServices {
         patModel.setPatCountry(postRequest.getPatCountry());
         patModel.setPatEndDate(postRequest.getPatEndDate());
         patModel.setPatChang(postRequest.getPatChang());
-        patModel.setPublic(postRequest.isPublic());
+        patModel.setOpen(postRequest.ispublic());
         patModel.setPatYear(postRequest.getPatYear());
         patModel.setPatReportEdata(postRequest.getPatReportEdata());
         patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -59,6 +59,9 @@ public class PatServices {
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
         patModel.setPatType(postRequest.getPatmainPatentName());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+        //
+        patModel.setPatProject(postRequest.getPatProject());
+        patModel.setPatIsGet(postRequest.getPatIsGet());
 
 
         patModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
@@ -95,7 +98,7 @@ public class PatServices {
         patModel.setPatCountry(postRequest.getPatCountry());
         patModel.setPatEndDate(postRequest.getPatEndDate());
         patModel.setPatChang(postRequest.getPatChang());
-        patModel.setPublic(postRequest.isPublic());
+        patModel.setpublic(postRequest.isOpen());
         patModel.setPatYear(postRequest.getPatYear());
         patModel.setPatReportEdata(postRequest.getPatReportEdata());
         patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -103,6 +106,9 @@ public class PatServices {
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
         patModel.setPatType(postRequest.getPatmainPatentName());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+        //
+        patModel.setPatProject(postRequest.getPatProject());
+        patModel.setPatIsGet(postRequest.getPatIsGet());
 
 
         return patModel;
@@ -134,7 +140,7 @@ public class PatServices {
             patModel.setPatCountry(postRequest.getPatCountry());
             patModel.setPatEndDate(postRequest.getPatEndDate());
             patModel.setPatChang(postRequest.getPatChang());
-            patModel.setPublic(postRequest.isPublic());
+            patModel.setpublic(postRequest.isOpen());
             patModel.setPatYear(postRequest.getPatYear());
             patModel.setPatReportEdata(postRequest.getPatReportEdata());
             patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -142,6 +148,9 @@ public class PatServices {
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
             patModel.setPatType(postRequest.getPatmainPatentName());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+            //
+            patModel.setPatProject(postRequest.getPatProject());
+            patModel.setPatIsGet(postRequest.getPatIsGet());
 
             responseList.add(patModel);
         }
@@ -151,7 +160,7 @@ public class PatServices {
 
     //更新一筆資料,對原本資料表做更新
     public void updatePaperData(PatUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -183,7 +192,7 @@ public class PatServices {
             patModel.setPatCountry(postRequest.getPatCountry());
             patModel.setPatEndDate(postRequest.getPatEndDate());
             patModel.setPatChang(postRequest.getPatChang());
-            patModel.setPublic(postRequest.isPublic());
+            patModel.setOpen(postRequest.ispublic());
             patModel.setPatYear(postRequest.getPatYear());
             patModel.setPatReportEdata(postRequest.getPatReportEdata());
             patModel.setPatReportCode(postRequest.getPatReportCode());
@@ -191,6 +200,9 @@ public class PatServices {
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
             patModel.setPatType(postRequest.getPatmainPatentName());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
+            //
+            patModel.setPatProject(postRequest.getPatProject());
+            patModel.setPatIsGet(postRequest.getPatIsGet());
 
             repo.save(patModel);
         }

@@ -17,7 +17,7 @@ public class ProPostRequest {
     private Date proStopDate ;
     private String proRebate;
     private String proRemarks;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
     public String getProYear() {
         return proYear;
@@ -107,12 +107,12 @@ public class ProPostRequest {
         this.proRemarks = proRemarks;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 
     public Integer getLoginId() {

@@ -17,14 +17,14 @@ public class TechUpdateRequest {
     private Integer  tecTransferNumber;
     private String  tecContentPatent;
     private Integer  tecPatentNumber;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 
     public Integer getLoginId() {

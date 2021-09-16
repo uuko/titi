@@ -41,7 +41,7 @@ public class TechServices {
         techModel.setTchSemester(semester);
         techModel.setTchYear(year);
         techModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
-        techModel.setPublic(postRequest.isPublic());
+        techModel.setOpen(postRequest.ispublic());
         techModel.setTecContentPatent(postRequest.getTecContentPatent());
         techModel.setTecYear(postRequest.getTecYear());
         techModel.setTecTransfer(postRequest.getTecTransfer());
@@ -68,7 +68,7 @@ public class TechServices {
         techModel.setTchYear(postRequest.getTchYear());
         techModel.setTecSkillNumber(postRequest.getTecSkillNumber());
         techModel.setLoginId(postRequest.getLoginModel().getId());
-        techModel.setPublic(postRequest.isPublic());
+        techModel.setpublic(postRequest.isOpen());
 //
         techModel.setTecContentPatent(postRequest.getTecContentPatent());
         techModel.setTecYear(postRequest.getTecYear());
@@ -105,15 +105,15 @@ public class TechServices {
             techModel.setTecStratDate(postRequest.getTecStratDate());
             techModel.setTecTransferNumber(postRequest.getTecTransferNumber());
             techModel.setTecPatentNumber(postRequest.getTecPatentNumber());
-            techModel.setPublic(postRequest.isPublic());
+            techModel.setpublic(postRequest.isOpen());
             responseList.add(techModel);
         }
 
 
         return responseList;
     }
-    public void updatePaperData(TechUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+    public String updatePaperData(TechUpdateRequest postRequest){
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -127,6 +127,7 @@ public class TechServices {
         TechModel techModel=repo.findByTecSkillNumber(postRequest.getTecSkillNumber());
         if (techModel==null) {
             System.out.println("Name is null.");
+            return "Null";
         } else {
 
 
@@ -145,8 +146,9 @@ public class TechServices {
             techModel.setTecStratDate(postRequest.getTecStratDate());
             techModel.setTecTransferNumber(postRequest.getTecTransferNumber());
             techModel.setTecPatentNumber(postRequest.getTecPatentNumber());
-            techModel.setPublic(postRequest.isPublic());
+            techModel.setOpen(postRequest.ispublic());
             repo.save(techModel);
+            return "ok";
         }
 
 

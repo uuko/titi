@@ -10,4 +10,5 @@ public interface ProRepository extends JpaRepository<ProModel, Integer> {
     // 繼承的神祕鬼東西吃 資料表,int
     ProModel findByProId(Integer id);
     List<ProModel> findByLoginModel(LoginModel model);
+    List<ProModel> findByLoginModelAndOpen(LoginModel model,Boolean open);
 }
