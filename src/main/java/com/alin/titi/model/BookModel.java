@@ -34,15 +34,17 @@ public class BookModel {
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
-
-    private boolean isPublic=false;
-    public boolean isPublic() {
-        return isPublic;
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setOpen(boolean open) {
+        this.open = open;
     }
+
+
+
 
     public Integer getInfNumber() {
         return infNumber;

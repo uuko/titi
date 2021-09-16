@@ -13,7 +13,7 @@ public class OneDashTwoPostRquest {
     private Date expStartDate;
     private Date expStopDate;
     private String expRemarks;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
 
     public Integer getExpNumber() {
         return expNumber;
@@ -95,11 +95,11 @@ public class OneDashTwoPostRquest {
         this.expRemarks = expRemarks;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

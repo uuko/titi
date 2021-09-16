@@ -14,22 +14,24 @@ public class LicenseModel {
     private Integer licNumber;
     private Integer tchYear;
     private Integer tchSemester;
-    private boolean isPublic=false;
+
+
+
+    private boolean open =false;
 
     //login id
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
-
-
-    public boolean isPublic() {
-        return isPublic;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setOpen(boolean open) {
+        this.open = open;
     }
+
 
     public Integer getLicId() {
         return licId;

@@ -22,7 +22,7 @@ public class BookServices {
     private BookRepository repo;
 
     public void addBookData(BookRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -50,7 +50,7 @@ public class BookServices {
         paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
         paperModel.setInfISBN(postRequest.getInfISBN());
         paperModel.setInfPlan(postRequest.getInfPlan());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -81,7 +81,7 @@ public class BookServices {
         paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
         paperModel.setInfISBN(postRequest.getInfISBN());
         paperModel.setInfPlan(postRequest.getInfPlan());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         return paperModel;
     }
 
@@ -109,7 +109,7 @@ public class BookServices {
             paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
             paperModel.setInfISBN(postRequest.getInfISBN());
             paperModel.setInfPlan(postRequest.getInfPlan());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             responseList.add(paperModel);
         }
 
@@ -117,7 +117,7 @@ public class BookServices {
         return responseList;
     }
     public void updateBookData(BookUpdateRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -151,7 +151,7 @@ public class BookServices {
             paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
             paperModel.setInfISBN(postRequest.getInfISBN());
             paperModel.setInfPlan(postRequest.getInfPlan());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
 
             paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
             repo.save(paperModel);

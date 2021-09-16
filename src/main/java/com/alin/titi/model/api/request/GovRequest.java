@@ -26,7 +26,7 @@ public class GovRequest {
     private String govTeamworkUnit;
     private String govOthIn;
     private String govUnitName;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
     private boolean govToOth;
     public boolean isGovToOth() {
         return govToOth;
@@ -213,12 +213,12 @@ public class GovRequest {
         this.govUnitName = govUnitName;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }
 

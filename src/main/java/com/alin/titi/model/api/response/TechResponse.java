@@ -18,14 +18,14 @@ public class TechResponse {
 //
     private Integer tchYear;
     private Integer tchSemester;
-    private boolean isPublic;
+    private boolean ispublic=false;
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 
     public Integer getTchYear() {

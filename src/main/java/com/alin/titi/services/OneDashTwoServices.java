@@ -27,7 +27,7 @@ public class OneDashTwoServices {
     private OneDashTwoRepository repo;
 
     public void addOneDashTwoData(OneDashTwoRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -51,7 +51,7 @@ public class OneDashTwoServices {
 
         //
 
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -76,7 +76,7 @@ public class OneDashTwoServices {
         paperModel.setExpStopDate(postRequest.getExpStopDate());
         //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         paperModel.setExpNumber(postRequest.getExpNumber());
         return paperModel;
     }
@@ -101,7 +101,7 @@ public class OneDashTwoServices {
 
             //
             paperModel.setLoginId(postRequest.getLoginModel().getId());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             paperModel.setExpNumber(postRequest.getExpNumber());
             responseList.add(paperModel);
         }
@@ -110,7 +110,7 @@ public class OneDashTwoServices {
         return responseList;
     }
     public void updateOneDashTwoData(OneDashTwoPostRquest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -140,7 +140,7 @@ public class OneDashTwoServices {
 
 
             //
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
             paperModel.setExpNumber(postRequest.getExpNumber());
             repo.save(paperModel);
         }

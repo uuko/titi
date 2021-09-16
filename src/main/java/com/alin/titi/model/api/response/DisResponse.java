@@ -23,7 +23,7 @@ public class DisResponse {
 
     private Integer tchYear;
     private Integer tchSemester;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
     public Integer getLoginId() {
         return loginId;
     }
@@ -168,11 +168,11 @@ public class DisResponse {
         this.tchSemester = tchSemester;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

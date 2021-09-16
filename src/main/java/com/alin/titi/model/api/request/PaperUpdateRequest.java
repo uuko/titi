@@ -12,21 +12,21 @@ public class PaperUpdateRequest {
     private String theReviewer;
     private String themain_thesisName;
     private String theTransCooperation;
-    private boolean thePubmain_licatinNumber;
+    private String thePubmain_licatinNumber;
 
     private String thePublishingcountry;
-    private Integer thePublishMonth;
-    private Integer thePublishYear;
+    private String thePublishMonth;
+    private String thePublishYear;
 
     private String thePublishType;
     private String theProject;
-    private boolean isPublic=false;
-    public boolean isPublic() {
-        return isPublic;
+    private boolean ispublic=false;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 
     public Integer getTheId() {
@@ -110,11 +110,11 @@ public class PaperUpdateRequest {
         this.theTransCooperation = theTransCooperation;
     }
 
-    public boolean isThePubmain_licatinNumber() {
+    public String isThePubmain_licatinNumber() {
         return thePubmain_licatinNumber;
     }
 
-    public void setThePubmain_licatinNumber(boolean thePubmain_licatinNumber) {
+    public void setThePubmain_licatinNumber(String thePubmain_licatinNumber) {
         this.thePubmain_licatinNumber = thePubmain_licatinNumber;
     }
 
@@ -126,19 +126,19 @@ public class PaperUpdateRequest {
         this.thePublishingcountry = thePublishingcountry;
     }
 
-    public Integer getThePublishMonth() {
+    public String getThePublishMonth() {
         return thePublishMonth;
     }
 
-    public void setThePublishMonth(Integer thePublishMonth) {
+    public void setThePublishMonth(String thePublishMonth) {
         this.thePublishMonth = thePublishMonth;
     }
 
-    public Integer getThePublishYear() {
+    public String getThePublishYear() {
         return thePublishYear;
     }
 
-    public void setThePublishYear(Integer thePublishYear) {
+    public void setThePublishYear(String thePublishYear) {
         this.thePublishYear = thePublishYear;
     }
 
