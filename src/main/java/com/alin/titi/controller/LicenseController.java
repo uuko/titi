@@ -27,7 +27,7 @@ public class LicenseController {
     //post
     @PostMapping("/teacher/license")
     public void saveTeacherLicense(@RequestBody LicenseRequest licenseRequest) {
-       licenseServices.addLicenseData(licenseRequest);
+        licenseServices.addLicenseData(licenseRequest);
     }
 
     //update
