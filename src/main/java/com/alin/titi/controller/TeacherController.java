@@ -394,6 +394,18 @@ public class TeacherController {
 
 
     // get by id
+    @GetMapping("/teacher/{loginId}")
+    public ResponseEntity<?> getTeacherList(@PathVariable Integer loginId
+    ) {
+        try {
+
+            return ResponseEntity.ok(   service.getTeacherByLoginId(loginId));
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<RegisterTeacherModel>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     @GetMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> getTeacherList(@PathVariable Integer tchNumber
             ,@PathVariable Integer tchYear,
