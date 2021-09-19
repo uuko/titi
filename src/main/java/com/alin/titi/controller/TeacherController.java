@@ -179,7 +179,7 @@ public class TeacherController {
     }
 
     //update
-    @PostMapping("/teacher/upload/{tchNumber}/{tchYear}/{tchSemester}")
+    @PostMapping("/teacher/update/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> update(
             @RequestBody RegisterTeacherModel putuser
             ,@PathVariable Integer tchNumber
