@@ -1,5 +1,6 @@
 package com.alin.titi.services;
 
+import com.alin.titi.Config;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.RegisterBaseModel;
 import com.alin.titi.model.RegisterTeacherModel;
@@ -68,7 +69,7 @@ public class TeacherService {
     }
 
     public String storeNewFile(MultipartFile multipartFile, TeacherRelationPK teacherRelationPK) throws Exception {
-        Path fileStoreLocation= Paths.get("/home/csie/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
+        Path fileStoreLocation= Paths.get(Config.path).toAbsolutePath().normalize();
         try {
             Files.createDirectories(fileStoreLocation);
         } catch (IOException e) {
@@ -129,7 +130,7 @@ public class TeacherService {
     }
 
     public Resource loadFileAsResource(String fileName) throws Exception {
-        Path fileStoreLocation= Paths.get("/home/csie/mssweb/titi/src/main/resources/static/").toAbsolutePath().normalize();
+        Path fileStoreLocation= Paths.get(Config.path).toAbsolutePath().normalize();
         Path filePath =fileStoreLocation.resolve(fileName).normalize();
         Resource resource = new UrlResource(filePath.toUri());
         if(resource.exists()) {
