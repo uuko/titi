@@ -154,7 +154,9 @@ public class TeacherController {
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-        return ResponseEntity.ok(fileDownLoadUrL);
+        UpLoadFileResponse upLoadFileResponse=new UpLoadFileResponse();
+        upLoadFileResponse.setPicUrl(fileDownLoadUrL);
+        return ResponseEntity.ok(upLoadFileResponse);
 
     }
 
