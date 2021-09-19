@@ -9,6 +9,7 @@ import com.alin.titi.model.api.response.ListTeacherResponse;
 import com.alin.titi.model.api.response.TeacherLineAllResponse;
 import com.alin.titi.repository.LoginRepository;
 import com.alin.titi.repository.TeacherRepository;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -68,7 +69,7 @@ public class TeacherService {
         repo.save(teacherModel);
     }
 
-    public String storeNewFile(MultipartFile multipartFile, TeacherRelationPK teacherRelationPK) throws Exception {
+    public String storeNewFile(MultipartFile multipartFile, Integer teacherRelationPK) throws Exception {
         Path fileStoreLocation= Paths.get(Config.path).toAbsolutePath().normalize();
         try {
             Files.createDirectories(fileStoreLocation);
@@ -95,31 +96,36 @@ public class TeacherService {
             String fileOrgName="";
             fileExtension=orgFileName.substring(orgFileName.lastIndexOf("."));
             fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
-            newFileName=teacherRelationPK.getTchNumber()+"_"+fileOrgName+fileExtension;
+            newFileName=teacherRelationPK+"_"+fileOrgName+fileExtension;
 
             Path targetLocation = fileStoreLocation.resolve(newFileName);
             Files.copy(multipartFile.getInputStream(),targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             System.out.println("newFileName000000000000"+newFileName);
-            RegisterTeacherModel checkIfRepeat=repo.findByTchPicUrl(newFileName);
-            if (checkIfRepeat!=null){
-                System.out.println("newFileName1111111111"+newFileName);
+
+                List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(teacherRelationPK);
+                Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
+                    return rhs.getTeacherRelationPK().getTchYear().compareTo(lhs.getTeacherRelationPK().getTchYear());  // Descending order
+                };
+
+                registerTeacherModellist.sort(m_studentComparator);
+                Comparator<RegisterTeacherModel> monthComparator = (lhs, rhs) -> {
+                    return rhs.getTeacherRelationPK().getTchSemester().compareTo(lhs.getTeacherRelationPK().getTchSemester());  // Descending order
+                };
+                registerTeacherModellist.sort(monthComparator);
+                  RegisterTeacherModel listTeacherResponse = new RegisterTeacherModel();
+                for (RegisterTeacherModel putuser : registerTeacherModellist) {
+                    listTeacherResponse=putuser;
+                    break;
+                }
+
                 String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
                         .path("/downloadFile/")
                         .path(newFileName)
                         .toUriString();
-                checkIfRepeat.setTchPicUrl(fileDownLoadUrL);
-                repo.save(checkIfRepeat);
-            }else {
-                System.out.println("newFileName22222222222"+newFileName);
-                RegisterTeacherModel t1=repo.findByTeacherRelationPK(teacherRelationPK);
-                String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("/downloadFile/")
-                        .path(newFileName)
-                        .toUriString();
-                t1.setTchPicUrl(fileDownLoadUrL);
-                repo.save(t1);
-            }
+                listTeacherResponse.setTchPicUrl(fileDownLoadUrL);
+                repo.save(listTeacherResponse);
+
             System.out.println("newFileName"+newFileName);
             return newFileName;
 

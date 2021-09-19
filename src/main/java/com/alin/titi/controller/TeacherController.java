@@ -137,17 +137,16 @@ public class TeacherController {
     public ResponseEntity<?> uploadFile(@RequestParam("file")MultipartFile file
 
             ,@RequestParam("tchNumber")  Integer tchNumber
-            ,@RequestParam("tchYear")  Integer tchYear
-            , @RequestParam("tchSemester")  Integer tchSemester
+
     ) throws Exception {
 
 
-        TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        teacherRelationPK.setTchNumber(tchNumber);
-        teacherRelationPK.setTchSemester(tchSemester);
-        teacherRelationPK.setTchYear(tchYear);
+//        TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
+//        teacherRelationPK.setTchNumber(tchNumber);
+//        teacherRelationPK.setTchSemester(tchSemester);
+//        teacherRelationPK.setTchYear(tchYear);
 
-        String fileName=service.storeNewFile(file,teacherRelationPK);
+        String fileName=service.storeNewFile(file,tchNumber);
 
 
         String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
