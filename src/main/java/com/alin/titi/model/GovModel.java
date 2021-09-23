@@ -37,7 +37,7 @@ public class GovModel {
     private boolean govToOth;
 
     //
-    private boolean isPublic=false;
+
     private Integer tchYear;
     private Integer tchSemester;
 
@@ -45,15 +45,16 @@ public class GovModel {
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
-
-
-    public boolean isPublic() {
-        return isPublic;
+    private boolean open=false;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setOpen(boolean open) {
+        this.open = open;
     }
+
+
     public Integer getGovId() {
         return govId;
     }

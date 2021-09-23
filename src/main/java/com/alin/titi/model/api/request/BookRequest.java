@@ -17,13 +17,13 @@ public class BookRequest {
     private String infPublishHouse;
     private String infISBN;
     private String infPlan;
-    private boolean isPublic=false;
-    public boolean isPublic() {
-        return isPublic;
+    private boolean ispublic=false;
+    public boolean ispublic() {
+        return ispublic;
     }
 
     public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+        ispublic = aPublic;
     }
     public Integer getLoginId() {
         return loginId;

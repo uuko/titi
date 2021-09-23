@@ -12,12 +12,22 @@ public class AcademicPostRequest {
     private String eveLocation;
     private Date eveStratDate;
     private Date eveStopDate;
-    private boolean eveSort;
+    private String eveSort;
     private Integer eveHours;
     private Integer eveStudyCertificate;
     private String eveCertificateNumber;
     private String eveSchSubsidy;
-    private boolean isPublic=false;
+    private boolean ispublic=false;
+
+    public String getEveSort() {
+        return eveSort;
+    }
+
+    public void setEveSort(String eveSort) {
+        this.eveSort = eveSort;
+    }
+
+
 
     public Integer getEveNumber() {
         return eveNumber;
@@ -91,13 +101,7 @@ public class AcademicPostRequest {
         this.eveStopDate = eveStopDate;
     }
 
-    public boolean isEveSort() {
-        return eveSort;
-    }
 
-    public void setEveSort(boolean eveSort) {
-        this.eveSort = eveSort;
-    }
 
     public Integer getEveHours() {
         return eveHours;
@@ -131,11 +135,11 @@ public class AcademicPostRequest {
         this.eveSchSubsidy = eveSchSubsidy;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean ispublic() {
+        return ispublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setpublic(boolean aPublic) {
+        ispublic = aPublic;
     }
 }

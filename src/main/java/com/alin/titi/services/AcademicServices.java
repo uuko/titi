@@ -27,7 +27,7 @@ public class AcademicServices {
     private AcademicRepository repo;
 
     public void addAcademicData(AcademicRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -47,14 +47,16 @@ public class AcademicServices {
         paperModel.setEveLocation(postRequest.getEveLocation());
         paperModel.setEveStratDate(postRequest.getEveStratDate());
         paperModel.setEveStopDate(postRequest.getEveStopDate());
-        paperModel.setEveSort(postRequest.isEveSort());
+        paperModel.setEveSort(postRequest.getEveSort());
         paperModel.setEveHours(postRequest.getEveHours());
         paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
         paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
+        //
+        paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
 
         //
 
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setOpen(postRequest.ispublic());
         paperModel.setLoginModel(new LoginModel(postRequest.getLoginId()));
         repo.save(paperModel);
 
@@ -77,13 +79,15 @@ public class AcademicServices {
         paperModel.setEveLocation(postRequest.getEveLocation());
         paperModel.setEveStratDate(postRequest.getEveStratDate());
         paperModel.setEveStopDate(postRequest.getEveStopDate());
-        paperModel.setEveSort(postRequest.isEveSort());
+        paperModel.setEveSort(postRequest.getEveSort());
         paperModel.setEveHours(postRequest.getEveHours());
         paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
         paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
         //
+        paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
+        //
         paperModel.setLoginId(postRequest.getLoginModel().getId());
-        paperModel.setPublic(postRequest.isPublic());
+        paperModel.setpublic(postRequest.isOpen());
         paperModel.setEveNumber(postRequest.getEveNumber());
         return paperModel;
     }
@@ -106,14 +110,16 @@ public class AcademicServices {
             paperModel.setEveLocation(postRequest.getEveLocation());
             paperModel.setEveStratDate(postRequest.getEveStratDate());
             paperModel.setEveStopDate(postRequest.getEveStopDate());
-            paperModel.setEveSort(postRequest.isEveSort());
+            paperModel.setEveSort(postRequest.getEveSort());
             paperModel.setEveHours(postRequest.getEveHours());
             paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
             paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
+            //
+            paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
 
             //
             paperModel.setLoginId(postRequest.getLoginModel().getId());
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setpublic(postRequest.isOpen());
             paperModel.setEveNumber(postRequest.getEveNumber());
             responseList.add(paperModel);
         }
@@ -123,7 +129,7 @@ public class AcademicServices {
     }
 
     public void updateAcademicData(AcademicPostRequest postRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -150,13 +156,15 @@ public class AcademicServices {
             paperModel.setEveLocation(postRequest.getEveLocation());
             paperModel.setEveStratDate(postRequest.getEveStratDate());
             paperModel.setEveStopDate(postRequest.getEveStopDate());
-            paperModel.setEveSort(postRequest.isEveSort());
+            paperModel.setEveSort(postRequest.getEveSort());
             paperModel.setEveHours(postRequest.getEveHours());
             paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
             paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
+            //
+            paperModel.setEveCertificateNumber(postRequest.getEveCertificateNumber());
 
             //
-            paperModel.setPublic(postRequest.isPublic());
+            paperModel.setOpen(postRequest.ispublic());
 
             repo.save(paperModel);
         }

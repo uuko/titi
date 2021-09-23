@@ -12,7 +12,7 @@ public class LicenseRequest {
     private String licName;
     private String licService;
     private Integer licNumber;
-    private boolean isPublic=false;
+
     public boolean isPublic() {
         return isPublic;
     }
@@ -20,6 +20,12 @@ public class LicenseRequest {
     public void setPublic(boolean aPublic) {
         isPublic = aPublic;
     }
+
+    private boolean isPublic=false;
+
+
+
+
     public Integer getLoginId() {
         return loginId;
     }

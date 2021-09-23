@@ -22,7 +22,7 @@ public class LicenseServices {
     private LicenseRepository repo;
 
     public void addLicenseData(LicenseRequest licenseRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -40,7 +40,8 @@ public class LicenseServices {
         licenseModel.setTchSemester(semester);
         licenseModel.setTchYear(year);
         licenseModel.setLoginModel(new LoginModel(licenseRequest.getLoginId()));
-        licenseModel.setPublic(licenseRequest.isPublic());
+        System.out.println("    "+licenseRequest.isPublic());
+        licenseModel.setOpen(licenseRequest.isPublic());
         repo.save(licenseModel);
 
     }
@@ -48,7 +49,7 @@ public class LicenseServices {
     public void deleteLicenseData(LicenseUpdateRequest licenseRequest){
         repo.deleteById(licenseRequest.getLicId());
     }
-    public LicenseModel findLicenseData(Integer id){
+    public LicenseUpdateResponse findLicenseData(Integer id){
         LicenseModel licenseRequest= repo.findByLicId(id);
 
 
@@ -62,9 +63,9 @@ public class LicenseServices {
         licenseModel.setLicNumber(licenseRequest.getLicNumber());
         licenseModel.setTchSemester(licenseRequest.getTchSemester());
         licenseModel.setTchYear(licenseRequest.getTchYear());
-        licenseModel.setPublic(licenseRequest.isPublic());
+        licenseModel.setpublic(licenseRequest.isOpen());
 
-        return licenseRequest;
+        return licenseModel;
     }
 
     public List<LicenseUpdateResponse> findAllLicenseData(Integer id){
@@ -81,14 +82,14 @@ public class LicenseServices {
             licenseModel.setLicNumber(licenseRequest.getLicNumber());
             licenseModel.setTchSemester(licenseRequest.getTchSemester());
             licenseModel.setTchYear(licenseRequest.getTchYear());
-            licenseModel.setPublic(licenseRequest.isPublic());
+            licenseModel.setpublic(licenseRequest.isOpen());
             licenseUpdateResponseList.add(licenseModel);
         }
 
         return licenseUpdateResponseList;
     }
     public void updateLicenseData(LicenseUpdateRequest licenseRequest){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
         int semester=0;
         if (month<8 && month>1){
@@ -110,7 +111,7 @@ public class LicenseServices {
             licenseModel.setTchSemester(semester);
             licenseModel.setTchYear(year);
             licenseModel.setLoginModel(new LoginModel(licenseRequest.getLoginId()));
-            licenseModel.setPublic(licenseRequest.isPublic());
+            licenseModel.setOpen(licenseRequest.ispublic());
             repo.save(licenseModel);
         }
 
