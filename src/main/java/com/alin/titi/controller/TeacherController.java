@@ -20,6 +20,7 @@ import java.util.*;
 //teacher register and update and get
 @RestController
 
+
 public class TeacherController {
 
     @Autowired
@@ -137,24 +138,25 @@ public class TeacherController {
     public ResponseEntity<?> uploadFile(@RequestParam("file")MultipartFile file
 
             ,@RequestParam("tchNumber")  Integer tchNumber
-            ,@RequestParam("tchYear")  Integer tchYear
-            , @RequestParam("tchSemester")  Integer tchSemester
+
     ) throws Exception {
 
 
-        TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        teacherRelationPK.setTchNumber(tchNumber);
-        teacherRelationPK.setTchSemester(tchSemester);
-        teacherRelationPK.setTchYear(tchYear);
+//        TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
+//        teacherRelationPK.setTchNumber(tchNumber);
+//        teacherRelationPK.setTchSemester(tchSemester);
+//        teacherRelationPK.setTchYear(tchYear);
 
-        String fileName=service.storeNewFile(file,teacherRelationPK);
+        String fileName=service.storeNewFile(file,tchNumber);
 
 
         String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-        return ResponseEntity.ok(fileDownLoadUrL);
+        UpLoadFileResponse upLoadFileResponse=new UpLoadFileResponse();
+        upLoadFileResponse.setPicUrl(fileDownLoadUrL);
+        return ResponseEntity.ok(upLoadFileResponse);
 
     }
 
@@ -179,7 +181,7 @@ public class TeacherController {
     }
 
     //update
-    @PostMapping("/teacher/update/{tchNumber}/{tchYear}/{tchSemester}")
+    @PutMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> update(
             @RequestBody RegisterTeacherModel putuser
             ,@PathVariable Integer tchNumber
