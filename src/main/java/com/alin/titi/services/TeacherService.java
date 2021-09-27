@@ -95,12 +95,13 @@ public class TeacherService {
             String fileExtension="";
             String fileOrgName="";
 //            fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
+            System.out.println("newFileName/////    -"+orgFileName);
             newFileName=teacherRelationPK+"_"+getRandomStr()+"_"+orgFileName;
 
             Path targetLocation = fileStoreLocation.resolve(newFileName);
             Files.copy(multipartFile.getInputStream(),targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            System.out.println("newFileName000000000000"+newFileName);
+            System.out.println("newFileName000000000000     -"+newFileName);
 
                 List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(teacherRelationPK);
                 Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
