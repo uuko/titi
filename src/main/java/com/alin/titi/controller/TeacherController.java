@@ -20,6 +20,7 @@ import java.util.*;
 //teacher register and update and get
 @RestController
 
+
 public class TeacherController {
 
     @Autowired
@@ -180,9 +181,9 @@ public class TeacherController {
     }
 
     //update
-    @PostMapping("/teacher/update/{tchNumber}/{tchYear}/{tchSemester}")
+    @PutMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> update(
-            @RequestBody RegisterTeacherModel putuser
+            @RequestBody UpdateTeacherModel putuser
             ,@PathVariable Integer tchNumber
             ,@PathVariable Integer tchYear, @PathVariable Integer tchSemester) {
         try {
