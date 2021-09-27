@@ -181,7 +181,7 @@ public class TeacherController {
     }
 
     //update
-    @PutMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
+    @PostMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> update(
             @RequestBody UpdateTeacherModel putuser
             ,@PathVariable Integer tchNumber
