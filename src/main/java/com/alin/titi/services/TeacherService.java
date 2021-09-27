@@ -94,9 +94,8 @@ public class TeacherService {
             String line0=command;
             String fileExtension="";
             String fileOrgName="";
-            fileExtension=orgFileName.substring(orgFileName.lastIndexOf("."));
-            fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
-            newFileName=teacherRelationPK+"_"+fileOrgName+fileExtension;
+//            fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
+            newFileName=teacherRelationPK+"_"+getRandomStr()+"_"+orgFileName;
 
             Path targetLocation = fileStoreLocation.resolve(newFileName);
             Files.copy(multipartFile.getInputStream(),targetLocation, StandardCopyOption.REPLACE_EXISTING);
@@ -235,5 +234,19 @@ public class TeacherService {
         }
         return listTeacherResponse;
     }
+    public String getRandomStr() {
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
 
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+        System.out.println(generatedString);
+        return generatedString;
+    }
 }
