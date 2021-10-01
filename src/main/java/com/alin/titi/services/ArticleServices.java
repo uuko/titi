@@ -1,8 +1,6 @@
 package com.alin.titi.services;
 
 import com.alin.titi.Config;
-import com.alin.titi.model.RegisterTeacherModel;
-import com.alin.titi.model.TeacherRelationPK;
 import com.alin.titi.model.announce.*;
 import com.alin.titi.model.articalpic.ArticlePicModel;
 import com.alin.titi.model.articalpic.ArticlePicResponse;
@@ -22,24 +20,15 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.chrono.Chronology;
-import java.time.chrono.MinguoChronology;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DecimalStyle;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 @Transactional
@@ -224,6 +213,47 @@ public class ArticleServices {
 
     }
 
+    public List<ArticleResponse> getLatestArticleAllList(){
+
+
+        List<ArticleModel> list=articleRepository.findAll(Sort.by("modifyDate").descending());
+
+        List<ArticleResponse> responseList=new ArrayList<>();
+        for (ArticleModel articleModelPage:list){
+            ArticleResponse lsr=new ArticleResponse();
+            lsr.setModifyDate(articleModelPage.getModifyDate());
+            lsr.setArticleTag(articleModelPage.getArticleTag());
+            lsr.setArticleTitle(articleModelPage.getArticleTitle());
+            lsr.setArticleImportant(articleModelPage.getArticleImportant());
+            lsr.setArticleContent(articleModelPage.getArticleContent());
+            lsr.setArticleId(articleModelPage.getArticleId());
+            responseList.add(lsr);
+        }
+
+        return responseList;
+
+    }
+
+    public List<ArticleResponse> getImportantArticleAllList(){
+
+
+        List<ArticleModel> list=articleRepository.findByArticleImportantOrderByModifyDateDesc("U");
+
+        List<ArticleResponse> responseList=new ArrayList<>();
+        for (ArticleModel articleModelPage:list){
+            ArticleResponse lsr=new ArticleResponse();
+            lsr.setModifyDate(articleModelPage.getModifyDate());
+            lsr.setArticleTag(articleModelPage.getArticleTag());
+            lsr.setArticleTitle(articleModelPage.getArticleTitle());
+            lsr.setArticleImportant(articleModelPage.getArticleImportant());
+            lsr.setArticleContent(articleModelPage.getArticleContent());
+            lsr.setArticleId(articleModelPage.getArticleId());
+            responseList.add(lsr);
+        }
+
+        return responseList;
+
+    }
     public ArticleAllResponse getLatestArticleList(Integer pageNo){
 
 

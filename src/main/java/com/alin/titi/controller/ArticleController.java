@@ -112,6 +112,8 @@ public class ArticleController {
         }
     }
 
+
+
     @GetMapping("/article/important")
     public ResponseEntity<?> getImportantArticleList(
             @RequestParam(defaultValue = "0") Integer pageNo)
@@ -125,7 +127,31 @@ public class ArticleController {
         }
     }
 
+    @GetMapping("/article/latest/all")
+    public ResponseEntity<?> getLatestArticleAllList()
 
+    {
+        List<ArticleResponse> list = articleServices.getLatestArticleAllList();
+        if ( !(list.size()>0)){
+            return  ResponseEntity.ok(new BaseResponse(""));
+        }
+        else {
+            return  ResponseEntity.ok(list);
+        }
+    }
+
+    @GetMapping("/article/important/all")
+    public ResponseEntity<?> getImportantArticleAllList()
+
+    {
+        List<ArticleResponse> list = articleServices.getImportantArticleAllList();
+        if ( !(list.size()>0)){
+            return  ResponseEntity.ok(new BaseResponse(""));
+        }
+        else {
+            return  ResponseEntity.ok(list);
+        }
+    }
     @GetMapping("/article/tag")
     public ResponseEntity<?> getImportantArticleList(
             @RequestParam(value = "tag") String tag,
