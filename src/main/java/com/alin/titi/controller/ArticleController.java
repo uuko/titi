@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ArticleTagResponse;
 import com.alin.titi.model.TeacherRelationPK;
 import com.alin.titi.model.announce.ArticleAllResponse;
 import com.alin.titi.model.announce.ArticleDeleteRequest;
@@ -98,6 +99,14 @@ public class ArticleController {
     /**
      * article
      * */
+    @GetMapping("/article/tags")
+    public ResponseEntity<?> getArticleTags() throws Exception {
+        List<ArticleTagResponse> response= articleServices.getArticleAllTags();
+        if (response.size()>0){
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.badRequest().body(new BaseResponse("error"));
+    }
     @PostMapping("/article")
     public ResponseEntity<?> postArticle(@RequestBody ArticleRequest articleRequest) throws Exception {
        String response= articleServices.saveArticle(articleRequest);
