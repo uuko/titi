@@ -179,7 +179,7 @@ public class ArticleController {
     {
         ArticleAllResponse list = articleServices.getTagArticleList(pageNo,tag);
         if ( !(list.getResponses().size()>0)){
-            return  ResponseEntity.badRequest().body(new BaseResponse("error"));
+            return ResponseEntity.ok(new BaseResponse(""));
         }
         else {
             return  ResponseEntity.ok(list);
