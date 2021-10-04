@@ -173,13 +173,21 @@ public class ArticleServices {
 
 
     public String updateBanner(BannerRequest request){
-        ArticlePicModel checkIfRepeat=picRepository.findByPicUrl(request.getPicUrl());
-        if (checkIfRepeat!=null){
-            checkIfRepeat.setBanner(request.isBanner());
-            picRepository.save(checkIfRepeat);
-            return "ok";
+        List<ArticlePicModel> bannerList=picRepository.findByBanner(true);
+        if (! (bannerList.size()>=bannerUpperLimit)){
+            ArticlePicModel checkIfRepeat=picRepository.findByPicUrl(request.getPicUrl());
+            if (checkIfRepeat!=null){
+                checkIfRepeat.setBanner(request.isBanner());
+                picRepository.save(checkIfRepeat);
+                return "ok";
+            }
+            else {
+                return "picUrl can't find";
+            }
         }
-        return "";
+        else {
+            return "banner size > limit size :   "+bannerUpperLimit;
+        }
 
     }
 
