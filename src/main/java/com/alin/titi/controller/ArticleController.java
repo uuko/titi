@@ -73,7 +73,7 @@ public class ArticleController {
         BannerAllResponse response=articleServices.loadAllBanner();
         return ResponseEntity.ok(response);
     }
-    // delete banner
+
     @PostMapping("/article/banner")
     public ResponseEntity<?> updateBanner(@RequestBody BannerRequest articleRequest) throws Exception {
         String response=articleServices.updateBanner(articleRequest);
@@ -84,7 +84,7 @@ public class ArticleController {
             return ResponseEntity.badRequest().body(new BaseResponse(response));
         }
     }
-
+    // delete banner
     @PostMapping("/article/banner/{bannerId}")
     public ResponseEntity<?> deleteBanner(@PathVariable Integer bannerId) throws Exception {
         String response=articleServices.deleteBanner(bannerId);
