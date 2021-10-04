@@ -5,6 +5,7 @@ import com.alin.titi.model.announce.ArticleAllResponse;
 import com.alin.titi.model.announce.ArticleDeleteRequest;
 import com.alin.titi.model.announce.ArticleRequest;
 import com.alin.titi.model.announce.ArticleResponse;
+import com.alin.titi.model.api.request.BannerRequest;
 import com.alin.titi.model.articalpic.ArticlePicResponse;
 import com.alin.titi.model.articalpic.BannerAllResponse;
 import com.alin.titi.model.base.BaseResponse;
@@ -73,6 +74,17 @@ public class ArticleController {
         return ResponseEntity.ok(response);
     }
     // delete banner
+    @PostMapping("/article/banner")
+    public ResponseEntity<?> updateBanner(@RequestBody BannerRequest articleRequest) throws Exception {
+        String response=articleServices.updateBanner(articleRequest);
+        if (response.equals("ok")){
+            return ResponseEntity.ok(new BaseResponse(response));
+        }
+        else {
+            return ResponseEntity.badRequest().body(new BaseResponse(response));
+        }
+    }
+
     @PostMapping("/article/banner/{bannerId}")
     public ResponseEntity<?> deleteBanner(@PathVariable Integer bannerId) throws Exception {
         String response=articleServices.deleteBanner(bannerId);
@@ -83,7 +95,6 @@ public class ArticleController {
             return ResponseEntity.badRequest().body(new BaseResponse(response));
         }
     }
-
     /**
      * article
      * */

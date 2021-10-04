@@ -2,6 +2,7 @@ package com.alin.titi.services;
 
 import com.alin.titi.Config;
 import com.alin.titi.model.announce.*;
+import com.alin.titi.model.api.request.BannerRequest;
 import com.alin.titi.model.articalpic.ArticlePicModel;
 import com.alin.titi.model.articalpic.ArticlePicResponse;
 import com.alin.titi.model.articalpic.BannerAllResponse;
@@ -168,6 +169,18 @@ public class ArticleServices {
        picModel.setBanner(false);
        picRepository.save(picModel);
        return "ok";
+    }
+
+
+    public String updateBanner(BannerRequest request){
+        ArticlePicModel checkIfRepeat=picRepository.findByPicUrl(request.getPicUrl());
+        if (checkIfRepeat!=null){
+            checkIfRepeat.setBanner(request.isBanner());
+            picRepository.save(checkIfRepeat);
+            return "ok";
+        }
+        return "";
+
     }
 
     /**
