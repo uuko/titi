@@ -153,7 +153,7 @@ public class ArticleController {
     {
         List<ArticleResponse> list = articleServices.getLatestArticleAllList();
         if ( !(list.size()>0)){
-            return  ResponseEntity.ok(new BaseResponse(""));
+            return  ResponseEntity.badRequest().body(new BaseResponse("error"));
         }
         else {
             return  ResponseEntity.ok(list);
@@ -166,7 +166,7 @@ public class ArticleController {
     {
         List<ArticleResponse> list = articleServices.getImportantArticleAllList();
         if ( !(list.size()>0)){
-            return  ResponseEntity.ok(new BaseResponse(""));
+            return  ResponseEntity.badRequest().body(new BaseResponse("error"));
         }
         else {
             return  ResponseEntity.ok(list);
@@ -179,7 +179,7 @@ public class ArticleController {
     {
         ArticleAllResponse list = articleServices.getTagArticleList(pageNo,tag);
         if ( !(list.getResponses().size()>0)){
-            return  ResponseEntity.ok(new BaseResponse(""));
+            return  ResponseEntity.badRequest().body(new BaseResponse("error"));
         }
         else {
             return  ResponseEntity.ok(list);
