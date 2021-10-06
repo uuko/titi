@@ -7,7 +7,7 @@ public class DisResponse {
     private Integer loginId;
     private Integer disId;
     private String dismainThesisName;
-    private boolean disReviewer;
+    private String disReviewer;
     private String disAuthor;
     private String disCorreAuthor;
     private String disSeminarName;
@@ -17,7 +17,7 @@ public class DisResponse {
     private String disProject;
     private String disPublishY;
     private String disCollection;
-    private boolean disIsCountry;
+    private String disIsCountry;
     private Date disED;
     private String main_disYear;
 
@@ -48,11 +48,11 @@ public class DisResponse {
         this.dismainThesisName = dismainThesisName;
     }
 
-    public boolean isDisReviewer() {
+    public String isDisReviewer() {
         return disReviewer;
     }
 
-    public void setDisReviewer(boolean disReviewer) {
+    public void setDisReviewer(String disReviewer) {
         this.disReviewer = disReviewer;
     }
 
@@ -128,11 +128,11 @@ public class DisResponse {
         this.disCollection = disCollection;
     }
 
-    public boolean isDisIsCountry() {
+    public String isDisIsCountry() {
         return disIsCountry;
     }
 
-    public void setDisIsCountry(boolean disIsCountry) {
+    public void setDisIsCountry(String disIsCountry) {
         this.disIsCountry = disIsCountry;
     }
 
