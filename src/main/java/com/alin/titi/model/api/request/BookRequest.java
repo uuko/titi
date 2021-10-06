@@ -15,9 +15,21 @@ public class BookRequest {
     private Integer  infPubmain_licYear;
     private Integer  infPubmain_licMonth;
     private String infPublishHouse;
+
     private String infISBN;
     private String infPlan;
     private boolean ispublic=false;
+
+    private String infCorreAuthor;
+
+    public String getinfCorreAuthor() {
+        return infCorreAuthor;
+    }
+
+    public void setinfCorreAuthor(String bookCorreAuthor) {
+        this.infCorreAuthor = bookCorreAuthor;
+    }
+
     public boolean ispublic() {
         return ispublic;
     }

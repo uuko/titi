@@ -19,6 +19,17 @@ public class BookUpdateRequest {
     private String infISBN;
     private String infPlan;
     private boolean ispublic=false;
+
+    private String infCorreAuthor;
+
+    public String getinfCorreAuthor() {
+        return infCorreAuthor;
+    }
+
+    public void setinfCorreAuthor(String bookCorreAuthor) {
+        this.infCorreAuthor = bookCorreAuthor;
+    }
+
     public boolean ispublic() {
         return ispublic;
     }

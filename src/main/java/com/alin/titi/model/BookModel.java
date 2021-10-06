@@ -35,6 +35,17 @@ public class BookModel {
     private LoginModel loginModel ;
 
     private boolean open=false;
+
+    private String infCorreAuthor;
+
+    public String getinfCorreAuthor() {
+        return infCorreAuthor;
+    }
+
+    public void setinfCorreAuthor(String bookCorreAuthor) {
+        this.infCorreAuthor = bookCorreAuthor;
+    }
+
     public boolean isOpen() {
         return open;
     }
