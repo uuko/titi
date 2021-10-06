@@ -42,6 +42,7 @@ public class AcademicServices {
         paperModel.setTchYear(year);
         paperModel.setEveYear(postRequest.getEveYear());
         paperModel.setEveName(postRequest.getEveName());
+
         paperModel.setEveCategory(postRequest.getEveCategory());
         paperModel.setEveClassRelated(postRequest.getEveClassRelated());
         paperModel.setEveLocation(postRequest.getEveLocation());
@@ -49,6 +50,7 @@ public class AcademicServices {
         paperModel.setEveStopDate(postRequest.getEveStopDate());
         paperModel.setEveSort(postRequest.getEveSort());
         paperModel.setEveHours(postRequest.getEveHours());
+        paperModel.seteveOrganizer(postRequest.geteveOrganizer());
         paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
         paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
         //
@@ -74,6 +76,7 @@ public class AcademicServices {
         paperModel.setTchYear(postRequest.getTchYear());
         paperModel.setEveYear(postRequest.getEveYear());
         paperModel.setEveName(postRequest.getEveName());
+        paperModel.seteveOrganizer(postRequest.geteveOrganizer());
         paperModel.setEveCategory(postRequest.getEveCategory());
         paperModel.setEveClassRelated(postRequest.getEveClassRelated());
         paperModel.setEveLocation(postRequest.getEveLocation());
@@ -105,6 +108,7 @@ public class AcademicServices {
             paperModel.setTchYear(postRequest.getTchYear());
             paperModel.setEveYear(postRequest.getEveYear());
             paperModel.setEveName(postRequest.getEveName());
+            paperModel.seteveOrganizer(postRequest.geteveOrganizer());
             paperModel.setEveCategory(postRequest.getEveCategory());
             paperModel.setEveClassRelated(postRequest.getEveClassRelated());
             paperModel.setEveLocation(postRequest.getEveLocation());
@@ -151,6 +155,7 @@ public class AcademicServices {
 
             paperModel.setEveYear(postRequest.getEveYear());
             paperModel.setEveName(postRequest.getEveName());
+            paperModel.seteveOrganizer(postRequest.geteveOrganizer());
             paperModel.setEveCategory(postRequest.getEveCategory());
             paperModel.setEveClassRelated(postRequest.getEveClassRelated());
             paperModel.setEveLocation(postRequest.getEveLocation());

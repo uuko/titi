@@ -30,6 +30,17 @@ public class AcademicModel {
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
+
+    private String eveOrganizer;
+
+    public String geteveOrganizer() {
+        return eveOrganizer;
+    }
+
+    public void seteveOrganizer(String eveOrganizer) {
+        this.eveOrganizer = eveOrganizer;
+    }
+
     public String getEveSort() {
         return eveSort;
     }

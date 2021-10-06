@@ -21,6 +21,15 @@ public class AcademicResponse {
     //
     private Integer tchYear;
     private Integer tchSemester;
+    private String eveOrganizer;
+
+    public String geteveOrganizer() {
+        return eveOrganizer;
+    }
+
+    public void seteveOrganizer(String eveOrganizer) {
+        this.eveOrganizer = eveOrganizer;
+    }
 
     public String getEveSort() {
         return eveSort;

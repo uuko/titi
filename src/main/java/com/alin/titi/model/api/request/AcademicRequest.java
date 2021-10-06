@@ -17,6 +17,15 @@ public class AcademicRequest {
     private String eveCertificateNumber;
     private String eveSchSubsidy;
     private boolean ispublic=false;
+    private String eveOrganizer;
+
+    public String geteveOrganizer() {
+        return eveOrganizer;
+    }
+
+    public void seteveOrganizer(String eveOrganizer) {
+        this.eveOrganizer = eveOrganizer;
+    }
 
     public String getEveSort() {
         return eveSort;
