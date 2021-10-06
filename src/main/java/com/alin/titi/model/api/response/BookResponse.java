@@ -21,6 +21,18 @@ public class BookResponse {
 
     private Integer tchYear;
     private boolean ispublic=false;
+
+    private String infCorreAuthor;
+
+    public String getinfCorreAuthor() {
+        return infCorreAuthor;
+    }
+
+    public void setinfCorreAuthor(String bookCorreAuthor) {
+        this.infCorreAuthor = bookCorreAuthor;
+    }
+
+
     public boolean ispublic() {
         return ispublic;
     }

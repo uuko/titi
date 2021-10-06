@@ -42,6 +42,7 @@ public class BookServices {
         paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
         paperModel.setInfAudit(postRequest.getInfAudit());
         paperModel.setInfName(postRequest.getInfName());
+        paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
         paperModel.setInfLanguage(postRequest.getInfLanguage());
         paperModel.setInfCoop(postRequest.getInfCoop());
         paperModel.setInfPublishHouse(postRequest.getInfPublishHouse());
@@ -70,6 +71,7 @@ public class BookServices {
 
         paperModel.setInfYear(postRequest.getInfYear());
         paperModel.setInfCategory(postRequest.getInfCategory());
+        paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
         paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
         paperModel.setInfAudit(postRequest.getInfAudit());
         paperModel.setInfName(postRequest.getInfName());
@@ -98,6 +100,7 @@ public class BookServices {
 
             paperModel.setInfYear(postRequest.getInfYear());
             paperModel.setInfCategory(postRequest.getInfCategory());
+            paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
             paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
             paperModel.setInfAudit(postRequest.getInfAudit());
             paperModel.setInfName(postRequest.getInfName());
@@ -137,7 +140,7 @@ public class BookServices {
             paperModel.setTchYear(year);
             paperModel.setLoginModel(paperModel.getLoginModel());
             paperModel.setInfNumber(postRequest.getInfNumber());
-
+            paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
             paperModel.setInfYear(postRequest.getInfYear());
             paperModel.setInfCategory(postRequest.getInfCategory());
             paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
