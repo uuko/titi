@@ -51,6 +51,7 @@ public class AcademicServices {
         paperModel.setEveSort(postRequest.getEveSort());
         paperModel.setEveHours(postRequest.getEveHours());
         paperModel.seteveOrganizer(postRequest.geteveOrganizer());
+        paperModel.seteveParticimainPation(postRequest.geteveParticimainPation());
         paperModel.setEveStudyCertificate(postRequest.getEveStudyCertificate());
         paperModel.setEveSchSubsidy(postRequest.getEveSchSubsidy());
         //
@@ -77,6 +78,7 @@ public class AcademicServices {
         paperModel.setEveYear(postRequest.getEveYear());
         paperModel.setEveName(postRequest.getEveName());
         paperModel.seteveOrganizer(postRequest.geteveOrganizer());
+        paperModel.seteveParticimainPation(postRequest.geteveParticimainPation());
         paperModel.setEveCategory(postRequest.getEveCategory());
         paperModel.setEveClassRelated(postRequest.getEveClassRelated());
         paperModel.setEveLocation(postRequest.getEveLocation());
@@ -109,6 +111,7 @@ public class AcademicServices {
             paperModel.setEveYear(postRequest.getEveYear());
             paperModel.setEveName(postRequest.getEveName());
             paperModel.seteveOrganizer(postRequest.geteveOrganizer());
+            paperModel.seteveParticimainPation(postRequest.geteveParticimainPation());
             paperModel.setEveCategory(postRequest.getEveCategory());
             paperModel.setEveClassRelated(postRequest.getEveClassRelated());
             paperModel.setEveLocation(postRequest.getEveLocation());
@@ -156,6 +159,7 @@ public class AcademicServices {
             paperModel.setEveYear(postRequest.getEveYear());
             paperModel.setEveName(postRequest.getEveName());
             paperModel.seteveOrganizer(postRequest.geteveOrganizer());
+            paperModel.seteveParticimainPation(postRequest.geteveParticimainPation());
             paperModel.setEveCategory(postRequest.getEveCategory());
             paperModel.setEveClassRelated(postRequest.getEveClassRelated());
             paperModel.setEveLocation(postRequest.getEveLocation());
