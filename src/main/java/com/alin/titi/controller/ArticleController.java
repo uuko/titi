@@ -1,10 +1,12 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ArticleTagResponse;
 import com.alin.titi.model.TeacherRelationPK;
 import com.alin.titi.model.announce.ArticleAllResponse;
 import com.alin.titi.model.announce.ArticleDeleteRequest;
 import com.alin.titi.model.announce.ArticleRequest;
 import com.alin.titi.model.announce.ArticleResponse;
+import com.alin.titi.model.api.request.BannerRequest;
 import com.alin.titi.model.articalpic.ArticlePicResponse;
 import com.alin.titi.model.articalpic.BannerAllResponse;
 import com.alin.titi.model.base.BaseResponse;
@@ -72,6 +74,17 @@ public class ArticleController {
         BannerAllResponse response=articleServices.loadAllBanner();
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/article/banner")
+    public ResponseEntity<?> updateBanner(@RequestBody BannerRequest articleRequest) throws Exception {
+        String response=articleServices.updateBanner(articleRequest);
+        if (response.equals("ok")){
+            return ResponseEntity.ok(new BaseResponse(response));
+        }
+        else {
+            return ResponseEntity.badRequest().body(new BaseResponse(response));
+        }
+    }
     // delete banner
     @PostMapping("/article/banner/{bannerId}")
     public ResponseEntity<?> deleteBanner(@PathVariable Integer bannerId) throws Exception {
@@ -83,10 +96,17 @@ public class ArticleController {
             return ResponseEntity.badRequest().body(new BaseResponse(response));
         }
     }
-
     /**
      * article
      * */
+    @GetMapping("/article/tags")
+    public ResponseEntity<?> getArticleTags() throws Exception {
+        List<ArticleTagResponse> response= articleServices.getArticleAllTags();
+        if (response.size()>0){
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.badRequest().body(new BaseResponse("error"));
+    }
     @PostMapping("/article")
     public ResponseEntity<?> postArticle(@RequestBody ArticleRequest articleRequest) throws Exception {
        String response= articleServices.saveArticle(articleRequest);
@@ -133,7 +153,7 @@ public class ArticleController {
     {
         List<ArticleResponse> list = articleServices.getLatestArticleAllList();
         if ( !(list.size()>0)){
-            return  ResponseEntity.ok(new BaseResponse(""));
+            return  ResponseEntity.badRequest().body(new BaseResponse("error"));
         }
         else {
             return  ResponseEntity.ok(list);
@@ -146,7 +166,7 @@ public class ArticleController {
     {
         List<ArticleResponse> list = articleServices.getImportantArticleAllList();
         if ( !(list.size()>0)){
-            return  ResponseEntity.ok(new BaseResponse(""));
+            return  ResponseEntity.badRequest().body(new BaseResponse("error"));
         }
         else {
             return  ResponseEntity.ok(list);
@@ -159,7 +179,7 @@ public class ArticleController {
     {
         ArticleAllResponse list = articleServices.getTagArticleList(pageNo,tag);
         if ( !(list.getResponses().size()>0)){
-            return  ResponseEntity.ok(new BaseResponse(""));
+            return ResponseEntity.ok(new BaseResponse(""));
         }
         else {
             return  ResponseEntity.ok(list);

@@ -9,6 +9,7 @@ import com.alin.titi.model.api.response.ListTeacherResponse;
 import com.alin.titi.model.api.response.TeacherLineAllResponse;
 import com.alin.titi.repository.LoginRepository;
 import com.alin.titi.repository.TeacherRepository;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -93,37 +94,37 @@ public class TeacherService {
             String line0=command;
             String fileExtension="";
             String fileOrgName="";
-            fileExtension=orgFileName.substring(orgFileName.lastIndexOf("."));
-            fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
-            newFileName=teacherRelationPK+"_"+fileOrgName+fileExtension;
+//            fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
+            System.out.println("newFileName/////    -"+orgFileName);
+            newFileName=teacherRelationPK+"_"+getRandomStr()+"_"+orgFileName;
 
             Path targetLocation = fileStoreLocation.resolve(newFileName);
             Files.copy(multipartFile.getInputStream(),targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            System.out.println("newFileName000000000000"+newFileName);
+            System.out.println("newFileName000000000000     -"+newFileName);
 
-            List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(teacherRelationPK);
-            Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
-                return rhs.getTeacherRelationPK().getTchYear().compareTo(lhs.getTeacherRelationPK().getTchYear());  // Descending order
-            };
+                List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(teacherRelationPK);
+                Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
+                    return rhs.getTeacherRelationPK().getTchYear().compareTo(lhs.getTeacherRelationPK().getTchYear());  // Descending order
+                };
 
-            registerTeacherModellist.sort(m_studentComparator);
-            Comparator<RegisterTeacherModel> monthComparator = (lhs, rhs) -> {
-                return rhs.getTeacherRelationPK().getTchSemester().compareTo(lhs.getTeacherRelationPK().getTchSemester());  // Descending order
-            };
-            registerTeacherModellist.sort(monthComparator);
-            RegisterTeacherModel listTeacherResponse = new RegisterTeacherModel();
-            for (RegisterTeacherModel putuser : registerTeacherModellist) {
-                listTeacherResponse=putuser;
-                break;
-            }
+                registerTeacherModellist.sort(m_studentComparator);
+                Comparator<RegisterTeacherModel> monthComparator = (lhs, rhs) -> {
+                    return rhs.getTeacherRelationPK().getTchSemester().compareTo(lhs.getTeacherRelationPK().getTchSemester());  // Descending order
+                };
+                registerTeacherModellist.sort(monthComparator);
+                  RegisterTeacherModel listTeacherResponse = new RegisterTeacherModel();
+                for (RegisterTeacherModel putuser : registerTeacherModellist) {
+                    listTeacherResponse=putuser;
+                    break;
+                }
 
-            String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/downloadFile/")
-                    .path(newFileName)
-                    .toUriString();
-            listTeacherResponse.setTchPicUrl(fileDownLoadUrL);
-            repo.save(listTeacherResponse);
+                String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/downloadFile/")
+                        .path(newFileName)
+                        .toUriString();
+                listTeacherResponse.setTchPicUrl(fileDownLoadUrL);
+                repo.save(listTeacherResponse);
 
             System.out.println("newFileName"+newFileName);
             return newFileName;
@@ -234,5 +235,19 @@ public class TeacherService {
         }
         return listTeacherResponse;
     }
+    public String getRandomStr() {
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
 
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+        System.out.println(generatedString);
+        return generatedString;
+    }
 }

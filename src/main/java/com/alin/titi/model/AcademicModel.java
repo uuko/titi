@@ -16,8 +16,8 @@ public class AcademicModel {
     private Date eveStratDate;
     private Date eveStopDate;
     private String eveSort;
-    private Integer eveHours;
-    private Integer eveStudyCertificate;
+    private String eveHours;
+    private String eveStudyCertificate;
     private String eveCertificateNumber;
     private String eveSchSubsidy;
 
@@ -29,6 +29,27 @@ public class AcademicModel {
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
+
+
+    private String eveOrganizer;
+
+    private String  eveParticimainPation;
+    public String geteveParticimainPation() {
+        return  eveParticimainPation;
+    }
+
+    public void seteveParticimainPation(String  eveParticimainPation) {
+        this.eveParticimainPation=eveParticimainPation;
+    }
+
+
+    public String geteveOrganizer() {
+        return eveOrganizer;
+    }
+
+    public void seteveOrganizer(String eveOrganizer) {
+        this.eveOrganizer = eveOrganizer;
+    }
 
     public String getEveSort() {
         return eveSort;
@@ -112,19 +133,19 @@ public class AcademicModel {
 
 
 
-    public Integer getEveHours() {
+    public String getEveHours() {
         return eveHours;
     }
 
-    public void setEveHours(Integer eveHours) {
+    public void setEveHours(String eveHours) {
         this.eveHours = eveHours;
     }
 
-    public Integer getEveStudyCertificate() {
+    public String getEveStudyCertificate() {
         return eveStudyCertificate;
     }
 
-    public void setEveStudyCertificate(Integer eveStudyCertificate) {
+    public void setEveStudyCertificate(String eveStudyCertificate) {
         this.eveStudyCertificate = eveStudyCertificate;
     }
 

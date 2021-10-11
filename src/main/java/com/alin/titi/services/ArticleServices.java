@@ -1,7 +1,9 @@
 package com.alin.titi.services;
 
 import com.alin.titi.Config;
+import com.alin.titi.model.ArticleTagResponse;
 import com.alin.titi.model.announce.*;
+import com.alin.titi.model.api.request.BannerRequest;
 import com.alin.titi.model.articalpic.ArticlePicModel;
 import com.alin.titi.model.articalpic.ArticlePicResponse;
 import com.alin.titi.model.articalpic.BannerAllResponse;
@@ -170,10 +172,47 @@ public class ArticleServices {
        return "ok";
     }
 
+
+    public String updateBanner(BannerRequest request){
+        List<ArticlePicModel> bannerList=picRepository.findByBanner(true);
+        if (! (bannerList.size()>=bannerUpperLimit)){
+            ArticlePicModel checkIfRepeat=picRepository.findByPicUrl(request.getPicUrl());
+            if (checkIfRepeat!=null){
+                checkIfRepeat.setBanner(request.isBanner());
+                picRepository.save(checkIfRepeat);
+                return "ok";
+            }
+            else {
+                return "picUrl can't find";
+            }
+        }
+        else {
+            return "banner size > limit size :   "+bannerUpperLimit;
+        }
+
+    }
+
     /**
      *  article
      * */
 
+    public List<ArticleTagResponse> getArticleAllTags(){
+        List<ArticleModel> list=articleRepository.findAll();
+        List<String> tagStringList=new ArrayList<>();
+        List<ArticleTagResponse> tagResponseList=new ArrayList<>();
+        for (ArticleModel model:list){
+            if (!tagStringList.contains(model.getArticleTag())){
+                tagStringList.add(model.getArticleTag());
+            }
+        }
+
+        for (String tag:tagStringList){
+            tagResponseList.add(new ArticleTagResponse(tag));
+        }
+
+        return tagResponseList;
+
+    }
     public String  saveArticle(ArticleRequest request){
         try {
             if (request.getBannerUrl().length()>0){
