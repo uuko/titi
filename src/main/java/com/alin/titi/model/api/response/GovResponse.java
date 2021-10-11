@@ -13,7 +13,7 @@ public class GovResponse {
     private String govProjectName;
     private String govProjectType;
     private String govProjectNature;
-    private Date govOthAmount ;
+    private String govOthAmount ;
     private String govJobType;
 
     private String govProjectAmount;
@@ -30,7 +30,16 @@ public class GovResponse {
     private String govUnitName;
 
 
-    private boolean govToOth;
+    private String govToOth;
+    private Date govED;
+
+    public Date getGovED() {
+        return govED;
+    }
+
+    public void setGovED(Date govED) {
+        this.govED = govED;
+    }
 
     //
     private boolean ispublic=false;
@@ -108,11 +117,11 @@ public class GovResponse {
         this.govProjectNature = govProjectNature;
     }
 
-    public Date getgovOthAmount () {
+    public String getgovOthAmount () {
         return govOthAmount ;
     }
 
-    public void setgovOthAmount (Date govOthAmount ) {
+    public void setgovOthAmount (String govOthAmount ) {
         this.govOthAmount  = govOthAmount ;
     }
 
@@ -220,11 +229,11 @@ public class GovResponse {
         this.govUnitName = govUnitName;
     }
 
-    public boolean isGovToOth() {
+    public String isGovToOth() {
         return govToOth;
     }
 
-    public void setGovToOth(boolean govToOth) {
+    public void setGovToOth(String govToOth) {
         this.govToOth = govToOth;
     }
 

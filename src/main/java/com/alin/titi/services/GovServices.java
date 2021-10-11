@@ -41,6 +41,7 @@ public class GovServices {
         paperModel.setTchSemester(semester);
         paperModel.setTchYear(year);
         paperModel.setGovFD(postRequest.getGovFD());
+        paperModel.setGovED(postRequest.getGovED());
         paperModel.setGovYear(postRequest.getGovYear());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
         paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
@@ -82,6 +83,7 @@ public class GovServices {
         paperModel.setTchSemester(postRequest.getTchSemester());
         paperModel.setTchYear(postRequest.getTchYear());
         paperModel.setGovFD(postRequest.getGovFD());
+        paperModel.setGovED(postRequest.getGovED());
         paperModel.setGovYear(postRequest.getGovYear());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
         paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
@@ -123,6 +125,7 @@ public class GovServices {
             paperModel.setTchSemester(postRequest.getTchSemester());
             paperModel.setTchYear(postRequest.getTchYear());
             paperModel.setGovFD(postRequest.getGovFD());
+            paperModel.setGovED(postRequest.getGovED());
             paperModel.setGovYear(postRequest.getGovYear());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
             paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
@@ -179,6 +182,7 @@ public class GovServices {
             paperModel.setTchSemester(semester);
             paperModel.setTchYear(year);
             paperModel.setGovFD(postRequest.getGovFD());
+            paperModel.setGovED(postRequest.getGovED());
             paperModel.setGovYear(postRequest.getGovYear());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
             paperModel.setGovProbjectType(postRequest.getGovProbjectType());
