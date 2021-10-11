@@ -11,13 +11,13 @@ public class GovRequest {
     private String govProjectName;
     private String govProjectType;
     private String govProjectNature;
-    private Date govStdAllowance;
+    private Date govOthAmount ;
     private String govJobType;
 
     private String govProjectAmount;
-    private String govmain_govAmount;
-    private Integer govEntAmount;
-    private Integer govSchAmount;
+    private String govmainGovAmount;
+    private String govEntAmount;
+    private String govSchAmount;
     private String govMainfund;
     private String govSecAund;
     private String govMoneyState;
@@ -101,12 +101,12 @@ public class GovRequest {
         this.govProjectNature = govProjectNature;
     }
 
-    public Date getGovStdAllowance() {
-        return govStdAllowance;
+    public Date getgovOthAmount () {
+        return govOthAmount ;
     }
 
-    public void setGovStdAllowance(Date govStdAllowance) {
-        this.govStdAllowance = govStdAllowance;
+    public void setgovOthAmount (Date govOthAmount ) {
+        this.govOthAmount  = govOthAmount ;
     }
 
     public String getGovJobType() {
@@ -125,27 +125,27 @@ public class GovRequest {
         this.govProjectAmount = govProjectAmount;
     }
 
-    public String getGovmain_govAmount() {
-        return govmain_govAmount;
+    public String getGovmainGovAmount() {
+        return govmainGovAmount;
     }
 
-    public void setGovmain_govAmount(String govmain_govAmount) {
-        this.govmain_govAmount = govmain_govAmount;
+    public void setGovmainGovAmount(String govmainGovAmount) {
+        this.govmainGovAmount = govmainGovAmount;
     }
 
-    public Integer getGovEntAmount() {
+    public String getGovEntAmount() {
         return govEntAmount;
     }
 
-    public void setGovEntAmount(Integer govEntAmount) {
+    public void setGovEntAmount(String govEntAmount) {
         this.govEntAmount = govEntAmount;
     }
 
-    public Integer getGovSchAmount() {
+    public String getGovSchAmount() {
         return govSchAmount;
     }
 
-    public void setGovSchAmount(Integer govSchAmount) {
+    public void setGovSchAmount(String govSchAmount) {
         this.govSchAmount = govSchAmount;
     }
 
