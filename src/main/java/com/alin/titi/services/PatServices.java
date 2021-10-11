@@ -57,7 +57,7 @@ public class PatServices {
         patModel.setPatReportCode(postRequest.getPatReportCode());
         patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-        patModel.setPatType(postRequest.getPatmainPatentName());
+        patModel.setPatType(postRequest.getPatType());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
         //
         patModel.setPatProject(postRequest.getPatProject());
@@ -104,7 +104,7 @@ public class PatServices {
         patModel.setPatReportCode(postRequest.getPatReportCode());
         patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-        patModel.setPatType(postRequest.getPatmainPatentName());
+        patModel.setPatType(postRequest.getPatType());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
         //
         patModel.setPatProject(postRequest.getPatProject());
@@ -146,7 +146,7 @@ public class PatServices {
             patModel.setPatReportCode(postRequest.getPatReportCode());
             patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-            patModel.setPatType(postRequest.getPatmainPatentName());
+            patModel.setPatType(postRequest.getPatType());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
             //
             patModel.setPatProject(postRequest.getPatProject());
@@ -198,7 +198,7 @@ public class PatServices {
             patModel.setPatReportCode(postRequest.getPatReportCode());
             patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-            patModel.setPatType(postRequest.getPatmainPatentName());
+            patModel.setPatType(postRequest.getPatType());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
             //
             patModel.setPatProject(postRequest.getPatProject());
