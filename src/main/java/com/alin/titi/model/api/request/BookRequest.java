@@ -6,14 +6,14 @@ public class BookRequest {
 
     private Integer infYear;
     private String  infCategory;
-    private String  infWhemain_ther;
+    private String  infWhemainTher;
     private String  infName;
     private String  infAudit;
     private String  infLanguage;
     private String  infCoop;
     private String  infAuthorOrder;
-    private Integer  infPubmain_licYear;
-    private Integer  infPubmain_licMonth;
+    private String  infPubmainLicYear;
+    private String  infPubmainLicMonth;
     private String infPublishHouse;
 
     private String infISBN;
@@ -61,12 +61,12 @@ public class BookRequest {
         this.infCategory = infCategory;
     }
 
-    public String getInfWhemain_ther() {
-        return infWhemain_ther;
+    public String getInfWhemainTher() {
+        return infWhemainTher;
     }
 
-    public void setInfWhemain_ther(String infWhemain_ther) {
-        this.infWhemain_ther = infWhemain_ther;
+    public void setInfWhemainTher(String infWhemainTher) {
+        this.infWhemainTher = infWhemainTher;
     }
 
     public String getInfName() {
@@ -109,20 +109,20 @@ public class BookRequest {
         this.infAuthorOrder = infAuthorOrder;
     }
 
-    public Integer getInfPubmain_licYear() {
-        return infPubmain_licYear;
+    public String getInfPubmainLicYear() {
+        return infPubmainLicYear;
     }
 
-    public void setInfPubmain_licYear(Integer infPubmain_licYear) {
-        this.infPubmain_licYear = infPubmain_licYear;
+    public void setInfPubmainLicYear(String infPubmainLicYear) {
+        this.infPubmainLicYear = infPubmainLicYear;
     }
 
-    public Integer getInfPubmain_licMonth() {
-        return infPubmain_licMonth;
+    public String getInfPubmainLicMonth() {
+        return infPubmainLicMonth;
     }
 
-    public void setInfPubmain_licMonth(Integer infPubmain_licMonth) {
-        this.infPubmain_licMonth = infPubmain_licMonth;
+    public void setInfPubmainLicMonth(String infPubmainLicMonth) {
+        this.infPubmainLicMonth = infPubmainLicMonth;
     }
 
     public String getInfPublishHouse() {

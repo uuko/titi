@@ -7,7 +7,7 @@ public class LineTchinfOneResponse {
 
     //tchinf
     private String infName;
-    private Integer infPubmainLicYear;
+    private String infPubmainLicYear;
     private String infCategory;
     private String infAuthorOrder;
     private String infPublishHouse;
@@ -21,11 +21,11 @@ public class LineTchinfOneResponse {
         this.infName = infName;
     }
 
-    public Integer getInfPubmainLicYear() {
+    public String getInfPubmainLicYear() {
         return infPubmainLicYear;
     }
 
-    public void setInfPubmainLicYear(Integer infPubmainLicYear) {
+    public void setInfPubmainLicYear(String infPubmainLicYear) {
         this.infPubmainLicYear = infPubmainLicYear;
     }
 
