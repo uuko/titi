@@ -22,7 +22,7 @@ import java.util.List;
 public class TechController {
     @Autowired
     private TechServices techServices;
-    @PostMapping("/teacher/book/changeVisible")
+    @PostMapping("/teacher/tech/changeVisible")
     public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
         techServices.changeVisible(bookRequest);
     }
