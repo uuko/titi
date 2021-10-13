@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.api.request.AwardsPostRequest;
 import com.alin.titi.model.api.request.AwardsUpdateRequest;
@@ -23,6 +24,10 @@ public class AwardsController {
     @Autowired
     private AwardsServices awardsServices;
 
+    @PostMapping("/teacher/awards/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        awardsServices.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/awards")
     public void saveTeacherLicense(@RequestBody AwardsPostRequest paperPostRequest) {

@@ -1,5 +1,6 @@
 package com.alin.titi.services;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.BookModel;
 import com.alin.titi.model.api.request.BookRequest;
@@ -13,6 +14,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,6 +22,12 @@ public class BookServices {
 
     @Autowired
     private BookRepository repo;
+
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<BookModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
+
 
     public void addBookData(BookRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;

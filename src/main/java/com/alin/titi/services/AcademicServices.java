@@ -1,8 +1,6 @@
 package com.alin.titi.services;
 
-import com.alin.titi.model.AcademicModel;
-import com.alin.titi.model.LoginModel;
-import com.alin.titi.model.OneDashTwoModel;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.AcademicPostRequest;
 import com.alin.titi.model.api.request.AcademicRequest;
 import com.alin.titi.model.api.request.OneDashTwoPostRquest;
@@ -15,16 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
 public class AcademicServices {
     @Autowired
     private AcademicRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<AcademicModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     public void addAcademicData(AcademicRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;

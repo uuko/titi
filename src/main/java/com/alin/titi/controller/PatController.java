@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.api.request.PatPostRequest;
 import com.alin.titi.model.api.request.PatUpdateRequest;
@@ -17,7 +18,10 @@ public class PatController {
     //api宣告
     @Autowired
     private PatServices patServices;
-
+    @PostMapping("/teacher/pat/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        patServices.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/pat")
     public void saveTeacherLicense(@RequestBody PatPostRequest patPostRequest) {

@@ -1,8 +1,6 @@
 package com.alin.titi.services;
 
-import com.alin.titi.model.LicenseModel;
-import com.alin.titi.model.LoginModel;
-import com.alin.titi.model.PaperModel;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.LicenseRequest;
 import com.alin.titi.model.api.request.LicenseUpdateRequest;
 import com.alin.titi.model.api.request.PaperPostRequest;
@@ -17,12 +15,17 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 public class PaperServices {
     @Autowired
     private PaperRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<PaperModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     public void addPaperData(PaperPostRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;

@@ -1,9 +1,6 @@
 package com.alin.titi.controller;
 
-import com.alin.titi.model.LicenseModel;
-import com.alin.titi.model.RegisterBaseModel;
-import com.alin.titi.model.RegisterTeacherModel;
-import com.alin.titi.model.TeacherRelationPK;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.LicenseRequest;
 import com.alin.titi.model.api.request.LicenseUpdateRequest;
 import com.alin.titi.model.api.response.LicenseUpdateResponse;
@@ -23,7 +20,10 @@ import java.util.Optional;
 public class LicenseController {
     @Autowired
     private LicenseServices licenseServices;
-
+    @PostMapping("/teacher/license/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        licenseServices.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/license")
     public void saveTeacherLicense(@RequestBody LicenseRequest licenseRequest) {
