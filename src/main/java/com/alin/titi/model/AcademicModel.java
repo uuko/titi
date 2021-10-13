@@ -1,5 +1,9 @@
 package com.alin.titi.model;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,32 +12,36 @@ public class AcademicModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer eveNumber;
-    private String eveYear;
-    private String eveName;
-    private String eveCategory;
-    private String eveClassRelated;
-    private String eveLocation;
+    private String eveYear="";
+    private String eveName="";
+    private String eveCategory="";
+    private String eveClassRelated="";
+    private String eveLocation="";
+    @ColumnDefault(value="CURRENT_TIMESTAMP")
+    @Generated(GenerationTime.INSERT)
     private Date eveStratDate;
+    @ColumnDefault(value="CURRENT_TIMESTAMP")
+    @Generated(GenerationTime.INSERT)
     private Date eveStopDate;
-    private String eveSort;
-    private String eveHours;
-    private String eveStudyCertificate;
-    private String eveCertificateNumber;
-    private String eveSchSubsidy;
+    private String eveSort="";
+    private String eveHours="";
+    private String eveStudyCertificate="";
+    private String eveCertificateNumber="";
+    private String eveSchSubsidy="";
 
 
     private boolean open =false;
     //
-    private Integer tchYear;
-    private Integer tchSemester;
+    private Integer tchYear=0;
+    private Integer tchSemester=0;
     @ManyToOne
     @JoinColumn(name="id", nullable=false)
     private LoginModel loginModel ;
 
 
-    private String eveOrganizer;
+    private String eveOrganizer="";
 
-    private String  eveParticimainPation;
+    private String  eveParticimainPation="";
     public String geteveParticimainPation() {
         return  eveParticimainPation;
     }
