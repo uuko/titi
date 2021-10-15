@@ -66,6 +66,7 @@ public class TechChangeAllService {
         response.setTecContentPatent(model.getTecContentPatent());
         response.setTecTransfer(model.getTecTransfer());
         response.setTecTransferName(model.getTecTransferName());
+        response.setTecNumber(model.getTecNumber());
 
         List<TechChgRequest> list = new ArrayList<>(getInnerList(id));
         response.setTechChgeCompanyModelList(list);
