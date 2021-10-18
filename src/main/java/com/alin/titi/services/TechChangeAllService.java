@@ -22,6 +22,7 @@ public class TechChangeAllService {
 
     @Autowired
     private TechChangeRepository changeRepository;
+    private TechChgeCompanyRepo childRepository;
     public void  changeVisible(ChangeVisibleRequest request){
         Optional<TechChangeModel> model=changeRepository.findById(request.getId());
         model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
@@ -105,6 +106,8 @@ public class TechChangeAllService {
     }
     public void deleteOne(TechChgDeleteRequest request){
         TechChangeModel model=changeRepository.findByTecId(request.getId());
+        List<TechChgeCompanyModel> childmModel = childRepository.findByTechChangeModel(model);
+        childRepository.deleteAll(childmModel);
         changeRepository.delete(model);
     }
 
