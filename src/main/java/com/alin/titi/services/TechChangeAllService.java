@@ -107,7 +107,12 @@ public class TechChangeAllService {
     public void deleteOne(TechChgDeleteRequest request){
         TechChangeModel model=changeRepository.findByTecId(request.getId());
         List<TechChgeCompanyModel> childmModel = childRepository.findByTechChangeModel(model);
-        childRepository.deleteAll(childmModel);
+        for ( TechChgeCompanyModel apple:
+        childmModel) {
+
+            childRepository.delete(apple);
+        }
+
         changeRepository.delete(model);
     }
 
