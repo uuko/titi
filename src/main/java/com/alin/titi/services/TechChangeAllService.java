@@ -105,11 +105,11 @@ public class TechChangeAllService {
     }
     public void deleteOne(TechChgDeleteRequest request){
         TechChangeModel model=changeRepository.findByTecId(request.getId());
-        List<TechChgeCompanyModel> childmModel = repo.findByTechChangeModel(new TechChangeModel(request.getId()));
-        for ( TechChgeCompanyModel apple:
-                childmModel) {
-            TechChgeCompanyModel aamodel=repo.findByTecCompanyId(apple.getTecCompanyId());
-            repo.delete(aamodel);
+        List<TechChgeCompanyModel> childmModelList = repo.findByTechChangeModel(new TechChangeModel(request.getId()));
+        for ( TechChgeCompanyModel child:
+                childmModelList) {
+            TechChgeCompanyModel childmodel=repo.findByTecCompanyId(child.getTecCompanyId());
+            repo.delete(childmodel);
         }
 
 
