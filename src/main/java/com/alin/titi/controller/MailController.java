@@ -87,7 +87,7 @@ public class MailController {
         String url = "http://localhost:8080" + "/teacher/changePassword?token=" + token;
         String message ="message.resetPassword"+String.valueOf(locale);
 
-        return constructEmail("Reset Password", message + " \r\n" + url, user);
+        return constructEmail("Reset Password", token + " \r\n" + url, user);
     }
 
     private SimpleMailMessage constructEmail(String subject, String body,
