@@ -1,15 +1,12 @@
 package com.alin.titi.controller;
 
-import com.alin.titi.model.LicenseModel;
-import com.alin.titi.model.RegisterBaseModel;
-import com.alin.titi.model.RegisterTeacherModel;
-import com.alin.titi.model.TeacherRelationPK;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.LicenseRequest;
 import com.alin.titi.model.api.request.LicenseUpdateRequest;
 import com.alin.titi.model.api.response.LicenseUpdateResponse;
 import com.alin.titi.services.LicenseServices;
 import com.alin.titi.services.LoginServices;
-import jdk.nashorn.internal.runtime.options.Option;
+//import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +20,14 @@ import java.util.Optional;
 public class LicenseController {
     @Autowired
     private LicenseServices licenseServices;
-
+    @PostMapping("/teacher/license/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        licenseServices.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/license")
     public void saveTeacherLicense(@RequestBody LicenseRequest licenseRequest) {
-       licenseServices.addLicenseData(licenseRequest);
+        licenseServices.addLicenseData(licenseRequest);
     }
 
     //update

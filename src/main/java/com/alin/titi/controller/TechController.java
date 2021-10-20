@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.api.request.PaperPostRequest;
 import com.alin.titi.model.api.request.PaperUpdateRequest;
@@ -21,7 +22,10 @@ import java.util.List;
 public class TechController {
     @Autowired
     private TechServices techServices;
-
+    @PostMapping("/teacher/tech/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        techServices.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/tech")
     public void saveTeacherLicense(@RequestBody TechRequest paperPostRequest) {

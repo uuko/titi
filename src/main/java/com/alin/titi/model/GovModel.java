@@ -11,19 +11,20 @@ public class GovModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer govId;
     private Date govFD;
+    private Date govED;
     private String govYear;
     private String govProbjectType;
     private String govProbjectNumber;
     private String govProjectName;
     private String govProjectType;
     private String govProjectNature;
-    private Date govStdAllowance;
+    private String govOthAmount ;
     private String govJobType;
 
     private String govProjectAmount;
-    private String govmain_govAmount;
-    private Integer govEntAmount;
-    private Integer govSchAmount;
+    private String govmainGovAmount;
+    private String govEntAmount;
+    private String govSchAmount;
     private String govMainfund;
     private String govSecAund;
     private String govMoneyState;
@@ -34,7 +35,7 @@ public class GovModel {
     private String govUnitName;
 
 
-    private boolean govToOth;
+    private String govToOth;
 
     //
 
@@ -69,6 +70,13 @@ public class GovModel {
 
     public void setGovFD(Date govFD) {
         this.govFD = govFD;
+    }
+
+    public Date getGovED() {
+        return govED;
+    }
+    public void setGovED(Date govED) {
+        this.govED = govED;
     }
 
     public String getGovYear() {
@@ -119,12 +127,12 @@ public class GovModel {
         this.govProjectNature = govProjectNature;
     }
 
-    public Date getGovStdAllowance() {
-        return govStdAllowance;
+    public String getgovOthAmount () {
+        return govOthAmount ;
     }
 
-    public void setGovStdAllowance(Date govStdAllowance) {
-        this.govStdAllowance = govStdAllowance;
+    public void setgovOthAmount (String govOthAmount ) {
+        this.govOthAmount  = govOthAmount ;
     }
 
     public String getGovJobType() {
@@ -143,27 +151,27 @@ public class GovModel {
         this.govProjectAmount = govProjectAmount;
     }
 
-    public String getGovmain_govAmount() {
-        return govmain_govAmount;
+    public String getGovmainGovAmount() {
+        return govmainGovAmount;
     }
 
-    public void setGovmain_govAmount(String govmain_govAmount) {
-        this.govmain_govAmount = govmain_govAmount;
+    public void setGovmainGovAmount(String govmainGovAmount) {
+        this.govmainGovAmount = govmainGovAmount;
     }
 
-    public Integer getGovEntAmount() {
+    public String getGovEntAmount() {
         return govEntAmount;
     }
 
-    public void setGovEntAmount(Integer govEntAmount) {
+    public void setGovEntAmount(String govEntAmount) {
         this.govEntAmount = govEntAmount;
     }
 
-    public Integer getGovSchAmount() {
+    public String getGovSchAmount() {
         return govSchAmount;
     }
 
-    public void setGovSchAmount(Integer govSchAmount) {
+    public void setGovSchAmount(String govSchAmount) {
         this.govSchAmount = govSchAmount;
     }
 
@@ -186,11 +194,11 @@ public class GovModel {
     public String getGovMoneyState() {
         return govMoneyState;
     }
-    public boolean isGovToOth() {
+    public String isGovToOth() {
         return govToOth;
     }
 
-    public void setGovToOth(boolean govToOth) {
+    public void setGovToOth(String govToOth) {
         this.govToOth = govToOth;
     }
 

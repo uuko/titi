@@ -1,5 +1,7 @@
 package com.alin.titi.services;
 
+import com.alin.titi.model.BookModel;
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.ProModel;
 import com.alin.titi.model.api.request.ProPostRequest;
 import com.alin.titi.model.api.request.ProUpdateRequest;
@@ -15,6 +17,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,6 +25,10 @@ public class ProServices {
     //實現方法
     @Autowired
     private ProRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<ProModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     //純粹儲存
     public void addAwardsData(ProPostRequest postRequest){

@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.api.request.ProPostRequest;
 import com.alin.titi.model.api.request.ProUpdateRequest;
@@ -17,7 +18,10 @@ public class ProController {
     //api宣告
     @Autowired
     private ProServices proServices;
-
+    @PostMapping("/teacher/pro/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        proServices.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/pro")
     public void saveTeacherLicense(@RequestBody ProPostRequest proPostRequest) {

@@ -167,7 +167,7 @@ public class TeacherLineServices {
             bookModel.setInfAuthorOrder(postRequest.getInfAuthorOrder());
             bookModel.setInfName(postRequest.getInfName());
             bookModel.setInfPublishHouse(postRequest.getInfPublishHouse());
-            bookModel.setInfPubmainLicYear(postRequest.getInfPubmain_licYear());
+            bookModel.setInfPubmainLicYear(postRequest.getInfPubmainLicYear());
 
             TchinfResponseList.add(bookModel);
         }

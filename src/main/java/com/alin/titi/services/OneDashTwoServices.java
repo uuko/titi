@@ -1,8 +1,6 @@
 package com.alin.titi.services;
 
-import com.alin.titi.model.GovModel;
-import com.alin.titi.model.LoginModel;
-import com.alin.titi.model.OneDashTwoModel;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.GovPostRequest;
 import com.alin.titi.model.api.request.GovRequest;
 import com.alin.titi.model.api.request.OneDashTwoPostRquest;
@@ -15,16 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
 public class OneDashTwoServices {
     @Autowired
     private OneDashTwoRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<OneDashTwoModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     public void addOneDashTwoData(OneDashTwoRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;

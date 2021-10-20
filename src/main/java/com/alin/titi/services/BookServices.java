@@ -1,5 +1,6 @@
 package com.alin.titi.services;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.BookModel;
 import com.alin.titi.model.api.request.BookRequest;
@@ -13,6 +14,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,6 +22,12 @@ public class BookServices {
 
     @Autowired
     private BookRepository repo;
+
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<BookModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
+
 
     public void addBookData(BookRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
@@ -39,15 +47,16 @@ public class BookServices {
         paperModel.setInfYear(postRequest.getInfYear());
         paperModel.setInfCategory(postRequest.getInfCategory());
         paperModel.setInfAudit(postRequest.getInfAudit());
-        paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
+        paperModel.setInfWhemainTher(postRequest.getInfWhemainTher());
         paperModel.setInfAudit(postRequest.getInfAudit());
         paperModel.setInfName(postRequest.getInfName());
+        paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
         paperModel.setInfLanguage(postRequest.getInfLanguage());
         paperModel.setInfCoop(postRequest.getInfCoop());
         paperModel.setInfPublishHouse(postRequest.getInfPublishHouse());
         paperModel.setInfAuthorOrder(postRequest.getInfAuthorOrder());
-        paperModel.setInfPubmain_licMonth(postRequest.getInfPubmain_licMonth());
-        paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
+        paperModel.setInfPubmainLicMonth(postRequest.getInfPubmainLicMonth());
+        paperModel.setInfPubmainLicYear(postRequest.getInfPubmainLicYear());
         paperModel.setInfISBN(postRequest.getInfISBN());
         paperModel.setInfPlan(postRequest.getInfPlan());
         paperModel.setOpen(postRequest.ispublic());
@@ -70,15 +79,16 @@ public class BookServices {
 
         paperModel.setInfYear(postRequest.getInfYear());
         paperModel.setInfCategory(postRequest.getInfCategory());
-        paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
+        paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
+        paperModel.setInfWhemainTher(postRequest.getInfWhemainTher());
         paperModel.setInfAudit(postRequest.getInfAudit());
         paperModel.setInfName(postRequest.getInfName());
         paperModel.setInfLanguage(postRequest.getInfLanguage());
         paperModel.setInfCoop(postRequest.getInfCoop());
         paperModel.setInfPublishHouse(postRequest.getInfPublishHouse());
         paperModel.setInfAuthorOrder(postRequest.getInfAuthorOrder());
-        paperModel.setInfPubmain_licMonth(postRequest.getInfPubmain_licMonth());
-        paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
+        paperModel.setInfPubmainLicMonth(postRequest.getInfPubmainLicMonth());
+        paperModel.setInfPubmainLicYear(postRequest.getInfPubmainLicYear());
         paperModel.setInfISBN(postRequest.getInfISBN());
         paperModel.setInfPlan(postRequest.getInfPlan());
         paperModel.setpublic(postRequest.isOpen());
@@ -98,15 +108,16 @@ public class BookServices {
 
             paperModel.setInfYear(postRequest.getInfYear());
             paperModel.setInfCategory(postRequest.getInfCategory());
-            paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
+            paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
+            paperModel.setInfWhemainTher(postRequest.getInfWhemainTher());
             paperModel.setInfAudit(postRequest.getInfAudit());
             paperModel.setInfName(postRequest.getInfName());
             paperModel.setInfLanguage(postRequest.getInfLanguage());
             paperModel.setInfCoop(postRequest.getInfCoop());
             paperModel.setInfPublishHouse(postRequest.getInfPublishHouse());
             paperModel.setInfAuthorOrder(postRequest.getInfAuthorOrder());
-            paperModel.setInfPubmain_licMonth(postRequest.getInfPubmain_licMonth());
-            paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
+            paperModel.setInfPubmainLicMonth(postRequest.getInfPubmainLicMonth());
+            paperModel.setInfPubmainLicYear(postRequest.getInfPubmainLicYear());
             paperModel.setInfISBN(postRequest.getInfISBN());
             paperModel.setInfPlan(postRequest.getInfPlan());
             paperModel.setpublic(postRequest.isOpen());
@@ -137,18 +148,18 @@ public class BookServices {
             paperModel.setTchYear(year);
             paperModel.setLoginModel(paperModel.getLoginModel());
             paperModel.setInfNumber(postRequest.getInfNumber());
-
+            paperModel.setinfCorreAuthor(postRequest.getinfCorreAuthor());
             paperModel.setInfYear(postRequest.getInfYear());
             paperModel.setInfCategory(postRequest.getInfCategory());
-            paperModel.setInfWhemain_ther(postRequest.getInfWhemain_ther());
+            paperModel.setInfWhemainTher(postRequest.getInfWhemainTher());
             paperModel.setInfAudit(postRequest.getInfAudit());
             paperModel.setInfName(postRequest.getInfName());
             paperModel.setInfLanguage(postRequest.getInfLanguage());
             paperModel.setInfCoop(postRequest.getInfCoop());
             paperModel.setInfPublishHouse(postRequest.getInfPublishHouse());
             paperModel.setInfAuthorOrder(postRequest.getInfAuthorOrder());
-            paperModel.setInfPubmain_licMonth(postRequest.getInfPubmain_licMonth());
-            paperModel.setInfPubmain_licYear(postRequest.getInfPubmain_licYear());
+            paperModel.setInfPubmainLicMonth(postRequest.getInfPubmainLicMonth());
+            paperModel.setInfPubmainLicYear(postRequest.getInfPubmainLicYear());
             paperModel.setInfISBN(postRequest.getInfISBN());
             paperModel.setInfPlan(postRequest.getInfPlan());
             paperModel.setOpen(postRequest.ispublic());

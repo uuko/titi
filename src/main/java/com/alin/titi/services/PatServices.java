@@ -1,5 +1,7 @@
 package com.alin.titi.services;
 
+import com.alin.titi.model.BookModel;
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.PatModel;
 import com.alin.titi.model.api.response.PatUpdateResponse;
 
@@ -15,6 +17,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,6 +25,10 @@ public class PatServices {
     //實現方法
     @Autowired
     private PatRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<PatModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     //純粹儲存
     public void addAwardsData(PatPostRequest postRequest){
@@ -57,7 +64,7 @@ public class PatServices {
         patModel.setPatReportCode(postRequest.getPatReportCode());
         patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-        patModel.setPatType(postRequest.getPatmainPatentName());
+        patModel.setPatType(postRequest.getPatType());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
         //
         patModel.setPatProject(postRequest.getPatProject());
@@ -104,7 +111,7 @@ public class PatServices {
         patModel.setPatReportCode(postRequest.getPatReportCode());
         patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
         patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-        patModel.setPatType(postRequest.getPatmainPatentName());
+        patModel.setPatType(postRequest.getPatType());
         patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
         //
         patModel.setPatProject(postRequest.getPatProject());
@@ -146,7 +153,7 @@ public class PatServices {
             patModel.setPatReportCode(postRequest.getPatReportCode());
             patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-            patModel.setPatType(postRequest.getPatmainPatentName());
+            patModel.setPatType(postRequest.getPatType());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
             //
             patModel.setPatProject(postRequest.getPatProject());
@@ -198,7 +205,7 @@ public class PatServices {
             patModel.setPatReportCode(postRequest.getPatReportCode());
             patModel.setPatProgressStatus(postRequest.getPatProgressStatus());
             patModel.setPatmainPatentName(postRequest.getPatmainPatentName());
-            patModel.setPatType(postRequest.getPatmainPatentName());
+            patModel.setPatType(postRequest.getPatType());
             patModel.setPatmainLicensingAgency(postRequest.getPatmainLicensingAgency());
             //
             patModel.setPatProject(postRequest.getPatProject());

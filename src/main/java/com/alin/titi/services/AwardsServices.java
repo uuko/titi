@@ -1,7 +1,6 @@
 package com.alin.titi.services;
 
-import com.alin.titi.model.AwardsModel;
-import com.alin.titi.model.LoginModel;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.AwardsUpdateRequest;
 import com.alin.titi.model.api.response.AwardsUpdateResponse;
 import com.alin.titi.model.AwardsModel;
@@ -18,6 +17,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,6 +25,10 @@ public class AwardsServices {
     //實現方法
     @Autowired
     private AwardsRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<AwardsModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     //純粹儲存
     public void addAwardsData(AwardsPostRequest postRequest){

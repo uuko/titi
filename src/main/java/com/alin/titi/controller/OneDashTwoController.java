@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.api.request.GovPostRequest;
 import com.alin.titi.model.api.request.GovRequest;
@@ -19,7 +20,10 @@ import java.util.List;
 public class OneDashTwoController {
     @Autowired
     private OneDashTwoServices services;
-
+    @PostMapping("/teacher/one_dash_two/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        services.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/one_dash_two")
     public void saveTeacherLicense(@RequestBody OneDashTwoRequest paperPostRequest) {

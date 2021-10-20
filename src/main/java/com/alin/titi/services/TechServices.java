@@ -1,8 +1,6 @@
 package com.alin.titi.services;
 
-import com.alin.titi.model.LoginModel;
-import com.alin.titi.model.PaperModel;
-import com.alin.titi.model.TechModel;
+import com.alin.titi.model.*;
 import com.alin.titi.model.api.request.PaperPostRequest;
 import com.alin.titi.model.api.request.PaperUpdateRequest;
 import com.alin.titi.model.api.request.TechRequest;
@@ -15,16 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
 public class TechServices {
     @Autowired
     private TechRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<TechModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     public void addTechData(TechRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;

@@ -1,6 +1,7 @@
 package com.alin.titi.services;
 
 import com.alin.titi.model.BookModel;
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.GovModel;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.api.request.BookRequest;
@@ -15,16 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
 public class GovServices {
     @Autowired
     private GovRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<GovModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     public void addGovData(GovRequest postRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
@@ -41,15 +43,16 @@ public class GovServices {
         paperModel.setTchSemester(semester);
         paperModel.setTchYear(year);
         paperModel.setGovFD(postRequest.getGovFD());
+        paperModel.setGovED(postRequest.getGovED());
         paperModel.setGovYear(postRequest.getGovYear());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
         paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
         paperModel.setGovProjectNature(postRequest.getGovProjectNature());
         paperModel.setGovProjectName(postRequest.getGovProjectName());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-        paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
+        paperModel.setgovOthAmount (postRequest.getgovOthAmount ());
         paperModel.setGovJobType(postRequest.getGovJobType());
-        paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
+        paperModel.setGovmainGovAmount(postRequest.getGovmainGovAmount());
         paperModel.setGovEntAmount(postRequest.getGovEntAmount());
         paperModel.setGovSchAmount(postRequest.getGovSchAmount());
         paperModel.setGovMainfund(postRequest.getGovMainfund());
@@ -82,15 +85,16 @@ public class GovServices {
         paperModel.setTchSemester(postRequest.getTchSemester());
         paperModel.setTchYear(postRequest.getTchYear());
         paperModel.setGovFD(postRequest.getGovFD());
+        paperModel.setGovED(postRequest.getGovED());
         paperModel.setGovYear(postRequest.getGovYear());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
         paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
         paperModel.setGovProjectNature(postRequest.getGovProjectNature());
         paperModel.setGovProjectName(postRequest.getGovProjectName());
         paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-        paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
+        paperModel.setgovOthAmount (postRequest.getgovOthAmount ());
         paperModel.setGovJobType(postRequest.getGovJobType());
-        paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
+        paperModel.setGovmainGovAmount(postRequest.getGovmainGovAmount());
         paperModel.setGovEntAmount(postRequest.getGovEntAmount());
         paperModel.setGovSchAmount(postRequest.getGovSchAmount());
         paperModel.setGovMainfund(postRequest.getGovMainfund());
@@ -123,15 +127,16 @@ public class GovServices {
             paperModel.setTchSemester(postRequest.getTchSemester());
             paperModel.setTchYear(postRequest.getTchYear());
             paperModel.setGovFD(postRequest.getGovFD());
+            paperModel.setGovED(postRequest.getGovED());
             paperModel.setGovYear(postRequest.getGovYear());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
             paperModel.setGovProjectAmount(postRequest.getGovProjectAmount());
             paperModel.setGovProjectNature(postRequest.getGovProjectNature());
             paperModel.setGovProjectName(postRequest.getGovProjectName());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
-            paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
+            paperModel.setgovOthAmount (postRequest.getgovOthAmount ());
             paperModel.setGovJobType(postRequest.getGovJobType());
-            paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
+            paperModel.setGovmainGovAmount(postRequest.getGovmainGovAmount());
             paperModel.setGovEntAmount(postRequest.getGovEntAmount());
             paperModel.setGovSchAmount(postRequest.getGovSchAmount());
             paperModel.setGovMainfund(postRequest.getGovMainfund());
@@ -179,6 +184,7 @@ public class GovServices {
             paperModel.setTchSemester(semester);
             paperModel.setTchYear(year);
             paperModel.setGovFD(postRequest.getGovFD());
+            paperModel.setGovED(postRequest.getGovED());
             paperModel.setGovYear(postRequest.getGovYear());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
             paperModel.setGovProbjectType(postRequest.getGovProbjectType());
@@ -187,9 +193,9 @@ public class GovServices {
             paperModel.setGovProjectName(postRequest.getGovProjectName());
             paperModel.setGovProbjectNumber(postRequest.getGovProbjectNumber());
             paperModel.setGovProbjectType(postRequest.getGovProbjectType());
-            paperModel.setGovStdAllowance(postRequest.getGovStdAllowance());
+            paperModel.setgovOthAmount (postRequest.getgovOthAmount ());
             paperModel.setGovJobType(postRequest.getGovJobType());
-            paperModel.setGovmain_govAmount(postRequest.getGovmain_govAmount());
+            paperModel.setGovmainGovAmount(postRequest.getGovmainGovAmount());
             paperModel.setGovEntAmount(postRequest.getGovEntAmount());
             paperModel.setGovSchAmount(postRequest.getGovSchAmount());
             paperModel.setGovMainfund(postRequest.getGovMainfund());

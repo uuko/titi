@@ -1,5 +1,7 @@
 package com.alin.titi.services;
 
+import com.alin.titi.model.BookModel;
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.LicenseModel;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.api.request.LicenseRequest;
@@ -20,6 +22,10 @@ import java.util.Optional;
 public class LicenseServices {
     @Autowired
     private LicenseRepository repo;
+    public void  changeVisible(ChangeVisibleRequest request){
+        Optional<LicenseModel> model=repo.findById(request.getId());
+        model.ifPresent(bookModel -> bookModel.setOpen(request.isVisible()));
+    }
 
     public void addLicenseData(LicenseRequest licenseRequest){
         int year = Calendar.getInstance().get(Calendar.YEAR)-1911;

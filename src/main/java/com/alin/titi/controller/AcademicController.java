@@ -1,5 +1,6 @@
 package com.alin.titi.controller;
 
+import com.alin.titi.model.ChangeVisibleRequest;
 import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.api.request.AcademicPostRequest;
 import com.alin.titi.model.api.request.AcademicRequest;
@@ -20,7 +21,10 @@ import java.util.List;
 public class AcademicController {
     @Autowired
     private AcademicServices services;
-
+    @PostMapping("/teacher/acad/changeVisible")
+    public void changeVisible(@RequestBody ChangeVisibleRequest bookRequest) {
+        services.changeVisible(bookRequest);
+    }
     //post
     @PostMapping("/teacher/acad")
     public void saveTeacherLicense(@RequestBody AcademicRequest paperPostRequest) {
