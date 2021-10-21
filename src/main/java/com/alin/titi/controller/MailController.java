@@ -54,7 +54,9 @@ public class MailController {
         String result = loginServices.validatePasswordResetToken(token);
         if(result.equals("ok")) {
 
-            return "ok"+"<script language=\"javascript\">document.location.href=\"http://localhost/aaa.html?token="+token+"\";</script>\n";
+//            return "ok"+"<script language=\"javascript\">document.location.href=\"http://localhost/aaa.html?token="+token+"\";</script>\n";
+
+            return "ok";
 
         } else { ;
             return result+" :error";
