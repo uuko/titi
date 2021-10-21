@@ -28,7 +28,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -70,6 +72,11 @@ public class ArticleServices {
             //1. 若公告不存在則新增公告
             if (!isExist){
                ArticleModel articleModel=new ArticleModel();
+               articleModel.setArticleTag("O");
+               articleModel.setArticleTitle("");
+               articleModel.setArticleContent("");
+               Date date = new Date(System.currentTimeMillis());
+               articleModel.setModifyDate(date);
                endModel =articleRepository.saveAndFlush(articleModel);
                System.out.println("Article ID :" + endModel.getArticleId());
             }
