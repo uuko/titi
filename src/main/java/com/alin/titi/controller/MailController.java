@@ -4,10 +4,12 @@ import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.PasswordResetToken;
 import com.alin.titi.model.api.request.PasswordDto;
 import com.alin.titi.model.api.response.GenericResponse;
+import com.alin.titi.model.base.BaseResponse;
 import com.alin.titi.services.LoginServices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
@@ -50,16 +52,14 @@ public class MailController {
     }
 
     @GetMapping("/teacher/changePassword")
-    public String showChangePasswordPage(@RequestParam("token") String token) {
+    public ResponseEntity<?> showChangePasswordPage(@RequestParam("token") String token) {
         String result = loginServices.validatePasswordResetToken(token);
         if(result.equals("ok")) {
 
-//            return "ok"+"<script language=\"javascript\">document.location.href=\"http://localhost/aaa.html?token="+token+"\";</script>\n";
-
-            return "ok";
+            return ResponseEntity.ok("ok");
 
         } else { ;
-            return result+" :error";
+            return ResponseEntity.badRequest().body(new BaseResponse("error"));
         }
     }
 
@@ -89,7 +89,7 @@ public class MailController {
         String url = "http://localhost:8080" + "/teacher/changePassword?token=" + token;
         String message ="message.resetPassword"+String.valueOf(locale);
 
-        return constructEmail("Reset Password", message + " \r\n" + url, user);
+        return constructEmail("Reset Password", token + " \r\n" + url, user);
     }
 
     private SimpleMailMessage constructEmail(String subject, String body,
