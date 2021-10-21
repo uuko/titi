@@ -16,7 +16,18 @@ public class TechgAllResponse {
     private String tecTransfer="";
     private String tecTransferName="" ;
     private String tecContentPatent ="" ;
+    private String tecNumber = "";
     private List<TechChgRequest> techChgeCompanyModelList=new ArrayList<>();
+
+
+    public String getTecNumber() {
+        return tecNumber;
+    }
+
+    public void setTecNumber(String tecNumber) {
+        this.tecNumber = tecNumber;
+    }
+
     public Integer getTecId() {
         return tecId;
     }

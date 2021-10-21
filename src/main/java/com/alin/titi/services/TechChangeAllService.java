@@ -66,6 +66,7 @@ public class TechChangeAllService {
         response.setTecContentPatent(model.getTecContentPatent());
         response.setTecTransfer(model.getTecTransfer());
         response.setTecTransferName(model.getTecTransferName());
+        response.setTecNumber(model.getTecNumber());
 
         List<TechChgRequest> list = new ArrayList<>(getInnerList(id));
         response.setTechChgeCompanyModelList(list);
@@ -104,6 +105,15 @@ public class TechChangeAllService {
     }
     public void deleteOne(TechChgDeleteRequest request){
         TechChangeModel model=changeRepository.findByTecId(request.getId());
+        List<TechChgeCompanyModel> childmModelList = repo.findByTechChangeModel(new TechChangeModel(request.getId()));
+        for ( TechChgeCompanyModel child:
+                childmModelList) {
+            TechChgeCompanyModel childmodel=repo.findByTecCompanyId(child.getTecCompanyId());
+            repo.delete(childmodel);
+        }
+
+
+
         changeRepository.delete(model);
     }
 
