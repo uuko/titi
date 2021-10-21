@@ -72,9 +72,10 @@ public class ArticleServices {
             //1. 若公告不存在則新增公告
             if (!isExist){
                ArticleModel articleModel=new ArticleModel();
-               articleModel.setArticleTag("O");
+               articleModel.setArticleTag("");
                articleModel.setArticleTitle("");
                articleModel.setArticleContent("");
+               articleModel.setArticleImportant("U");
                Date date = new Date(System.currentTimeMillis());
                articleModel.setModifyDate(date);
                endModel =articleRepository.saveAndFlush(articleModel);
