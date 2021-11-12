@@ -29,7 +29,7 @@ public class TeacherController {
     @GetMapping("/teacher/photo/{tchNumber}")
     public ResponseEntity<?> getTeacherBaseData(Integer tchNumber){
         TeacherBaseData data= service.getTeacherBaseData(tchNumber);
-        return ResponseEntity.ok( service.getTeacherBaseData(tchNumber));
+        return ResponseEntity.ok(data);
     }
 
     @GetMapping("/teacher/list")

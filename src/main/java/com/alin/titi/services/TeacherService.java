@@ -38,6 +38,7 @@ public class TeacherService {
     private TeacherRepository techer_repo;
     public TeacherBaseData getTeacherBaseData(Integer id){
         List<RegisterTeacherModel> list= techer_repo.findAllByTeacherRelationPKTchNumber(id);
+        System.out.println("bbbbbbbbbbbb: "+list.size());
         TeacherBaseData data=new TeacherBaseData();
         for(RegisterTeacherModel model:list){
             if (!model.getTchName().isEmpty()
