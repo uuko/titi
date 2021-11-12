@@ -2,6 +2,7 @@ package com.alin.titi.controller;
 
 import com.alin.titi.model.*;
 import com.alin.titi.model.api.response.ListTeacherResponse;
+import com.alin.titi.model.base.TeacherBaseData;
 import com.alin.titi.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -25,7 +26,11 @@ public class TeacherController {
 
     @Autowired
     private TeacherService service;
-
+    @GetMapping("/teacher/photo/{tchNumber}")
+    public ResponseEntity<?> getTeacherBaseData(Integer tchNumber){
+        TeacherBaseData data= service.getTeacherBaseData(tchNumber);
+        return ResponseEntity.ok( service.getTeacherBaseData(tchNumber));
+    }
 
     @GetMapping("/teacher/list")
     public ResponseEntity<?> list() {

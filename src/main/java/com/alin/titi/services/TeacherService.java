@@ -7,6 +7,7 @@ import com.alin.titi.model.RegisterTeacherModel;
 import com.alin.titi.model.TeacherRelationPK;
 import com.alin.titi.model.api.response.ListTeacherResponse;
 import com.alin.titi.model.api.response.TeacherLineAllResponse;
+import com.alin.titi.model.base.TeacherBaseData;
 import com.alin.titi.repository.LoginRepository;
 import com.alin.titi.repository.TeacherRepository;
 import io.swagger.models.auth.In;
@@ -33,7 +34,33 @@ public class TeacherService {
     private TeacherRepository repo;
     @Autowired
     private LoginRepository loginRepository;
+    @Autowired
+    private TeacherRepository techer_repo;
+    public TeacherBaseData getTeacherBaseData(Integer id){
+        List<RegisterTeacherModel> list= techer_repo.findAllByTeacherRelationPKTchNumber(id);
+        TeacherBaseData data=new TeacherBaseData();
+        for(RegisterTeacherModel model:list){
+            if (!model.getTchName().isEmpty()
+                && !model.getTchPicUrl().isEmpty()){
+                data.setPicUrl(model.getTchPicUrl());
+                data.setTchName(model.getTchName());
+                break;
+            }
+        }
+        if (data.getPicUrl().isEmpty()){
+            for(RegisterTeacherModel model:list){
+                if (!model.getTchName().isEmpty()
+                      ){
+                    data.setTchName(model.getTchName());
+                    break;
+                }
+            }
+        }
 
+        return data;
+
+
+    }
 
     public List<RegisterTeacherModel> listAll() {
         return repo.findAll();
