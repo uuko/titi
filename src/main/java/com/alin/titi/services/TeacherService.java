@@ -37,6 +37,8 @@ public class TeacherService {
     @Autowired
     private TeacherRepository techer_repo;
     public TeacherBaseData getTeacherBaseData(Integer id){
+        TeacherRelationPK tPk =new TeacherRelationPK();
+        tPk.setTchNumber(id);
         List<RegisterTeacherModel> list= techer_repo.findAllByTeacherRelationPKTchNumber(id);
         System.out.println("bbbbbbbbbbbb: "+list.size());
         TeacherBaseData data=new TeacherBaseData();

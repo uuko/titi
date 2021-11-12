@@ -27,7 +27,7 @@ public class TeacherController {
     @Autowired
     private TeacherService service;
     @GetMapping("/teacher/photo/{tchNumber}")
-    public ResponseEntity<?> getTeacherBaseData(Integer tchNumber){
+    public ResponseEntity<?> getTeacherBaseData(@PathVariable Integer tchNumber){
         TeacherBaseData data= service.getTeacherBaseData(tchNumber);
         return ResponseEntity.ok(data);
     }
