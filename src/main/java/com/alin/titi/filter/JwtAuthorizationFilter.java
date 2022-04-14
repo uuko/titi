@@ -60,11 +60,13 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
      */
     private String getTokenFromHttpRequest(HttpServletRequest request) {
         String authorization = request.getHeader(SecurityConstants.TOKEN_HEADER);
-        if (authorization == null || !authorization.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+//        || !authorization.startsWith(SecurityConstants.TOKEN_PREFIX)
+        if (authorization == null ) {
             return null;
         }
         // 去掉 token 前缀
-        return authorization.replace(SecurityConstants.TOKEN_PREFIX, "");
+//        return authorization.replace(SecurityConstants.TOKEN_PREFIX, "");
+        return authorization;
     }
 
 }
