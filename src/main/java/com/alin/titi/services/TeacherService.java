@@ -1,6 +1,7 @@
 package com.alin.titi.services;
 
 import com.alin.titi.Config;
+import com.alin.titi.exception.AlreadyExistsException;
 import com.alin.titi.model.LoginModel;
 import com.alin.titi.model.RegisterBaseModel;
 import com.alin.titi.model.RegisterTeacherModel;
@@ -14,6 +15,9 @@ import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,24 +40,27 @@ public class TeacherService {
     private LoginRepository loginRepository;
     @Autowired
     private TeacherRepository techer_repo;
-    public TeacherBaseData getTeacherBaseData(Integer id){
-        TeacherRelationPK tPk =new TeacherRelationPK();
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public TeacherBaseData getTeacherBaseData(Integer id) {
+        TeacherRelationPK tPk = new TeacherRelationPK();
         tPk.setTchNumber(id);
-        List<RegisterTeacherModel> list= techer_repo.findAllByTeacherRelationPKTchNumber(id);
-        System.out.println("bbbbbbbbbbbb: "+list.size());
-        TeacherBaseData data=new TeacherBaseData();
-        for(RegisterTeacherModel model:list){
+        List<RegisterTeacherModel> list = techer_repo.findAllByTeacherRelationPKTchNumber(id);
+        System.out.println("bbbbbbbbbbbb: " + list.size());
+        TeacherBaseData data = new TeacherBaseData();
+        for (RegisterTeacherModel model : list) {
             if (!model.getTchName().isEmpty()
-                && !model.getTchPicUrl().isEmpty()){
+                    && !model.getTchPicUrl().isEmpty()) {
                 data.setPicUrl(model.getTchPicUrl());
                 data.setTchName(model.getTchName());
                 break;
             }
         }
-        if (data.getPicUrl().isEmpty()){
-            for(RegisterTeacherModel model:list){
+        if (data.getPicUrl().isEmpty()) {
+            for (RegisterTeacherModel model : list) {
                 if (!model.getTchName().isEmpty()
-                      ){
+                ) {
                     data.setTchName(model.getTchName());
                     break;
                 }
@@ -68,44 +75,46 @@ public class TeacherService {
     public List<RegisterTeacherModel> listAll() {
         return repo.findAll();
     }
+
     public void registerAllTeacher(RegisterTeacherModel teacherModel) {
-        TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
+        TeacherRelationPK teacherRelationPK = new TeacherRelationPK();
+        int year = Calendar.getInstance().get(Calendar.YEAR) - 1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
-        int semester=0;
-        if (month<8 && month>1){
-            semester=1;
-        }
-        else {
-            semester=2;
+        int semester = 0;
+        if (month < 8 && month > 1) {
+            semester = 1;
+        } else {
+            semester = 2;
         }
 
         repo.save(teacherModel);
 
     }
-    public void registerTeacher(RegisterTeacherModel teacherModel,RegisterBaseModel baseModel) {
 
-
-
-        LoginModel loginModel=new LoginModel();
+    public void registerTeacher(RegisterTeacherModel teacherModel, RegisterBaseModel baseModel) {
+        LoginModel loginModel = new LoginModel();
         loginModel.setAccount(baseModel.getAccount());
-        loginModel.setPassword(baseModel.getPassword());
+        String cryptPassword = bCryptPasswordEncoder.encode(baseModel.getPassword());
+        loginModel.setPassword(cryptPassword);
         loginModel.setGrade("B");
         loginRepository.save(loginModel);
-        LoginModel response=loginRepository.findByAccountAndPassword(baseModel.getAccount(),baseModel.getPassword());
+        LoginModel response = loginRepository.findByAccountAndPassword(baseModel.getAccount(), baseModel.getPassword());
         teacherModel.setLoginModel(loginModel);
         teacherModel.getTeacherRelationPK().setTchNumber(response.getId());
-
-        repo.save(teacherModel);
+        try {
+            repo.save(teacherModel);
+        } catch (DataIntegrityViolationException e) {
+            throw new AlreadyExistsException("Save failed, the user name already exist.");
+        }
     }
 
     public String storeNewFile(MultipartFile multipartFile, Integer teacherRelationPK) throws Exception {
-        Path fileStoreLocation= Paths.get(Config.path).toAbsolutePath().normalize();
+        Path fileStoreLocation = Paths.get(Config.path).toAbsolutePath().normalize();
         try {
             Files.createDirectories(fileStoreLocation);
         } catch (IOException e) {
             try {
-                throw new Exception("Could not create the directory where the uploaded files will be stored",e);
+                throw new Exception("Could not create the directory where the uploaded files will be stored", e);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -113,77 +122,81 @@ public class TeacherService {
         String orgFileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         String newFileName = "";
         try {
-            if (orgFileName.contains("..")){
+            if (orgFileName.contains("..")) {
                 throw new Exception("Sorry! Filename contains invalid path sequence " + orgFileName);
             }
             // String command = "powershell -c \"$(ipconfig | where {$_ -match 'IPv4.+\\s(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})' } | out-null; $Matches[1]) > C:\\Users\\uuko\\Desktop\\web\\web-socket-project\\src\\main\\resources\\ip.txt";
-            String command="localhost";
+            String command = "localhost";
 //            Process process = Runtime.getRuntime().exec(command);
 //            process.getOutputStream();
 //            String line0 = Files.readAllLines(Paths.get("C:\\Users\\uuko\\Desktop\\web\\web-socket-project\\src\\main\\resources\\ip.txt"), StandardCharsets.UTF_16LE).get(0);
-            String line0=command;
-            String fileExtension="";
-            String fileOrgName="";
+            String line0 = command;
+            String fileExtension = "";
+            String fileOrgName = "";
 //            fileOrgName=orgFileName.substring(0,orgFileName.lastIndexOf("."));
-            System.out.println("newFileName/////    -"+orgFileName);
-            newFileName=teacherRelationPK+"_"+getRandomStr()+"_"+orgFileName;
+            System.out.println("newFileName/////    -" + orgFileName);
+            newFileName = teacherRelationPK + "_" + getRandomStr() + "_" + orgFileName;
 
             Path targetLocation = fileStoreLocation.resolve(newFileName);
-            Files.copy(multipartFile.getInputStream(),targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(multipartFile.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            System.out.println("newFileName000000000000     -"+newFileName);
+            System.out.println("newFileName000000000000     -" + newFileName);
 
-                List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(teacherRelationPK);
-                Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
-                    return rhs.getTeacherRelationPK().getTchYear().compareTo(lhs.getTeacherRelationPK().getTchYear());  // Descending order
-                };
+            List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(teacherRelationPK);
+            Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
+                return rhs.getTeacherRelationPK().getTchYear().compareTo(lhs.getTeacherRelationPK().getTchYear());  // Descending order
+            };
 
-                registerTeacherModellist.sort(m_studentComparator);
-                Comparator<RegisterTeacherModel> monthComparator = (lhs, rhs) -> {
-                    return rhs.getTeacherRelationPK().getTchSemester().compareTo(lhs.getTeacherRelationPK().getTchSemester());  // Descending order
-                };
-                registerTeacherModellist.sort(monthComparator);
-                  RegisterTeacherModel listTeacherResponse = new RegisterTeacherModel();
-                for (RegisterTeacherModel putuser : registerTeacherModellist) {
-                    listTeacherResponse=putuser;
-                    break;
-                }
+            registerTeacherModellist.sort(m_studentComparator);
+            Comparator<RegisterTeacherModel> monthComparator = (lhs, rhs) -> {
+                return rhs.getTeacherRelationPK().getTchSemester().compareTo(lhs.getTeacherRelationPK().getTchSemester());  // Descending order
+            };
+            registerTeacherModellist.sort(monthComparator);
+            RegisterTeacherModel listTeacherResponse = new RegisterTeacherModel();
+            for (RegisterTeacherModel putuser : registerTeacherModellist) {
+                listTeacherResponse = putuser;
+                break;
+            }
 
-                String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("/downloadFile/")
-                        .path(newFileName)
-                        .toUriString();
-                listTeacherResponse.setTchPicUrl(fileDownLoadUrL);
-                repo.save(listTeacherResponse);
+            String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/downloadFile/")
+                    .path(newFileName)
+                    .toUriString();
+            listTeacherResponse.setTchPicUrl(fileDownLoadUrL);
+            repo.save(listTeacherResponse);
 
-            System.out.println("newFileName"+newFileName);
+            System.out.println("newFileName" + newFileName);
             return newFileName;
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("Could not store file " + newFileName + ". Please try again!", e);
         }
     }
 
     public Resource loadFileAsResource(String fileName) throws Exception {
-        Path fileStoreLocation= Paths.get(Config.path).toAbsolutePath().normalize();
-        Path filePath =fileStoreLocation.resolve(fileName).normalize();
+        Path fileStoreLocation = Paths.get(Config.path).toAbsolutePath().normalize();
+        Path filePath = fileStoreLocation.resolve(fileName).normalize();
         Resource resource = new UrlResource(filePath.toUri());
-        if(resource.exists()) {
+        if (resource.exists()) {
             return resource;
         } else {
             throw new Exception("File not found " + fileName);
         }
 
     }
+
+    public void logout() {
+        SecurityContextHolder.clearContext();
+    }
     public void updateTeacher(RegisterTeacherModel teacherModel) throws Exception {
         repo.save(teacherModel);
     }
+
     public RegisterTeacherModel findByTeacherRelationPK(TeacherRelationPK teacherRelationPK) {
         return repo.findByTeacherRelationPK(teacherRelationPK);
     }
 
-    public ListTeacherResponse getTeacherByLoginId(Integer id){
+    public ListTeacherResponse getTeacherByLoginId(Integer id) {
         List<RegisterTeacherModel> registerTeacherModellist = repo.findAllByTeacherRelationPKTchNumber(id);
         Comparator<RegisterTeacherModel> m_studentComparator = (lhs, rhs) -> {
             return rhs.getTeacherRelationPK().getTchYear().compareTo(lhs.getTeacherRelationPK().getTchYear());  // Descending order
@@ -265,6 +278,7 @@ public class TeacherService {
         }
         return listTeacherResponse;
     }
+
     public String getRandomStr() {
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'

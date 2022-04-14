@@ -1,21 +1,48 @@
 package com.alin.titi.config;
 
-import com.google.common.collect.ImmutableList;
-import org.springframework.context.annotation.Bean;
+import com.alin.titi.filter.JwtAuthorizationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
+import org.springframework.web.filter.CorsFilter;
+import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
+@Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Import(SecurityProblemSupport.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private CorsFilter corsFilter;
+
+    @Autowired
+    private SecurityProblemSupport securityProblemSupport;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling()
+                // 当用户无权访问资源时发送 401 响应
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                // 当用户访问资源因权限不足时发送 403 响应
+                .accessDeniedHandler(securityProblemSupport)
+                .and()
+                // 禁用 CSRF
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
+                .logout().logoutUrl("/teacher/logout").and()
+//
                 .authorizeRequests()
 //                .antMatchers(HttpMethod.GET, "/teacher/**").authenticated()
                 .antMatchers(HttpMethod.GET).permitAll()
@@ -26,24 +53,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .formLogin()
+//
+                .and()
+                // 不需要 session（不创建会话）
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .apply(securityConfigurationAdapter());
         ;
 
         http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        final CorsConfiguration configuration = new CorsConfiguration();
-
-
-        configuration.setAllowedOrigins(ImmutableList.of("*"));  //set access from all domains
-        configuration.setAllowedMethods(ImmutableList.of("GET", "POST", "PUT", "DELETE"));
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
-
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-
-        return source;
+    private JwtConfigurer securityConfigurationAdapter() throws Exception{
+        return new JwtConfigurer(new JwtAuthorizationFilter(authenticationManager()));
     }
 }

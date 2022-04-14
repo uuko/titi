@@ -4,6 +4,7 @@ import com.alin.titi.model.*;
 import com.alin.titi.model.api.response.ListTeacherResponse;
 import com.alin.titi.model.base.TeacherBaseData;
 import com.alin.titi.services.TeacherService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -11,10 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
@@ -26,29 +29,30 @@ public class TeacherController {
 
     @Autowired
     private TeacherService service;
+
     @GetMapping("/teacher/photo/{tchNumber}")
-    public ResponseEntity<?> getTeacherBaseData(@PathVariable Integer tchNumber){
-        TeacherBaseData data= service.getTeacherBaseData(tchNumber);
+    public ResponseEntity<?> getTeacherBaseData(@PathVariable Integer tchNumber) {
+        TeacherBaseData data = service.getTeacherBaseData(tchNumber);
         return ResponseEntity.ok(data);
     }
 
     @GetMapping("/teacher/list")
     public ResponseEntity<?> list() {
 
-        List<RegisterTeacherModel> putuserList=service.listAll();
-        List<ListTeacherResponse> listTeacherResponseList=new ArrayList<>();
+        List<RegisterTeacherModel> putuserList = service.listAll();
+        List<ListTeacherResponse> listTeacherResponseList = new ArrayList<>();
 
-        List<Integer> loginIdList=new ArrayList<>();
-        for (RegisterTeacherModel lr:putuserList){
-            if (!loginIdList.contains(lr.getLoginModel().getId())){
+        List<Integer> loginIdList = new ArrayList<>();
+        for (RegisterTeacherModel lr : putuserList) {
+            if (!loginIdList.contains(lr.getLoginModel().getId())) {
                 loginIdList.add(lr.getLoginModel().getId());
             }
         }
-        for (Integer id:loginIdList){
-            List<ListTeacherResponse> innerList=new ArrayList<>();
-            for (RegisterTeacherModel putuser:putuserList){
-                if (putuser.getLoginModel().getId().equals(id)){
-                    ListTeacherResponse listTeacherResponse=new ListTeacherResponse();
+        for (Integer id : loginIdList) {
+            List<ListTeacherResponse> innerList = new ArrayList<>();
+            for (RegisterTeacherModel putuser : putuserList) {
+                if (putuser.getLoginModel().getId().equals(id)) {
+                    ListTeacherResponse listTeacherResponse = new ListTeacherResponse();
                     listTeacherResponse.setTchNumber(putuser.getTeacherRelationPK().getTchNumber());
                     listTeacherResponse.setTchSemester(putuser.getTeacherRelationPK().getTchSemester());
                     listTeacherResponse.setTchYear(putuser.getTeacherRelationPK().getTchYear());
@@ -130,19 +134,19 @@ public class TeacherController {
                 return rhs.getTchSemester().compareTo(lhs.getTchSemester());  // Descending order
             };
             innerList.sort(monthComparator);
-            if (innerList.size()>0){
+            if (innerList.size() > 0) {
                 listTeacherResponseList.add(innerList.get(0));
             }
         }
 
 
-
         return ResponseEntity.ok(listTeacherResponseList);
     }
-    @PostMapping("/teacher/uploadFile")
-    public ResponseEntity<?> uploadFile(@RequestParam("file")MultipartFile file
 
-            ,@RequestParam("tchNumber")  Integer tchNumber
+    @PostMapping("/teacher/uploadFile")
+    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file
+
+            , @RequestParam("tchNumber") Integer tchNumber
 
     ) throws Exception {
 
@@ -152,14 +156,14 @@ public class TeacherController {
 //        teacherRelationPK.setTchSemester(tchSemester);
 //        teacherRelationPK.setTchYear(tchYear);
 
-        String fileName=service.storeNewFile(file,tchNumber);
+        String fileName = service.storeNewFile(file, tchNumber);
 
 
         String fileDownLoadUrL = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-        UpLoadFileResponse upLoadFileResponse=new UpLoadFileResponse();
+        UpLoadFileResponse upLoadFileResponse = new UpLoadFileResponse();
         upLoadFileResponse.setPicUrl(fileDownLoadUrL);
         return ResponseEntity.ok(upLoadFileResponse);
 
@@ -176,7 +180,7 @@ public class TeacherController {
 
         }
 
-        if(contentType == null) {
+        if (contentType == null) {
             contentType = "application/octet-stream";
         }
         return ResponseEntity.ok()
@@ -189,23 +193,22 @@ public class TeacherController {
     @PostMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> update(
             @RequestBody UpdateTeacherModel putuser
-            ,@PathVariable Integer tchNumber
-            ,@PathVariable Integer tchYear, @PathVariable Integer tchSemester) {
+            , @PathVariable Integer tchNumber
+            , @PathVariable Integer tchYear, @PathVariable Integer tchSemester) {
         try {
 
-            TeacherRelationPK nowYearpk=new TeacherRelationPK();
-            int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
+            TeacherRelationPK nowYearpk = new TeacherRelationPK();
+            int year = Calendar.getInstance().get(Calendar.YEAR) - 1911;
             int month = Calendar.getInstance().get(Calendar.MONTH);
-            int semester=0;
-            if (month<8 && month>1){
-                semester=1;
-            }
-            else {
-                semester=2;
+            int semester = 0;
+            if (month < 8 && month > 1) {
+                semester = 1;
+            } else {
+                semester = 2;
             }
             //
-            if (year==tchYear && semester==tchSemester){
-                TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
+            if (year == tchYear && semester == tchSemester) {
+                TeacherRelationPK teacherRelationPK = new TeacherRelationPK();
                 teacherRelationPK.setTchNumber(tchNumber);
                 teacherRelationPK.setTchSemester(tchSemester);
                 teacherRelationPK.setTchYear(tchYear);
@@ -273,24 +276,22 @@ public class TeacherController {
                 teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
                 teacherModel.setIntroduce(putuser.getIntroduce());
                 service.updateTeacher(teacherModel);
-            }
-            else {
+            } else {
 
-                int nowYear = Calendar.getInstance().get(Calendar.YEAR)-1911;
-                int  nowMonth = Calendar.getInstance().get(Calendar.MONTH);
-                int  nowSemester=0;
-                if (month<8 && month>1){
-                    nowSemester=1;
+                int nowYear = Calendar.getInstance().get(Calendar.YEAR) - 1911;
+                int nowMonth = Calendar.getInstance().get(Calendar.MONTH);
+                int nowSemester = 0;
+                if (month < 8 && month > 1) {
+                    nowSemester = 1;
+                } else {
+                    nowSemester = 2;
                 }
-                else {
-                    nowSemester=2;
-                }
-                TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
+                TeacherRelationPK teacherRelationPK = new TeacherRelationPK();
                 teacherRelationPK.setTchNumber(tchNumber);
                 teacherRelationPK.setTchSemester(nowSemester);
                 teacherRelationPK.setTchYear(nowYear);
 
-                RegisterTeacherModel teacherModel=new RegisterTeacherModel();
+                RegisterTeacherModel teacherModel = new RegisterTeacherModel();
                 teacherModel.setTeacherRelationPK(teacherRelationPK);
                 teacherModel.setTchDepartment(putuser.getTchDepartment());
                 teacherModel.setTchPicUrl(putuser.getTchPicUrl());
@@ -354,14 +355,11 @@ public class TeacherController {
                 teacherModel.setTchTow(putuser.getTchTow());
                 teacherModel.setTchValidationStatus(putuser.getTchValidationStatus());
                 teacherModel.setIntroduce(putuser.getIntroduce());
-                LoginModel loginModel=new LoginModel();
+                LoginModel loginModel = new LoginModel();
                 loginModel.setId(tchNumber);
                 teacherModel.setLoginModel(loginModel);
                 service.updateTeacher(teacherModel);
             }
-
-
-
 
 
             return new ResponseEntity<>(HttpStatus.OK);
@@ -376,25 +374,24 @@ public class TeacherController {
     //post
     @PostMapping("/teacher/register")
     public void registerTeacher(@RequestBody RegisterBaseModel baseModel) {
-        RegisterTeacherModel teacherModel=new RegisterTeacherModel();
+        RegisterTeacherModel teacherModel = new RegisterTeacherModel();
         teacherModel.seteMail(baseModel.getAccount());
         teacherModel.setTchName(baseModel.getTchName());
-        TeacherRelationPK teacherRelationPK=new TeacherRelationPK();
-        int year = Calendar.getInstance().get(Calendar.YEAR)-1911;
+        TeacherRelationPK teacherRelationPK = new TeacherRelationPK();
+        int year = Calendar.getInstance().get(Calendar.YEAR) - 1911;
         int month = Calendar.getInstance().get(Calendar.MONTH);
-        int semester=0;
-        if (month<8 && month>1){
-            semester=1;
-        }
-        else {
-            semester=2;
+        int semester = 0;
+        if (month < 8 && month > 1) {
+            semester = 1;
+        } else {
+            semester = 2;
         }
         teacherRelationPK.setTchYear(year);
         teacherRelationPK.setTchSemester(semester);
         teacherRelationPK.setTchNumber(0);
         teacherModel.setTchName(baseModel.getTchName());
         teacherModel.setTeacherRelationPK(teacherRelationPK);
-        service.registerTeacher(teacherModel,baseModel);
+        service.registerTeacher(teacherModel, baseModel);
         ;
 
     }
@@ -406,26 +403,36 @@ public class TeacherController {
     ) {
         try {
 
-            return ResponseEntity.ok(   service.getTeacherByLoginId(loginId));
+            return ResponseEntity.ok(service.getTeacherByLoginId(loginId));
         } catch (NoSuchElementException e) {
             return new ResponseEntity<RegisterTeacherModel>(HttpStatus.NOT_FOUND);
         }
     }
 
 
+    @PostMapping("/teacher/logout")
+    public ResponseEntity<Void> logout(HttpSession session, SessionStatus sessionStatus) {
+        //讓token過期就好
+        session.invalidate();
+        sessionStatus.setComplete();
+        service.logout();
+
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/teacher/{tchNumber}/{tchYear}/{tchSemester}")
     public ResponseEntity<?> getTeacherList(@PathVariable Integer tchNumber
-            ,@PathVariable Integer tchYear,
+            , @PathVariable Integer tchYear,
                                             @PathVariable Integer tchSemester
     ) {
         try {
-            TeacherRelationPK pk=new TeacherRelationPK();
+            TeacherRelationPK pk = new TeacherRelationPK();
             pk.setTchNumber(tchNumber);
             pk.setTchSemester(tchSemester);
             pk.setTchYear(tchYear);
             RegisterTeacherModel putuser = service.findByTeacherRelationPK(pk);
 
-            ListTeacherResponse listTeacherResponse=new ListTeacherResponse();
+            ListTeacherResponse listTeacherResponse = new ListTeacherResponse();
             listTeacherResponse.setTchNumber(putuser.getTeacherRelationPK().getTchNumber());
             listTeacherResponse.setTchSemester(putuser.getTeacherRelationPK().getTchSemester());
             listTeacherResponse.setTchYear(putuser.getTeacherRelationPK().getTchYear());
