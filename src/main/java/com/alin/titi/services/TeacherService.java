@@ -98,6 +98,8 @@ public class TeacherService {
         loginModel.setPassword(cryptPassword);
         loginModel.setGrade("B");
         loginRepository.save(loginModel);
+
+
         LoginModel response = loginRepository.findByAccount(baseModel.getAccount());
         teacherModel.setLoginModel(loginModel);
         teacherModel.getTeacherRelationPK().setTchNumber(response.getId());

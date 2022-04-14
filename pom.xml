@@ -105,6 +105,14 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
         <!--  lombook      -->
         <dependency>
             <groupId>org.projectlombok</groupId>
