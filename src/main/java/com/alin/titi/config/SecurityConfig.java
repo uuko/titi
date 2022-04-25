@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.filter.CorsFilter;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -46,11 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antMatchers(HttpMethod.GET, "/teacher/**").authenticated()
                 .antMatchers(HttpMethod.POST, "/teacher/login").permitAll()
-                .antMatchers(HttpMethod.POST,"/teacher/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/teacher/register").permitAll()
+                .antMatchers(HttpMethod.GET, "/article/downloadFile/**").permitAll()
 
-                .antMatchers(HttpMethod.GET,"/teacher/changePassword**").permitAll()
-                .antMatchers(HttpMethod.POST,"/teacher/resetPassword**").permitAll()
-                .antMatchers(HttpMethod.POST,"/teacher/savePassword").permitAll()
+                .antMatchers(HttpMethod.GET, "/teacher/changePassword**").permitAll()
+                .antMatchers(HttpMethod.POST, "/teacher/resetPassword**").permitAll()
+                .antMatchers(HttpMethod.POST, "/teacher/savePassword").permitAll()
 //                .antMatchers(HttpMethod.GET).permitAll()
 //                .antMatchers(HttpMethod.POST, "/teacher/**","/article/**","/admin/**").permitAll()
 //                .antMatchers(HttpMethod.DELETE, "/teacher/**","/article/**","/admin/**").permitAll()
@@ -71,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
     }
 
-    private JwtConfigurer securityConfigurationAdapter() throws Exception{
+    private JwtConfigurer securityConfigurationAdapter() throws Exception {
         return new JwtConfigurer(new JwtAuthorizationFilter(authenticationManager()));
     }
 }
